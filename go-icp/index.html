@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Go-ICP Solving 3D Registration Efficiently and Globally Optimally,a Globally Optimal Solution to 3D ICP Point-Set Registration,ICCV,2013,Jiaolong Yang,杨蛟龙,Hongdong Li,Yunde Jia,贾云得,BIT,ANU" />
+<meta name="description" content="Go-ICP Solving 3D Registration Efficiently and Globally Optimally,a Globally Optimal Solution to 3D ICP Point-Set Registration,ICCV,2013,Jiaolong Yang,杨蛟龙,Hongdong Li,Yunde Jia,贾云得,BIT,ANU"/>
+<link rel="icon" type="x-icon" href="../favicon.ico" />
+<title>Go-ICP - Jiaolong Yang's Homepage</title>
+<link rel="stylesheet" type="text/css" href="../style.css"/>
+<style type="text/css">
+a{
+	color: #073763;
+	text-decoration:underline;
+}
+a:hover {
+	color: #d55111;
+	text-decoration:underline;
+}
+</style>
+</head>
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"> -->
+<script src="../jquery-1.10.2.min.js"> 
+</script>
+<script type="text/javascript">
+var curvideo = "#video1";
+function show(video){
+	video = "#video"+video;
+	if(video == curvideo)
+		return;
+	else
+	{
+		$(curvideo).hide(10);
+		curvideo = video;
+		$(video).show(10);
+	}
+}
+</script>
+<body>
+<div id="jellon">
+
+<div id="jellon_detail">
+<!-- ITEM BEGIN -->
+<div class="jellon_d_item">
+<table width="100%">
+<tr>
+<td>
+<p style="text-align:center;font-size:18px;font-weight:bold;">
+Go-ICP: A Globally Optimal Solution to 3D ICP Point-Set Registration
+</p>
+</td>
+</tr>
+<tr><td>
+The Iterative Closest Point (ICP) algorithm is one of the most widely used methods for point-set registration. However, being based on local iterative optimization, ICP is known to be susceptible to local minima. Its performance critically relies on the quality of the initialization and only local optimality is guaranteed. This paper presents the first globally optimal algorithm, named Go-ICP, for Euclidean (rigid) registration of two 3D point-sets under the L2 error metric defined in ICP. The Go-ICP method is based on a branch-and-bound (BnB) scheme that searches the entire 3D motion space SE(3). By exploiting the special structure of SE(3) geometry, we derive novel upper and lower bounds for the registration error function. Local ICP is integrated into the BnB scheme, which speeds up the new method while guaranteeing global optimality. We also discuss extensions, addressing the issue of outlier robustness. The evaluation demonstrates that the proposed method is able to produce reliable registration results regardless of the initialization. Go-ICP can be applied in scenarios where an optimal solution is desirable or where a good initialization is not always available.
+</td></tr>
+<tr><td>
+<p style="font-size:16px;font-weight:bold;">Video</p>
+<a href="#" onclick="show(1);return false;" style="text-decoration:none;">YouTube</a> | <a href="#" onclick="show(2);return false;" style="text-decoration:none;">YouKu</a> | <a target="_blank" href="Go-ICP_demo.mp4">Download (13.4MB)</a><br><br>
+<div id="video1" style="width:100%;text-align:center;"><iframe width="700" height="525" src="http://www.youtube.com/embed/LCKowDdh9Gs" frameborder="0" allowfullscreen></iframe></div>
+<div id="video2" style="width:100%;text-align:center;display:none;"><embed src="http://player.youku.com/player.php/sid/XNzYxOTY0Njgw/v.swf" allowFullScreen="true" quality="high" width="700" height="525" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></div>
+</td></tr>
+<tr><td>
+<br>
+<a name="code"></a><p style="font-size:16px;font-weight:bold;">Source Code</p>
+The latest C++ code, together with the documentation and demo files, can be downloaded here: <a href="Go-ICP_V1.3.zip" target="_blank">Go-ICP_V1.3.zip (853KB)</a>.<br>
+The code is released under the <a href="http://www.gnu.org/copyleft/gpl.html" target="_blank">GNU General Public License (GPL) v3</a>.<br>
+Please <a href="mailto:yangjiaolong@gmail.com">email us</a> if you have questions, advices or find a bug.
+</td>
+</tr>
+<tr>
+<td>
+<p style="font-size:16px;font-weight:bold;">Publications and Submissions</p>
+<ul><li>
+Jiaolong Yang, Hongdong Li, Dylan Campbell and Yunde Jia. <a target="_blank" href="../yang_et_al_tpami_go-icp_preprint.pdf">Go-ICP: A Globally Optimal Solution to 3D ICP Point-Set Registration</a>. <em>IEEE Transactions on Pattern Analysis and Machine Intelligence (T-PAMI)</em>, Accepted.</li>
+<li>
+Jiaolong Yang, Hongdong Li and Yude Jia. <a target="_blank" href="../yang_et_al_iccv13_go-icp.pdf">Go-ICP: Solving 3D Registration Efficiently and Globally Optimally</a>. <em>International Conference on Computer Vision (ICCV)</em>, 2013. </li></ul>
+</td>
+</tr>
+</table>
+<br>
+<a href="../">&lt;&lt; Home</a>
+</div>
+<!-- ITEM END -->
+
+<div id="jellon_footer">
+<b>Declaimer:</b> Papers provided on this page are for personal, research use only; copyright and all rights therein are retained by authors and/or other copyright holders.<br/>
+<b><i>Last update: Dec 25, 2015</i></b></div>
+</div>
+
+<div style="display:none;">
+	<script src="http://s25.cnzz.com/stat.php?id=5490895&web_id=5490895" language="JavaScript"></script>
+</div>
+<!--
+<div id="clustrmaps-widget" style="margin:auto;display:none;"></div><script type="text/javascript">var _clustrmaps = {'url' : 'http://mcislab.cs.bit.edu.cn/~yangjiaolong', 'user' : 1113088, 'server' : '2', 'id' : 'clustrmaps-widget', 'version' : 1, 'date' : '2013-09-18', 'lang' : 'en', 'corners' : 'square' };(function (){ var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = 'http://www2.clustrmaps.com/counter/map.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);})();</script><noscript><a href="http://www2.clustrmaps.com/user/24610fc00"><img src="http://www2.clustrmaps.com/stats/maps-no_clusters/mcislab.cs.bit.edu.cn-~yangjiaolong-thumb.jpg" alt="Locations of visitors to this page" /></a></noscript>
+</div>
+-->
+
+</body>
+</html>
