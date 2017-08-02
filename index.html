@@ -1,0 +1,487 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<meta name="keywords" content="Jiaolong Yang,杨蛟龙,homepage,主页,Computer Vision,Computer Science,PhD,Beijing Institute of Technology,BIT,北京理工大学,Australian National University,ANU,澳大利亚国立大学,GO-ICP,GoICP,Optical Flow" />
+<meta name="description" content="Jiaolong Yang's Homepage"/>
+<link rel="icon" type="x-icon" href="favicon.ico" />
+<title>Jiaolong Yang (杨蛟龙)'s Homepage</title>
+<link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"> -->
+<script src="jquery-1.10.2.min.js"> 
+</script>
+<script type="text/javascript">
+var visible = new Array();
+function show(id, item){
+	div = "#"+id+"_"+item;
+	for (i=0;i<visible.length;i++){
+		//if(visible[i].substr(1,1)==id){
+		if(visible[i]==div){
+			if(visible[i]==div){
+				$(div).hide(200);
+				visible.splice(i,1);
+			}
+			else{
+				$(visible[i]).hide(200);
+				visible.splice(i,1);
+				$(div).show(200);
+				visible.push(div);
+			}
+			return;
+		}
+	}
+	$(div).show(200);
+	visible.push(div);
+}
+
+function show2(id, item){
+	div = "#"+id+"_"+item;
+	for (i=0;i<visible.length;i++){
+		if(visible[i].substr(1,1)==id){
+			if(visible[i]==div){
+				$(div).hide(0);
+				visible.splice(i,1);
+			}
+		}
+	}
+	$(div).show(200);
+	visible.push(div);
+}
+
+function shownamedesc()
+{
+	$("#jellon_b_right").toggle(100);
+	return false;
+}
+
+</script>
+<body>
+
+<div id="jellon">
+
+<div id="jellon_basic">
+
+<div id="jellon_b_left"><div id="jellon_b_r_photo"><img src="photo.jpg" height="170"/></div></div>
+
+<div id="jellon_b_middle">
+<span id="jellon_b_l_name">Jiaolong YANG (杨蛟龙)</span> <span style="padding:3px 0px 0px 10px;">(<a href="#" onclick="javascript:shownamedesc();return false;">?</a>)</span><br/>
+<span id="jellon_b_l_title">Ph.D. (Computer Science and Engineering)</span>
+<p>
+Associate Researcher<br />
+Visual Computing Group<br />
+Microsoft Research Asia (MSRA)<br />
+</p>
+<span id="jellon_b_l_contact">jiaoyan [at] microsoft.com</span><br />
+<a href="https://www.microsoft.com/en-us/research/people/jiaoyan/" target="_blank" style="color:black;text-decoration:underline;line-height:30px">Microsoft Homepage</a>
+</div>
+
+
+<div id="jellon_b_right">
+About my name<br /><span style="font-size:10px;line-height:16px;">
+Jiaolong (蛟龙): the given name from my parents. "Jiaolong" is an aquatic dragon in Chinese ancient legends with great power. It can be pronounced as "chiao-lung".<br />
+Yang (杨): the family name from my forefathers, the sixth most common surname in China. It can be pronounced as the word "young" with a rising tone.
+</span>
+</div>
+
+</div>
+
+<div id="jellon_detail">
+<!-- ITEM BEGIN -->
+<div class="jellon_d_item">
+<div style="float:left;height:50px;padding-top:5px;padding-right:5px;"><img src="new.jpg" height="35px" width="40x"/></div>
+<div style="padding-left:10px;">
+<font color="red">
+[07/17/2017] <i>The <a style="color:red;text-decoration:underline;" href="#dcnnreflectionsmoothing" onclick="show2('11','abstract');">deep learning for image reflection removal paper</a> is accepted by ICCV'17</i><br/>
+[03/18/2017] <i>The <a style="color:red;text-decoration:underline;" href="#videoface" onclick="show2('9','abstract');">video face recognition paper</a> is accepted by CVPR'17</i><br/>
+<!--[01/03/2016] <i>The <a style="color:red;text-decoration:underline;" href="#robustopticalflow" onclick="show2('8','abstract');">robust optical flow paper</a> is accepted by CVPR'16</i><br/>-->
+<!--[16/02/2016] <i>I will join <a style="color:red;text-decoration:underline;" target="_blank" href="http://research.microsoft.com/en-us/labs/asia/">Microsoft Research Asia (MSRA)</a> as an Associate Researcher</i><br/>-->
+<!--[23/11/2015] <i>I joined <a style="color:red;text-decoration:underline;" target="_blank" href="http://research.microsoft.com/en-us/labs/asia/">Microsoft Research Asia (MSRA)</a> as a Research Intern</i><br/>-->
+<!--[10/11/2015] <i>The <a style="color:red;text-decoration:underline;" href="#goicpjournal" onclick="show2('7','abstract');">Go-ICP paper</a> is accepted by T-PAMI</i><br/>-->
+<!--[02/03/2015] <i>The <a style="color:red;text-decoration:underline;" target="_blank" href="cvpr2015_opticalflow.pdf">optical flow paper</a> is accepted by CVPR'15</i><br/>-->
+<!--[05/08/2014] <i>Project page and source code for Go-ICP can be found <a target="_blank" href="./go-icp" style="color:red;text-decoration:underline;">here</a></i><br/>-->
+</font>
+</div>
+</div>
+<!-- ITEM END -->
+
+<!-- ITEM BEGIN -->
+<div class="jellon_d_item">
+<div class="jellon_d_i_title">Bio</div>
+<div class="jellon_d_i_content">I’m currently an associate researcher in the Visual Computing Group at Microsoft Research Asia Lab located in Beijing, China. I do research in <i>computer vision</i> and <i>pattern recognition</i>, including camera and image motion estimation, 3D reconstruction, 2D/3D registration, face recognition, deep learning etc.</div>
+</div>
+<!-- ITEM END -->
+
+
+<!-- ITEM BEGIN -->
+<div class="jellon_d_item">
+<div class="jellon_d_i_title">Publications <span style="font-style:normal;font-weight:normal;">(<a target="_blank" href="https://scholar.google.com/citations?user=GuqoolgAAAAJ&hl=en" style="text-decoration:underline;font-size:15px;font-weight:normal;">Google Scholar</a><!--, <a target="_blank" href="full_publications.html" style="text-decoration:underline;font-size:15px;font-weight:normal;">Full List</a></span>-->)</div>
+<!--By year: <a href="#" onclick="show('10','bibtex');return false;">2017</a>, <a href="#" onclick="show('10','bibtex');return false;">2016</a>, <a href="#" onclick="show('10','bibtex');return false;">2015</a>, <a href="#" onclick="show('10','bibtex');return false;">2014</a>, <a href="#" onclick="show('10','bibtex');return false;">2013</a>, <a href="#" onclick="show('10','bibtex');return false;">2012</a><br/>
+By keywords: <a href="#" onclick="show('10','bibtex');return false;">3D</a>, <a href="#" onclick="show('10','bibtex');return false;">Deep Learning</a>, <a href="#" onclick="show('10','bibtex');return false;">Optical Flow</a>, <a href="#" onclick="show('10','bibtex');return false;">Face</a>, <a href="#" onclick="show('10','bibtex');return false;">Camera Motion</a>, <a href="#" onclick="show('10','bibtex');return false;">Registration</a>, <a href="#" onclick="show('10','bibtex');return false;">Relection Removal</a><br/>-->
+<div class="jellon_d_i_content">
+<table id="jellon_papertable" style="width:100%;"  border="0" cellpadding="0" cellspacing="0">
+
+<tr><a name="dcnnreflectionsmoothing"></a>
+<td width="132px"><img src="iccv17_thumbnail.png" width="140"/>
+</td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<a href="http://irc.cs.sdu.edu.cn/~qingnan/" target="_blank" style="text-decoration:underline;color:#000;">Qingnan Fan</a>*, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>,  <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a>, <a href="http://www.cs.sdu.edu.cn/~baoquan" target="_blank" style="text-decoration:underline;color:#000;">Baoquan Chen</a> and <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a><br/>
+<span class="jellon_d_i_c_name">A Generic Deep Architecture for Single Image Reflection Removal and Image Smoothing</span><br/>
+<span class="jellon_d_i_c_refer">The 16th International Conference on Computer Vision <b>(ICCV2017)</b>, Venice, Italy</span></span><br/>
+[<a href="#" onclick="show('11','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('11','bibtex');return false;">BibTex</a>] [<a target="_blank" href="iccv17_dcnnreflectionsmoothing.pdf">PDF</a>] [<a target="_blank" href="iccv17_dcnnreflectionsmoothing_supmat.pdf">Supplementary Material</a>]<br/>
+(*: Intern at MSRA)
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<div id="11_abstract">
+This paper proposes a deep neural network structure that exploits edge information in addressing representative low-level vision tasks such as layer separation and image filtering. Unlike most other deep learning strategies applied in this context, our approach tackles these challenging problems by estimating edges and reconstructing images using only cascaded convolutional layers arranged such that no handcrafted or application-specific image-processing components are required.  We apply the resulting transferrable pipeline to two different problem domains that are both sensitive to edges, namely, single image reflection removal and image smoothing. For the former, using a mild reflection smoothness assumption and a novel synthetic data generation method that acts as a type of weak supervision, our network is able to solve much more difficult reflection cases that cannot be handled by any existing methods to the best of our knowledge. For the latter, we also exceed state-of-the-art quantitative and qualitative results by wide margins. In all cases, the proposed framework is simple, fast, and easy to transfer across disparate domains. </div>
+<div id="11_bibtex">
+@inproceedings{fan2017generic,<br/>
+&nbsp;&nbsp;author = {Fan, Qingnan and Yang, Jiaolong and Hua, Gang and Chen, Baoquan and Wipf, David},<br/>
+&nbsp;&nbsp;title = {A Generic Deep Architecture for Single Image Reflection Removal and Image Smoothing},<br/>
+&nbsp;&nbsp;booktitle = {Proceedings of the 16th International Conference on Computer Vision (ICCV)},<br/>
+<!--&nbsp;&nbsp;pages = {111-126},<br/>-->
+&nbsp;&nbsp;year = {2017}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr>
+<td width="132px"><img src="cvprw17_thumbnail.png" width="140"/>
+</td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<a href="#" target="_blank" style="text-decoration:underline;color:#000;">Chen Zhou</a>*, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/chunzhao/" target="_blank" style="text-decoration:underline;color:#000;">Chunshui Zhao</a> and <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a><br/>
+<span class="jellon_d_i_c_name">Fast, Accurate Thin-Structure Obstacle Detection for Autonomous Mobile Robots</span><br/>
+<span class="jellon_d_i_c_refer">IEEE Computer Vision and Pattern Recognition Workshop on Embedded Vision <b>(CVPRW2017)</b>, Honolulu, USA</span><br/>
+[<a href="#" onclick="show('10','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('10','bibtex');return false;">BibTex</a>] [<a target="_blank" href="cvprw17_thinobstacledetection.pdf">PDF</a>] <br/>
+(*: Intern at MSRA)
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<div id="10_abstract">
+Safety is paramount for mobile robotic platforms such as self-driving cars and unmanned aerial vehicles. This work is devoted to a task that is indispensable for safety yet was largely overlooked in the past -- detecting obstacles that are of very thin structures, such as wires, cables and tree branches. This is a challenging problem, as thin objects can be problematic for active sensors such as lidar and sonar and even for stereo cameras. In this work, we propose to use video sequences for thin obstacle detection. We represent obstacles with edges in the video frames, and reconstruct them in 3D using efficient edge-based visual odometry techniques. We provide both a monocular camera solution and a stereo camera solution. The former incorporates Inertial Measurement Unit (IMU) data to solve scale ambiguity, while the latter enjoys a novel, purely vision-based solution. Experiments demonstrated that the proposed methods are fast and able to detect thin obstacles robustly and accurately under various conditions. </div>
+<div id="10_bibtex">
+@inproceedings{yang2017neural,<br/>
+&nbsp;&nbsp;author = {Zhou, Chen and Yang, Jiaolong and Zhao, Chunshui and Hua, Gang},<br/>
+&nbsp;&nbsp;title = {Fast, Accurate Thin-Structure Obstacle Detection for Autonomous Mobile Robots},<br/>
+&nbsp;&nbsp;booktitle = {The IEEE Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},<br/>
+&nbsp;&nbsp;pages = {1-10},<br/>
+&nbsp;&nbsp;year = {2017}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr><a name="videoface"></a>
+<td width="132px"><img src="cvpr17_thumbnail.png" width="140"/>
+</td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://renpr.org/" target="_blank" style="text-decoration:underline;color:#000;">Peiran Ren</a>, <a href="http://research.microsoft.com/en-us/people/doch/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/fangwen/" target="_blank" style="text-decoration:underline;color:#000;">Fang Wen</a>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a> and <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a><br/>
+<span class="jellon_d_i_c_name">Neural Aggregation Network for Video Face Recognition</span><br/>
+<span class="jellon_d_i_c_refer">The 33th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2017)</b>, Honolulu, USA</span></span><br/>
+[<a href="#" onclick="show('9','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('9','bibtex');return false;">BibTex</a>] [<a target="_blank" href="cvpr17_videoface.pdf">PDF</a>] [<a target="_blank" href="http://arxiv.org/abs/1603.05474">arXiv</a>]
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<div id="9_abstract">
+We present a Neural Aggregation Network (NAN) for video face recognition. The network takes a face video or face image set of a person with a variable number of face images as its input, and produces a compact and fixed-dimension feature representation. The whole network is composed of two modules. The feature embedding module is a deep Convolutional Neural Network (CNN), which maps each face image into a feature vector. The aggregation module consists of two attention blocks driven by a memory storing all the extracted features. It adaptively aggregates the features to form a single feature inside the convex hull spanned by them. Due to the attention mechanism, the aggregation is invariant to the image order. We found that NAN learns to advocate high-quality face images while repelling low-quality ones such as blurred, occluded and improperly exposed faces. The experiments on IJB-A, YouTube Face, Celebrity-1000 video face recognition benchmarks show that it consistently outperforms standard aggregation methods and achieves state-of-the-art accuracies. </div>
+<div id="9_bibtex">
+@inproceedings{yang2017neural,<br/>
+&nbsp;&nbsp;author = {Yang, Jiaolong and Ren, Peiran and Zhang, Dongqing and Chen, Dong and Wen, Fang and Li, Hongdong and Hua, Gang},<br/>
+&nbsp;&nbsp;title = {Neural Aggregation Network for Video Face Recognition},<br/>
+&nbsp;&nbsp;booktitle = {Proceedings of the 32th IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},<br/>
+&nbsp;&nbsp;pages = {4362-4371},<br/>
+&nbsp;&nbsp;year = {2017}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr><a name="robustopticalflow"></a>
+<td width="132px"><img src="cvpr16_thumbnail.jpg" width="140"/>
+</td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a>, <a href="http://users.cecs.anu.edu.au/~yuchao/" target="_blank" style="text-decoration:underline;color:#000;">Yuchao Dai</a> and <a href="http://php-robbytan.rhcloud.com/" target="_blank" style="text-decoration:underline;color:#000;">Robby T. Tan</a><br/>
+<span class="jellon_d_i_c_name">Robust Optical Flow Estimation of Double-Layer Images under Transparency or Reflection</span><br/>
+<span class="jellon_d_i_c_refer">The 32th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2016)</b>, Las Vegas, USA</span></span><br/>
+[<a href="#" onclick="show('8','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('8','bibtex');return false;">BibTex</a>] [<a target="_blank" href="cvpr16_robustopticalflow.pdf">PDF</a>] [<a target="_blank" href="cvpr16_robustopticalflow_code.zip">Code</a>] [<a target="_blank" href="cvpr16_robustopticalflow_supmat.pdf">Supplementary Material</a>]
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<div id="8_abstract">
+This paper deals with a challenging, frequently encountered, yet not properly investigated problem in two-frame optical flow estimation. That is, the input frames are compounds of two imaging layers - one desired background layer of the scene, and one distracting, possibly moving layer due to transparency or reflection. In this situation, the conventional brightness constancy constraint - the cornerstone of most existing optical flow methods - will no longer be valid. In this paper, we propose a robust solution to this problem. The proposed method performs both optical flow estimation, and image layer separation. It exploits a generalized double-layer brightness consistency constraint connecting these two tasks, and utilizes the priors for both of them. Experiments on both synthetic data and real images have confirmed the efficacy of the proposed method. To the best of our knowledge, this is the first attempt towards handling generic optical flow fields of two-frame images containing transparency or reflection.</div>
+<div id="8_bibtex">
+@inproceedings{yang2016robust,<br/>
+&nbsp;&nbsp;author = {Yang, Jiaolong and Li, Hongdong and Dai, Yuchao and Tan, Robby T.},<br/>
+&nbsp;&nbsp;title = {Robust Optical Flow Estimation of Double-Layer Images under Transparency or Reflection},<br/>
+&nbsp;&nbsp;booktitle = {Proceedings of the 32th IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},<br/>
+&nbsp;&nbsp;pages = {1410-1419},<br/>
+&nbsp;&nbsp;year = {2016}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr><a name="goicpjournal"></a>
+<td width="132px"><img src="tpami16_thumbnail.png" width="140"/>
+</td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a>, <a href="http://people.cecs.anu.edu.au/user/5075" target="_blank" style="text-decoration:underline;color:#000;">Dylan Campbell</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
+<span class="jellon_d_i_c_name">Go-ICP: A Globally Optimal Solution to 3D ICP Point-Set Registration</span><br/>
+<span class="jellon_d_i_c_refer">IEEE Transactions on Pattern Analysis and Machine Intelligence <b>(T-PAMI)</b>, 2016</span><br/>
+[<a href="#" onclick="show('7','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('7','bibtex');return false;">BibTex</a>] [<a target="_blank" href="tpami16_go-icp_preprint.pdf">PDF</a>] [<a target="_blank" href="./go-icp#code">Code</a>] [<a target="_blank" href="./go-icp">Webpage</a>] [<a target="_blank" href="tpami16_go-icp_supmat.pdf">Supplementary material</a>]
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<div id="7_abstract">
+The Iterative Closest Point (ICP) algorithm is one of the most widely used methods for point-set registration. However, being based on local iterative optimization, ICP is known to be susceptible to local minima. Its performance critically relies on the quality of the initialization and only local optimality is guaranteed. This paper presents the first globally optimal algorithm, named Go-ICP, for Euclidean (rigid) registration of two 3D point-sets under the L2 error metric defined in ICP. The Go-ICP method is based on a branch-and-bound (BnB) scheme that searches the entire 3D motion space SE(3). By exploiting the special structure of SE(3) geometry, we derive novel upper and lower bounds for the registration error function. Local ICP is integrated into the BnB scheme, which speeds up the new method while guaranteeing global optimality. We also discuss extensions, addressing the issue of outlier robustness. The evaluation demonstrates that the proposed method is able to produce reliable registration results regardless of the initialization. Go-ICP can be applied in scenarios where an optimal solution is desirable or where a good initialization is not always available.</div>
+<div id="7_bibtex">
+@article{yang2016goicp,<br/>
+&nbsp;&nbsp;author = {Yang, Jiaolong and Li, Hongdong and Campbell, Dylan and Jia, Yunde},<br/>
+&nbsp;&nbsp;title = {Go-ICP: A Globally Optimal Solution to 3D ICP Point-Set Registration},<br/>
+&nbsp;&nbsp;journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence (T-PAMI)},<br/>
+&nbsp;&nbsp;volume = {38},<br/>
+&nbsp;&nbsp;number = {11},<br/>
+&nbsp;&nbsp;pages = {2241--2254},<br/>
+&nbsp;&nbsp;year = {2016}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr>
+<td width="132px"><img src="cvpr15_thumbnail.png" width="140"/>
+</td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<span class="jellon_d_i_c_emphasize">Jiaolong Yang</span> and <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a> <br/>
+<span class="jellon_d_i_c_name">Dense, Accurate Optical Flow Estimation with Piecewise Parametric Model</span><br/>
+<span class="jellon_d_i_c_refer">The 31th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2015)</b>, Boston, USA</span><br/>
+[<a href="#" onclick="show('6','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('6','bibtex');return false;">BibTex</a>] [<a target="_blank" href="cvpr15_opticalflow.pdf">PDF</a>] [<a href="#" onclick="alert('Available soon');return false;">Code</a>] [<a target="_blank" href="cvpr15_opticalflow_extabstract.pdf">Extended Abstract</a>] [<a target="_blank" href="cvpr15_opticalflow_supmat.pdf">Supplementary material</a>]
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<div id="6_abstract">
+This paper proposes a simple method for estimating dense and accurate optical flow field. It revitalizes an early idea of piecewise parametric flow model. A key innovation is that we fit a flow field piecewise to a variety of parametric models, where the domain of each piece (i.e., each piece's shape, position and size) as well as the total number of pieces are determined adaptively, while at the same time maintaining a global inter-piece flow continuity constraint.  We achieve this by a multi-model fitting scheme via energy minimization. Our energy takes into account both the piecewise constant model assumption, and the flow field continuity constraint. The proposed method effectively handles both homogeneous regions and complex motion. Experiments on three public optical flow benchmarks (KITTI, MPI Sintel, and Middlebury) show the superiority of our method compared with the state of the art: it achieves top-tier performances on all the three benchmarks.
+</div>
+<div id="6_bibtex">
+@inproceedings{yang2015dense,<br/>
+&nbsp;&nbsp;author = {Yang, Jiaolong and Li, Hongdong},<br/>
+&nbsp;&nbsp;title = {Dense, Accurate Optical Flow Estimation with Piecewise Parametric Model},<br/>
+&nbsp;&nbsp;booktitle = {Proceedings of the 31th IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},<br/>
+&nbsp;&nbsp;pages = {1019-1027},<br/>
+&nbsp;&nbsp;year = {2015}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr>
+<td width="132px"><img src="eccv14_thumbnail.jpg" width="140"/>
+</td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
+<span class="jellon_d_i_c_name">Optimal Essential Matrix Estimation via Inlier-Set Maximization</span><br/>
+<span class="jellon_d_i_c_refer">The 13th European Conference on Computer Vision <b>(ECCV2014)</b>, Zürich, Switzerland</span><br/>
+<span style="color:#800000;"><i>Received a Student Conference Grant</i></span><br/>
+[<a href="#" onclick="show('5','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('5','bibtex');return false;">BibTex</a>] [<a target="_blank" href="eccv14_optimalematrix.pdf">PDF</a>] [<a href="mailto:yangjiaolong@bit.edu.cn">Code</a>] [<a href="mailto:yangjiaolong@bit.edu.cn">Data</a>]
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<div id="5_abstract">
+In this paper, we extend the globally optimal "rotation space search" method [11] to essential matrix estimation in the presence of feature mismatches or outliers. The problem is formulated as inlier-set cardinality maximization, and solved via branch-and-bound global optimization which searches the entire essential manifold formed by all essential matrices.  Our main contributions include an explicit, geometrically meaningful essential manifold parametrization using a 5D direct product space of a solid 2D disk and a solid 3D ball, as well as efficient closed-form bounding functions. Experiments on both synthetic data and real images have confirmed the efficacy of our method. The method is mostly suitable for applications where robustness and accuracy are paramount. It can also be used as a benchmark for method evaluation.
+</div>
+<div id="5_bibtex">
+@inproceedings{yang2014optimal,<br/>
+&nbsp;&nbsp;author = {Yang, Jiaolong and Li, Hongdong and Jia, Yunde},<br/>
+&nbsp;&nbsp;title = {Optimal Essential Matrix Estimation via Inlier-Set Maximization},<br/>
+&nbsp;&nbsp;booktitle = {Proceedings of the 14th European Conference on Computer Vision (ECCV)},<br/>
+&nbsp;&nbsp;pages = {111-126},<br/>
+&nbsp;&nbsp;year = {2014}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr>
+<td><img src="iccv13_thumbnail.jpg" width="140"/>
+</td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
+<span class="jellon_d_i_c_name">Go-ICP: Solving 3D Registration Efficiently and Globally Optimally</span><br/>
+<span class="jellon_d_i_c_refer">The 14th International Conference on Computer Vision <b>(ICCV2013)</b>, Sydney, Australia</span><br/>
+[<a href="#" onclick="show('4','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('4','bibtex');return false;">BibTex</a>] [<a target="_blank" href="iccv13_go-icp.pdf">PDF</a>] [<a target="_blank" href="./go-icp#code">Code</a>] [<a target="_blank" href="./go-icp">Webpage</a>]
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<div id="4_abstract">
+Registration is a fundamental task in computer vision. The Iterative Closest Point (ICP) algorithm is one of the widely-used methods for solving the registration problem. Based on local iteration, ICP is however well-known to suffer from local minima. Its performance critically relies on the quality of initialization, and only local optimality is guaranteed. This paper provides the very first globally optimal solution to Euclidean registration of two 3D pointsets or two 3D surfaces under the L2 error. Our method is built upon ICP, but combines it with a branch-and-bound (BnB) scheme which searches the 3D motion space SE(3) efficiently. By exploiting the special structure of the underlying geometry, we derive novel upper and lower bounds for the ICP error function. The integration of local ICP and global BnB enables the new method to run efficiently in practice, and its optimality is exactly guaranteed. We also discuss extensions, addressing the issue of outlier robustness.
+</div>
+<div id="4_bibtex">
+@inproceedings{yang2013goicp,<br/>
+&nbsp;&nbsp;author = {Yang, Jiaolong and Li, Hongdong and Jia, Yunde},<br/>
+&nbsp;&nbsp;title = {Go-ICP: Solving 3D Registration Efficiently and Globally Optimally},<br/>
+&nbsp;&nbsp;booktitle = {Proceedings of the 14th International Conference on Computer Vision (ICCV)},<br/>
+&nbsp;&nbsp;pages = {1457-1464},<br/>
+&nbsp;&nbsp;year = {2013}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr>
+<td><img src="ismar13_thumbnail.jpg" width="140"/>
+</td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:2px;">
+<span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~yuchao/" target="_blank" style="text-decoration:underline;color:#000;">Yuchao Dai</a>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a>, <a href="http://cs.anu.edu.au/~Henry.Gardner/" target="_blank" style="text-decoration:underline;color:#000;">Henry Gardner</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
+<span class="jellon_d_i_c_name">Single-shot Extrinsic Calibration of a Generically Configured RGB-D Camera Rig from Scene Constraints</span><br/>
+<span class="jellon_d_i_c_refer">The 12th International Symposium on Mixed and Augmented Reality <b>(ISMAR2013)</b>, Adelaide, Australia</span><br/>
+<span style="color:#800000;"><i>Regular Paper with Oral Presentation</i></span><br/>
+[<a href="#" onclick="show('3','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('3','bibtex');return false;">BibTex</a>] [<a target="_blank" href="ismar13_rgbdcalib.pdf">PDF</a>] [<a target="_blank" href="ismar13_rgbdcalib_slides.pdf">Slides</a>]
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<div id="3_abstract">
+With the increasingly popular use of commodity RGB-D cameras for computer vision, robotics, mixed and augmented reality and other areas, it is of significant practical interest to calibrate the relative pose between a depth (D) camera and an RGB camera in these types of setups. In this paper, we propose a new single-shot, correspondence-free method to extrinsically calibrate a generically configured RGB-D camera rig. We formulate the extrinsic calibration problem as one of geometric 2D-3D registration which exploits scene constraints to achieve single-shot extrinsic calibration. Our method first reconstructs sparse point clouds from single view 2D image, which are then registered with dense point clouds from the depth camera. Finally, we directly optimize the warping quality by evaluating scene constraints in 3D point clouds. Our single-shot extrinsic calibration method does not require correspondences across multiple color images or across modality, achieving greater flexibility over existing methods. The scene constraints required by our method can be very simple and we demonstrate that a scene made up of three sheets of paper is sufficient to obtain reliable calibration and with lower geometric error than existing methods.
+</div>
+<div id="3_bibtex">
+@inproceedings{yang2013single,<br/>
+&nbsp;&nbsp;author = {Yang, Jiaolong and Dai, Yuchao and Li, Hongdong and Gardner, Henry and Jia, Yunde},<br/>
+&nbsp;&nbsp;title = {Single-shot Extrinsic Calibration of a Generically Configured RGB-D Camera Rig from Scene Constraints},<br/>
+&nbsp;&nbsp;booktitle = {Proceedings of the 12th International Symposium on Mixed and Augmented Reality (ISMAR)},<br/>
+&nbsp;&nbsp;pages = {181-188},<br/>
+&nbsp;&nbsp;year = {2013}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr>
+<td><img src="icpr12_thumbnail.jpg" width="140"/>
+</td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://iitlab.bit.edu.cn/mcislab/~liangwei/" target="_blank" style="text-decoration:underline;color:#000;">Wei Liang</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
+<span class="jellon_d_i_c_name">Face Pose Estimation with Combined 2D and 3D HOG Features</span><br/>
+<span class="jellon_d_i_c_refer">The 21st International Conference on Pattern Recognition <b>(ICPR2012)</b>, Tsukuba, Japan</span><br/>
+[<a href="#" onclick="show('2','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('2','bibtex');return false;">BibTex</a>] [<a target="_blank" href="icpr12_facepose.pdf">PDF</a>]
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<div id="2_abstract">
+In this paper, a new stereo camera calibration technique that can realize automatic strong calibration is proposed. In order to achieve online camera calibration, an object covered with chess-board patterns, called embedded calibration device, is placed inside the cavity of the stereovision system. We estimate the structural configuration of the embedded calibration device, i.e. the 3D positions of all the grid points on the device, to calibrate the cameras. Since the device is close to the stereo camera, the calibration results are usually not valid for the volume around the object in the scene. Therefore we present a correction approach combining the embedded calibration and scene features to make the calibration valid in the scene. Experimental results demonstrate that our system performs robust and accurate, and is very applicable in unmanned systems.
+</div>
+<div id="2_bibtex">
+@inproceedings{yang2012face,<br/>
+&nbsp;&nbsp;author = {Yang, Jiaolong and Liang, Wei and Jia, Yunde},<br/>
+&nbsp;&nbsp;title = {Face Pose Estimation with Combined 2D and 3D HOG Features},<br/>
+&nbsp;&nbsp;booktitle = {Proceedings of the 21st International Conference on Pattern Recognition (ICPR)},<br/>
+&nbsp;&nbsp;pages = {2492-2495},<br/>
+&nbsp;&nbsp;year = {2012}<br/>
+}
+</div>
+</td>
+</tr>
+
+</table>
+
+<span style="font-size:14px;font-style:italic;line-height:40px;">Earlier:</span>
+<ul>
+<li>Xiameng Qin, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, Wei Liang, Mingtao Pei and Yunde Jia. Stereo Camera Calibration with an Embedded Calibration Device and Scene Features. <span class="jellon_d_i_c_refer">IEEE International Conference on Robotics and Biomimetics (ROBIO)</span>, pp. 2306-2310, 2012.</li>
+<li><span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, Lei Chen and Yunde Jia. Human-robot Interaction Technique Based on Stereo Vision. <span class="jellon_d_i_c_refer">Chinese Conference on Human Computer Interaction (CHCI)</span>, pp. 226-231, 2011. (in Chinese)</li>
+<li><span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, Lei Chen and Wei Liang. Monocular Vision based Robot Self-localization. <span class="jellon_d_i_c_refer">IEEE International Conference on Robotics and Biomimetics (ROBIO)</span>, pp. 1189-1193, 2010.</li>
+<li>Lei Chen, Mingtao Pei and <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>. Multi-Scale Matching for Data Association in Vision-based SLAM. <span class="jellon_d_i_c_refer">IEEE International Conference on Robotics and Biomimetics (ROBIO)</span>, pp. 1183-1188, 2010.</li>
+</ul>
+</div>
+</div>
+<!-- ITEM END -->
+
+<!-- ITEM BEGIN -->
+<div class="jellon_d_item">
+<div class="jellon_d_i_title">Academic Services</div>
+<div class="jellon_d_i_content">
+<i><span class="jellon_d_i_c_emphasize">Conference Program Committee Member/Reviewer:</span></i><br/> 
+IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2015, 2016, 2017<br/> 
+International Conference on Computer Vision (ICCV), 2015, 2017<br/> 
+European Conference on Computer Vision (ECCV), 2014, 2016<br/> 
+IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), 2017<br/> 
+ACM Multimedia (MM), 2017<br/>
+<p>
+<i><span class="jellon_d_i_c_emphasize">Journal Reviewer: </span></i><br/> 
+IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)<br/>
+IEEE Transactions on Image Processing (T-IP)<br/>
+IEEE Transactions on Circuits and Systems for Video Technology (T-CSVT)<br/>
+IEEE Transactions on Robotics (T-RO)<br/>
+IEEE Transactions on Multimedia (T-MM)<br/>
+IEEE Transactions on Intelligent Transportation Systems (T-ITS)<br/>
+Machine Vision and Applications (MVA)<br/>
+</p>
+</div>
+</div>
+<!-- ITEM END -->
+
+<!-- ITEM BEGIN -->
+<div class="jellon_d_item">
+<div class="jellon_d_i_title">Selected Awards</div>
+<div class="jellon_d_i_content">
+<ul>
+<li>Excellent BIT PhD Thesis Award (with exceptional award to supervisor, 0.6%), 2016</li>
+<li>Excellent Intern Award, Microsoft Research, 2016</li>
+<!--<li>ANU Postgraduate Research Scholarship, 2015</li>-->
+<li>Huawei Fellowship, 2014</li>
+<li>National Scholarship for Graduate Students, 2013</li>
+<li>Chinese Government Scholarship, 2013</li>
+<li>National Scholarship for Graduate Students, 2012</li>
+</ul>
+</div>
+</div>
+<!-- ITEM END -->
+
+<!-- ITEM BEGIN -->
+<div class="jellon_d_item">
+<div class="jellon_d_i_title">Teaching & Tutoring</div>
+<div class="jellon_d_i_content">
+<ul>
+<li><span style="display:inline-block;width:85px;">2015-2016</span><span style="display:inline-block;width:90px;">Semester 2</span><span style="display:inline-block;width:240px;">Robotics (<a target="_blank" href="http://programsandcourses.anu.edu.au/course/engn6627">ENGN6627</a>/<a target="_blank" href="http://programsandcourses.anu.edu.au/course/engn4627">ENGN4627</a>)</span><span>ANU</span></li>
+<li><span style="display:inline-block;width:85px;">2012-2013</span><span style="display:inline-block;width:90px;">Semester 1</span><span style="display:inline-block;width:240px;">Foundations of Computer Science</span><span>BIT</span></li>
+<li><span style="display:inline-block;width:85px;">2011-2012</span><span style="display:inline-block;width:90px;">Semester 2</span><span style="display:inline-block;width:240px;">PHP for the Web</span><span>BIT</span></li>
+</ul>
+
+</div>
+</div>
+<!-- ITEM END -->
+
+
+<div id="jellon_footer">
+<b><i>Declaimer:</i></b> <i>Papers provided on this page are for personal, research use only; copyright and all rights therein are retained by authors and/or other copyright holders.</i><br/>
+<b><i>Last update: Aug 2, 2017</i></b><br/>
+
+</div>
+</div>
+
+<div style="display:none;">
+	<script src="http://s25.cnzz.com/stat.php?id=5490895&web_id=5490895" language="JavaScript"></script>
+</div>
+
+
+</body>
+</html>
