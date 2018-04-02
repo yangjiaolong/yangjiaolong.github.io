@@ -92,7 +92,7 @@ Yang (杨): the family name from my forefathers, the sixth most common surname i
 <div style="float:left;height:50px;padding-top:14px;padding-right:5px;"><img src="new.jpg" height="35px" width="40x"/></div>
 <div style="padding-left:10px;">
 <font color="red">
-[03/08/2018] <i>The <a style="color:red;text-decoration:underline;" href="#" onclick="alert('Available soon');return false;">intrinsic image decomposition paper</a> is accepted by CVPR'18 as oral</i><br/>
+[03/08/2018] <i>The <a style="color:red;text-decoration:underline;" href="#deepintrinsicimage" onclick="show2('12','abstract');">intrinsic image decomposition paper</a> is accepted by CVPR'18 as oral</i><br/>
 [07/17/2017] <i>The <a style="color:red;text-decoration:underline;" href="#dcnnreflectionsmoothing" onclick="show2('11','abstract');">deep reflection removal paper</a> is accepted by ICCV'17</i><br/>
 [03/18/2017] <i>The <a style="color:red;text-decoration:underline;" href="#videoface" onclick="show2('9','abstract');">video face recognition paper</a> is accepted by CVPR'17</i><br/>
 <!--[01/03/2016] <i>The <a style="color:red;text-decoration:underline;" href="#robustopticalflow" onclick="show2('8','abstract');">robust optical flow paper</a> is accepted by CVPR'16</i><br/>-->
@@ -122,14 +122,14 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">3D</a>, <a 
 <div class="jellon_d_i_content">
 <table id="jellon_papertable" style="width:100%;"  border="0" cellpadding="0" cellspacing="0">
 
-<tr><a name="dcnnreflectionsmoothing"></a>
+<tr><a name="deepintrinsicimage"></a>
 <td width="132px"><img src="cvpr18_thumbnail.png" width="140"/>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <a href="http://irc.cs.sdu.edu.cn/~qingnan/" target="_blank" style="text-decoration:underline;color:#000;">Qingnan Fan</a>*, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>,  <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a>, <a href="http://www.cs.sdu.edu.cn/~baoquan" target="_blank" style="text-decoration:underline;color:#000;">Baoquan Chen</a> and <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a><br/>
 <span class="jellon_d_i_c_name">Revisiting Deep Intrinsic Image Decompositions</span><br/>
 <span class="jellon_d_i_c_refer">The 34th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2018)</b>, Salt Lake City, USA</span> (<b><span style="color:#800000">Oral</b>)<br/>
-[<a href="#" onclick="show('12','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('12','bibtex');return false;">BibTex</a>] [<a href="#" onclick="alert('Available soon');return false;">PDF</a>] [<a href="#" onclick="alert('Available soon');return false;">Code</a>] [<a href="#" onclick="alert('Available soon');return false;">Supplementary Material</a>] <br/> 
+[<a href="#" onclick="show('12','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('12','bibtex');return false;">BibTex</a>] [<a target="_blank" href="cvpr18_deepintrinsicimage.pdf">PDF</a>] [<a target="_blank" href="https://github.com/fqnchina/IntrinsicImage">Code</a>] [<a target="_blank" href="cvpr18_deepintrinsicimage_suppmat.pdf">Supplementary Material</a>] <br/> 
 (*: Intern at MSRA)
 </td>
 </tr>
@@ -138,7 +138,7 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">3D</a>, <a 
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <div id="12_abstract">
 While invaluable for many computer vision applications, decomposing a natural image into intrinsic reflectance and shading layers represents a challenging, underdetermined inverse problem. As opposed to strict reliance on conventional optimization or filtering solutions with strong prior assumptions, deep learning-based approaches have also been proposed to compute intrinsic image decompositions when granted access to sufficient labeled training data.  The downside is that current data sources are quite limited, and broadly speaking fall into one of two categories: either dense fully-labeled images in synthetic/narrow settings, or weakly-labeled data from relatively diverse natural scenes.  In contrast to many previous learning-based approaches, which are often tailored to the structure of a particular dataset (and may not work well on others), we adopt core network structures that universally reflect loose prior knowledge regarding the intrinsic image formation process and can be largely shared across datasets.  We then apply flexibly supervised loss layers that are customized for each source of ground truth labels.  The resulting deep architecture achieves state-of-the-art results on all of the major intrinsic image benchmarks, and runs considerably faster than most at test time.
-%Deep learning based approaches have been inspired with access to weakly labeled pairwise comparisons or densely labeled images in various different datasets. In this paper, we are the first to propose a universal framework that's capable of achieving state-of-the-art performance among the major intrinsic benchmarks with flexibly supervised loss layers. We also provide the first end-to-end trainable system that can produce flattening dense intrinsic images with the more challenging pairwise reflectance difference labels, which can be learned once without extra pre- or post- processing. Our intrinsic images are coarsely estimated by a direct intrinsic network, and further flattened by a recursive 1D domain filter using our learned sparse guidance map. Compared to most other state-of-the-art intrinsic image estimation papers, our algorithm also runs considerably faster for evaluation. </div>
+</div>
 <div id="12_bibtex">
 @inproceedings{fan2018revisiting,<br/>
 &nbsp;&nbsp;author = {Fan, Qingnan and Yang, Jiaolong and Hua, Gang and Chen, Baoquan and Wipf, David},<br/>
