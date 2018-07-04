@@ -88,10 +88,12 @@ Yang (杨): the family name from my forefathers, the sixth most common surname i
 
 <div id="jellon_detail">
 <!-- ITEM BEGIN -->
+
 <div class="jellon_d_item">
-<div style="float:left;height:50px;padding-top:14px;padding-right:5px;"><img src="new.jpg" height="35px" width="40x"/></div>
+<div style="float:left;height:50px;padding-top:24px;padding-right:5px;"><img src="new.jpg" height="35px" width="40x"/></div>
 <div style="padding-left:10px;">
 <font color="red">
+[07/04/2018] <i>The <a style="color:red;text-decoration:underline;" href="#dnnquantization" onclick="show2('13','abstract');">neural netwrok quantization paper</a> is accepted by ECCV'18</i><br/>
 [03/08/2018] <i>The <a style="color:red;text-decoration:underline;" href="#deepintrinsicimage" onclick="show2('12','abstract');">intrinsic image decomposition paper</a> is accepted by CVPR'18 as oral</i><br/>
 [07/17/2017] <i>The <a style="color:red;text-decoration:underline;" href="#dcnnreflectionsmoothing" onclick="show2('11','abstract');">deep reflection removal paper</a> is accepted by ICCV'17</i><br/>
 [03/18/2017] <i>The <a style="color:red;text-decoration:underline;" href="#videoface" onclick="show2('9','abstract');">video face recognition paper</a> is accepted by CVPR'17</i><br/>
@@ -122,20 +124,49 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">3D</a>, <a 
 <div class="jellon_d_i_content">
 <table id="jellon_papertable" style="width:100%;"  border="0" cellpadding="0" cellspacing="0">
 
-<tr><a name="deepintrinsicimage"></a>
-<td width="132px"><img src="cvpr18_thumbnail.png" width="140"/>
+<tr><a name="dnnquantization"></a>
+<td width="132px"><img src="eccv18_thumbnail.png" width="140"/>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-<a href="http://irc.cs.sdu.edu.cn/~qingnan/" target="_blank" style="text-decoration:underline;color:#000;">Qingnan Fan</a>*, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>,  <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a>, <a href="http://www.cs.sdu.edu.cn/~baoquan" target="_blank" style="text-decoration:underline;color:#000;">Baoquan Chen</a> and <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a><br/>
-<span class="jellon_d_i_c_name">Revisiting Deep Intrinsic Image Decompositions</span><br/>
-<span class="jellon_d_i_c_refer">The 34th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2018)</b>, Salt Lake City, USA</span> (<b><span style="color:#800000">Oral</b>)<br/>
-[<a href="#" onclick="show('12','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('12','bibtex');return false;">BibTex</a>] [<a target="_blank" href="cvpr18_deepintrinsicimage.pdf">PDF</a>] [<a target="_blank" href="https://github.com/fqnchina/IntrinsicImage">Code</a>] [<a target="_blank" href="cvpr18_deepintrinsicimage_suppmat.pdf">Supplementary Material</a>] <br/> 
-(*: Intern at MSRA)
+Dongqing Zhang*, <span class="jellon_d_i_c_emphasize">Jiaolong Yang*</span>, Dongqiangzi Ye* and <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a><br/>
+<span class="jellon_d_i_c_name">Optimized Quantization for Highly Accurate and Compact DNNs</span><br/>
+<span class="jellon_d_i_c_refer">The 15th European Conference on Computer Vision <b>(ECCV2018)</b>, Munich, Germany</span><br/>
+[<a href="#" onclick="show('13','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('13','bibtex');return false;">BibTex</a>] [<a href="#" onclick="alert('available soon');return false;">PDF</a>] [<a href="#" onclick="alert('available soon');return false;">Code</a>] [<a href="#" onclick="alert('available soon');return false;">Supplementary Material</a>] <br/> 
+(*: Equal constributions)
 </td>
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<div id="13_abstract">
+Although weight and activation quantization is an effective approach to Deep Neural Network (DNN) compression and has a lot of potential to increase inference speed leveraging bit-operations, there is still a noticeable gap in terms of prediction accuracy between the quantized model and the full-precision model. To address this gap, we identify that one of the bottlenecks is from the fixed, handcrafted quantization scheme existing methods adopted, such as uniform or logarithmic quantization. Therefore, we propose to jointly train a quantized, bit-operation-compatible DNN, and its associated quantizers. Our method for learning the quantizers applies to both network weights and activations with arbitrary-bit precision, and our quantizers are very easy to train. The comprehensive experiments on CIFAR-10 and ImageNet datasets show that our method works consistently well for various network structures such as AlexNet, VGGNet, GoogLeNet, ResNet and DenseNet, surpassing previous quantization methods in terms of accuracy by appreciable margins.
+</div>
+<div id="13_bibtex">
+@inproceedings{zhang2018optimized,<br/>
+&nbsp;&nbsp;author = {Zhang, Dongqiang and Yang, Jiaolong and Ye, Dongqiangzi and Hua, Gang},<br/>
+&nbsp;&nbsp;title = {Optimized Quantization for Highly Accurate and Compact DNNs},<br/>
+&nbsp;&nbsp;booktitle = {Proceedings of the European Conference on Computer Vision (ECCV)},<br/>
+<!--&nbsp;&nbsp;pages = {111-126},<br/>-->
+&nbsp;&nbsp;year = {2018}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr><a name="deepintrinsicimage"></a>
+<td width="132px"><img src="cvpr18_thumbnail.png" width="140"/>
+</td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<a href="http://irc.cs.sdu.edu.cn/~qingnan/" target="_blank" style="text-decoration:underline;color:#000;">Qingnan Fan</a><sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>,  <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a>, <a href="http://www.cs.sdu.edu.cn/~baoquan" target="_blank" style="text-decoration:underline;color:#000;">Baoquan Chen</a> and <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a><br/>
+<span class="jellon_d_i_c_name">Revisiting Deep Intrinsic Image Decompositions</span><br/>
+<span class="jellon_d_i_c_refer">The 34th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2018)</b>, Salt Lake City, USA</span> (<b><span style="color:#990000">Oral</b>)<br/>
+[<a href="#" onclick="show('12','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('12','bibtex');return false;">BibTex</a>] [<a target="_blank" href="cvpr18_deepintrinsicimage.pdf">PDF</a>] [<a target="_blank" href="https://github.com/fqnchina/IntrinsicImage">Code</a>] [<a target="_blank" href="cvpr18_deepintrinsicimage_suppmat.pdf">Supplementary Material</a>] <br/> 
+(<sup>+</sup>: Intern at MSRA)
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <div id="12_abstract">
 While invaluable for many computer vision applications, decomposing a natural image into intrinsic reflectance and shading layers represents a challenging, underdetermined inverse problem. As opposed to strict reliance on conventional optimization or filtering solutions with strong prior assumptions, deep learning-based approaches have also been proposed to compute intrinsic image decompositions when granted access to sufficient labeled training data.  The downside is that current data sources are quite limited, and broadly speaking fall into one of two categories: either dense fully-labeled images in synthetic/narrow settings, or weakly-labeled data from relatively diverse natural scenes.  In contrast to many previous learning-based approaches, which are often tailored to the structure of a particular dataset (and may not work well on others), we adopt core network structures that universally reflect loose prior knowledge regarding the intrinsic image formation process and can be largely shared across datasets.  We then apply flexibly supervised loss layers that are customized for each source of ground truth labels.  The resulting deep architecture achieves state-of-the-art results on all of the major intrinsic image benchmarks, and runs considerably faster than most at test time.
 </div>
@@ -144,7 +175,7 @@ While invaluable for many computer vision applications, decomposing a natural im
 &nbsp;&nbsp;author = {Fan, Qingnan and Yang, Jiaolong and Hua, Gang and Chen, Baoquan and Wipf, David},<br/>
 &nbsp;&nbsp;title = {Revisiting Deep Intrinsic Image Decompositions},<br/>
 &nbsp;&nbsp;booktitle = {Proceedings of the 34th IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},<br/>
-<!--&nbsp;&nbsp;pages = {111-126},<br/>-->
+&nbsp;&nbsp;pages = {8944-8952},<br/>
 &nbsp;&nbsp;year = {2018}<br/>
 }
 </div>
@@ -154,17 +185,17 @@ While invaluable for many computer vision applications, decomposing a natural im
 <tr><a name="dcnnreflectionsmoothing"></a>
 <td width="132px"><img src="iccv17_thumbnail.png" width="140"/>
 </td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-<a href="http://irc.cs.sdu.edu.cn/~qingnan/" target="_blank" style="text-decoration:underline;color:#000;">Qingnan Fan</a>*, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>,  <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a>, <a href="http://www.cs.sdu.edu.cn/~baoquan" target="_blank" style="text-decoration:underline;color:#000;">Baoquan Chen</a> and <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a><br/>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<a href="http://irc.cs.sdu.edu.cn/~qingnan/" target="_blank" style="text-decoration:underline;color:#000;">Qingnan Fan</a><sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>,  <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a>, <a href="http://www.cs.sdu.edu.cn/~baoquan" target="_blank" style="text-decoration:underline;color:#000;">Baoquan Chen</a> and <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a><br/>
 <span class="jellon_d_i_c_name">A Generic Deep Architecture for Single Image Reflection Removal and Image Smoothing</span><br/>
 <span class="jellon_d_i_c_refer">The 16th International Conference on Computer Vision <b>(ICCV2017)</b>, Venice, Italy</span><br/>
 [<a href="#" onclick="show('11','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('11','bibtex');return false;">BibTex</a>] [<a target="_blank" href="iccv17_dcnnreflectionsmoothing.pdf">PDF</a>] [<a target="_blank" href="https://github.com/fqnchina/CEILNet">Code</a>] [<a target="_blank" href="iccv17_dcnnreflectionsmoothing_supmat.pdf">Supplementary Material</a>] [<a target="_blank" href="https://arxiv.org/abs/1708.03474">arXiv</a>]<br/> 
-(*: Intern at MSRA)
+(<sup>+</sup>: Intern at MSRA)
 </td>
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <div id="11_abstract">
 This paper proposes a deep neural network structure that exploits edge information in addressing representative low-level vision tasks such as layer separation and image filtering. Unlike most other deep learning strategies applied in this context, our approach tackles these challenging problems by estimating edges and reconstructing images using only cascaded convolutional layers arranged such that no handcrafted or application-specific image-processing components are required.  We apply the resulting transferrable pipeline to two different problem domains that are both sensitive to edges, namely, single image reflection removal and image smoothing. For the former, using a mild reflection smoothness assumption and a novel synthetic data generation method that acts as a type of weak supervision, our network is able to solve much more difficult reflection cases that cannot be handled by previous methods. For the latter, we also exceed the state-of-the-art quantitative and qualitative results by wide margins.  In all cases, the proposed framework is simple, fast, and easy to transfer across disparate domains. </div>
 <div id="11_bibtex">
@@ -182,17 +213,17 @@ This paper proposes a deep neural network structure that exploits edge informati
 <tr>
 <td width="132px"><img src="cvprw17_thumbnail.png" width="140"/>
 </td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-<a href="#" target="_blank" style="text-decoration:underline;color:#000;">Chen Zhou</a>*, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/chunzhao/" target="_blank" style="text-decoration:underline;color:#000;">Chunshui Zhao</a> and <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a><br/>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<a href="#" target="_blank" style="text-decoration:underline;color:#000;">Chen Zhou</a><sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/chunzhao/" target="_blank" style="text-decoration:underline;color:#000;">Chunshui Zhao</a> and <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a><br/>
 <span class="jellon_d_i_c_name">Fast, Accurate Thin-Structure Obstacle Detection for Autonomous Mobile Robots</span><br/>
 <span class="jellon_d_i_c_refer">IEEE Computer Vision and Pattern Recognition Workshop on Embedded Vision <b>(CVPRW2017)</b>, Honolulu, USA</span><br/>
 [<a href="#" onclick="show('10','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('10','bibtex');return false;">BibTex</a>] [<a target="_blank" href="cvprw17_thinobstacledetection.pdf">PDF</a>] [<a target="_blank" href="https://arxiv.org/abs/1708.04006">arXiv</a>]<br/>
-(*: Intern at MSRA)
+(<sup>+</sup>: Intern at MSRA)
 </td>
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <div id="10_abstract">
 Safety is paramount for mobile robotic platforms such as self-driving cars and unmanned aerial vehicles. This work is devoted to a task that is indispensable for safety yet was largely overlooked in the past -- detecting obstacles that are of very thin structures, such as wires, cables and tree branches. This is a challenging problem, as thin objects can be problematic for active sensors such as lidar and sonar and even for stereo cameras. In this work, we propose to use video sequences for thin obstacle detection. We represent obstacles with edges in the video frames, and reconstruct them in 3D using efficient edge-based visual odometry techniques. We provide both a monocular camera solution and a stereo camera solution. The former incorporates Inertial Measurement Unit (IMU) data to solve scale ambiguity, while the latter enjoys a novel, purely vision-based solution. Experiments demonstrated that the proposed methods are fast and able to detect thin obstacles robustly and accurately under various conditions. </div>
 <div id="10_bibtex">
@@ -210,7 +241,7 @@ Safety is paramount for mobile robotic platforms such as self-driving cars and u
 <tr><a name="videoface"></a>
 <td width="132px"><img src="cvpr17_thumbnail.png" width="140"/>
 </td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://renpr.org/" target="_blank" style="text-decoration:underline;color:#000;">Peiran Ren</a>, <a href="http://renpr.org/" target="_blank" style="text-decoration:underline;color:#000;">Dongqing Zhang</a>, <a href="https://www.microsoft.com/en-us/research/people/dongzh/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/fangwen/" target="_blank" style="text-decoration:underline;color:#000;">Fang Wen</a>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a> and <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a><br/>
 <span class="jellon_d_i_c_name">Neural Aggregation Network for Video Face Recognition</span><br/>
 <span class="jellon_d_i_c_refer">The 33th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2017)</b>, Honolulu, USA</span></span><br/>
@@ -219,7 +250,7 @@ Safety is paramount for mobile robotic platforms such as self-driving cars and u
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <div id="9_abstract">
 We present a Neural Aggregation Network (NAN) for video face recognition. The network takes a face video or face image set of a person with a variable number of face images as its input, and produces a compact and fixed-dimension feature representation. The whole network is composed of two modules. The feature embedding module is a deep Convolutional Neural Network (CNN), which maps each face image into a feature vector. The aggregation module consists of two attention blocks driven by a memory storing all the extracted features. It adaptively aggregates the features to form a single feature inside the convex hull spanned by them. Due to the attention mechanism, the aggregation is invariant to the image order. We found that NAN learns to advocate high-quality face images while repelling low-quality ones such as blurred, occluded and improperly exposed faces. The experiments on IJB-A, YouTube Face, Celebrity-1000 video face recognition benchmarks show that it consistently outperforms standard aggregation methods and achieves state-of-the-art accuracies. </div>
 <div id="9_bibtex">
@@ -237,7 +268,7 @@ We present a Neural Aggregation Network (NAN) for video face recognition. The ne
 <tr><a name="robustopticalflow"></a>
 <td width="132px"><img src="cvpr16_thumbnail.jpg" width="140"/>
 </td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a>, <a href="http://users.cecs.anu.edu.au/~yuchao/" target="_blank" style="text-decoration:underline;color:#000;">Yuchao Dai</a> and <a href="http://php-robbytan.rhcloud.com/" target="_blank" style="text-decoration:underline;color:#000;">Robby T. Tan</a><br/>
 <span class="jellon_d_i_c_name">Robust Optical Flow Estimation of Double-Layer Images under Transparency or Reflection</span><br/>
 <span class="jellon_d_i_c_refer">The 32th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2016)</b>, Las Vegas, USA</span></span><br/>
@@ -246,7 +277,7 @@ We present a Neural Aggregation Network (NAN) for video face recognition. The ne
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <div id="8_abstract">
 This paper deals with a challenging, frequently encountered, yet not properly investigated problem in two-frame optical flow estimation. That is, the input frames are compounds of two imaging layers - one desired background layer of the scene, and one distracting, possibly moving layer due to transparency or reflection. In this situation, the conventional brightness constancy constraint - the cornerstone of most existing optical flow methods - will no longer be valid. In this paper, we propose a robust solution to this problem. The proposed method performs both optical flow estimation, and image layer separation. It exploits a generalized double-layer brightness consistency constraint connecting these two tasks, and utilizes the priors for both of them. Experiments on both synthetic data and real images have confirmed the efficacy of the proposed method. To the best of our knowledge, this is the first attempt towards handling generic optical flow fields of two-frame images containing transparency or reflection.</div>
 <div id="8_bibtex">
@@ -264,7 +295,7 @@ This paper deals with a challenging, frequently encountered, yet not properly in
 <tr><a name="goicpjournal"></a>
 <td width="132px"><img src="tpami16_thumbnail.png" width="140"/>
 </td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a>, <a href="http://people.cecs.anu.edu.au/user/5075" target="_blank" style="text-decoration:underline;color:#000;">Dylan Campbell</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
 <span class="jellon_d_i_c_name">Go-ICP: A Globally Optimal Solution to 3D ICP Point-Set Registration</span><br/>
 <span class="jellon_d_i_c_refer">IEEE Transactions on Pattern Analysis and Machine Intelligence <b>(T-PAMI)</b>, 2016</span><br/>
@@ -273,7 +304,7 @@ This paper deals with a challenging, frequently encountered, yet not properly in
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <div id="7_abstract">
 The Iterative Closest Point (ICP) algorithm is one of the most widely used methods for point-set registration. However, being based on local iterative optimization, ICP is known to be susceptible to local minima. Its performance critically relies on the quality of the initialization and only local optimality is guaranteed. This paper presents the first globally optimal algorithm, named Go-ICP, for Euclidean (rigid) registration of two 3D point-sets under the L2 error metric defined in ICP. The Go-ICP method is based on a branch-and-bound (BnB) scheme that searches the entire 3D motion space SE(3). By exploiting the special structure of SE(3) geometry, we derive novel upper and lower bounds for the registration error function. Local ICP is integrated into the BnB scheme, which speeds up the new method while guaranteeing global optimality. We also discuss extensions, addressing the issue of outlier robustness. The evaluation demonstrates that the proposed method is able to produce reliable registration results regardless of the initialization. Go-ICP can be applied in scenarios where an optimal solution is desirable or where a good initialization is not always available.</div>
 <div id="7_bibtex">
@@ -293,7 +324,7 @@ The Iterative Closest Point (ICP) algorithm is one of the most widely used metho
 <tr>
 <td width="132px"><img src="cvpr15_thumbnail.png" width="140"/>
 </td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span> and <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a> <br/>
 <span class="jellon_d_i_c_name">Dense, Accurate Optical Flow Estimation with Piecewise Parametric Model</span><br/>
 <span class="jellon_d_i_c_refer">The 31th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2015)</b>, Boston, USA</span><br/>
@@ -302,7 +333,7 @@ The Iterative Closest Point (ICP) algorithm is one of the most widely used metho
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <div id="6_abstract">
 This paper proposes a simple method for estimating dense and accurate optical flow field. It revitalizes an early idea of piecewise parametric flow model. A key innovation is that we fit a flow field piecewise to a variety of parametric models, where the domain of each piece (i.e., each piece's shape, position and size) as well as the total number of pieces are determined adaptively, while at the same time maintaining a global inter-piece flow continuity constraint.  We achieve this by a multi-model fitting scheme via energy minimization. Our energy takes into account both the piecewise constant model assumption, and the flow field continuity constraint. The proposed method effectively handles both homogeneous regions and complex motion. Experiments on three public optical flow benchmarks (KITTI, MPI Sintel, and Middlebury) show the superiority of our method compared with the state of the art: it achieves top-tier performances on all the three benchmarks.
 </div>
@@ -321,7 +352,7 @@ This paper proposes a simple method for estimating dense and accurate optical fl
 <tr>
 <td width="132px"><img src="eccv14_thumbnail.jpg" width="140"/>
 </td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
 <span class="jellon_d_i_c_name">Optimal Essential Matrix Estimation via Inlier-Set Maximization</span><br/>
 <span class="jellon_d_i_c_refer">The 13th European Conference on Computer Vision <b>(ECCV2014)</b>, Zürich, Switzerland</span><br/>
@@ -331,7 +362,7 @@ This paper proposes a simple method for estimating dense and accurate optical fl
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <div id="5_abstract">
 In this paper, we extend the globally optimal "rotation space search" method [11] to essential matrix estimation in the presence of feature mismatches or outliers. The problem is formulated as inlier-set cardinality maximization, and solved via branch-and-bound global optimization which searches the entire essential manifold formed by all essential matrices.  Our main contributions include an explicit, geometrically meaningful essential manifold parametrization using a 5D direct product space of a solid 2D disk and a solid 3D ball, as well as efficient closed-form bounding functions. Experiments on both synthetic data and real images have confirmed the efficacy of our method. The method is mostly suitable for applications where robustness and accuracy are paramount. It can also be used as a benchmark for method evaluation.
 </div>
@@ -350,7 +381,7 @@ In this paper, we extend the globally optimal "rotation space search" method [11
 <tr>
 <td><img src="iccv13_thumbnail.jpg" width="140"/>
 </td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
 <span class="jellon_d_i_c_name">Go-ICP: Solving 3D Registration Efficiently and Globally Optimally</span><br/>
 <span class="jellon_d_i_c_refer">The 14th International Conference on Computer Vision <b>(ICCV2013)</b>, Sydney, Australia</span><br/>
@@ -359,7 +390,7 @@ In this paper, we extend the globally optimal "rotation space search" method [11
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <div id="4_abstract">
 Registration is a fundamental task in computer vision. The Iterative Closest Point (ICP) algorithm is one of the widely-used methods for solving the registration problem. Based on local iteration, ICP is however well-known to suffer from local minima. Its performance critically relies on the quality of initialization, and only local optimality is guaranteed. This paper provides the very first globally optimal solution to Euclidean registration of two 3D pointsets or two 3D surfaces under the L2 error. Our method is built upon ICP, but combines it with a branch-and-bound (BnB) scheme which searches the 3D motion space SE(3) efficiently. By exploiting the special structure of the underlying geometry, we derive novel upper and lower bounds for the ICP error function. The integration of local ICP and global BnB enables the new method to run efficiently in practice, and its optimality is exactly guaranteed. We also discuss extensions, addressing the issue of outlier robustness.
 </div>
@@ -378,7 +409,7 @@ Registration is a fundamental task in computer vision. The Iterative Closest Poi
 <tr>
 <td><img src="ismar13_thumbnail.jpg" width="140"/>
 </td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:2px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:2px;">
 <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~yuchao/" target="_blank" style="text-decoration:underline;color:#000;">Yuchao Dai</a>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a>, <a href="http://cs.anu.edu.au/~Henry.Gardner/" target="_blank" style="text-decoration:underline;color:#000;">Henry Gardner</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
 <span class="jellon_d_i_c_name">Single-shot Extrinsic Calibration of a Generically Configured RGB-D Camera Rig from Scene Constraints</span><br/>
 <span class="jellon_d_i_c_refer">The 12th International Symposium on Mixed and Augmented Reality <b>(ISMAR2013)</b>, Adelaide, Australia</span><br/>
@@ -388,7 +419,7 @@ Registration is a fundamental task in computer vision. The Iterative Closest Poi
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <div id="3_abstract">
 With the increasingly popular use of commodity RGB-D cameras for computer vision, robotics, mixed and augmented reality and other areas, it is of significant practical interest to calibrate the relative pose between a depth (D) camera and an RGB camera in these types of setups. In this paper, we propose a new single-shot, correspondence-free method to extrinsically calibrate a generically configured RGB-D camera rig. We formulate the extrinsic calibration problem as one of geometric 2D-3D registration which exploits scene constraints to achieve single-shot extrinsic calibration. Our method first reconstructs sparse point clouds from single view 2D image, which are then registered with dense point clouds from the depth camera. Finally, we directly optimize the warping quality by evaluating scene constraints in 3D point clouds. Our single-shot extrinsic calibration method does not require correspondences across multiple color images or across modality, achieving greater flexibility over existing methods. The scene constraints required by our method can be very simple and we demonstrate that a scene made up of three sheets of paper is sufficient to obtain reliable calibration and with lower geometric error than existing methods.
 </div>
@@ -407,7 +438,7 @@ With the increasingly popular use of commodity RGB-D cameras for computer vision
 <tr>
 <td><img src="icpr12_thumbnail.jpg" width="140"/>
 </td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://iitlab.bit.edu.cn/mcislab/~liangwei/" target="_blank" style="text-decoration:underline;color:#000;">Wei Liang</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
 <span class="jellon_d_i_c_name">Face Pose Estimation with Combined 2D and 3D HOG Features</span><br/>
 <span class="jellon_d_i_c_refer">The 21st International Conference on Pattern Recognition <b>(ICPR2012)</b>, Tsukuba, Japan</span><br/>
@@ -416,7 +447,7 @@ With the increasingly popular use of commodity RGB-D cameras for computer vision
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <div id="2_abstract">
 In this paper, a new stereo camera calibration technique that can realize automatic strong calibration is proposed. In order to achieve online camera calibration, an object covered with chess-board patterns, called embedded calibration device, is placed inside the cavity of the stereovision system. We estimate the structural configuration of the embedded calibration device, i.e. the 3D positions of all the grid points on the device, to calibrate the cameras. Since the device is close to the stereo camera, the calibration results are usually not valid for the volume around the object in the scene. Therefore we present a correction approach combining the embedded calibration and scene features to make the calibration valid in the scene. Experimental results demonstrate that our system performs robust and accurate, and is very applicable in unmanned systems.
 </div>
@@ -508,7 +539,7 @@ Machine Vision and Applications (MVA)<br/>
 
 <div id="jellon_footer">
 <b><i>Declaimer:</i></b> <i>Papers provided on this page are for personal, research use only; copyright and all rights therein are retained by authors and/or other copyright holders.</i><br/>
-<b><i>Last update: Mar 6, 2018</i></b><br/>
+<b><i>Last update: Jul 4, 2018</i></b><br/>
 
 </div>
 </div>
