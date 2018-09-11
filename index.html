@@ -124,6 +124,63 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">3D</a>, <a 
 <div class="jellon_d_i_content">
 <table id="jellon_papertable" style="width:100%;"  border="0" cellpadding="0" cellspacing="0">
 
+<tr><a name="object3drecon"></a>
+<td width="132px"><img src="object3drecon.png" width="140"/>
+</td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+Hanqing Wang<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://iitlab.bit.edu.cn/mcislab/~liangwei/" target="_blank" style="text-decoration:underline;color:#000;">Wei Liang</a> and <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<span class="jellon_d_i_c_name">Deep Single-View 3D Object Reconstruction with Visual Hull Embedding</span><br/>
+<span class="jellon_d_i_c_refer">Technical Report, 2018</span><br/>
+[<a href="#" onclick="show('15','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('15','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/1809.03451.pdf">PDF</a>] [<a href="#" onclick="alert('Available soon');return false;">Supplementary Material</a>] [<a target="_blank" href="https://arxiv.org/abs/1809.03451">arXiv</a>]<br/> 
+(<sup>+</sup>: Intern at MSRA)
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<div id="15_abstract">
+3D object reconstruction is a fundamental task of many robotics and AI problems. With the aid of deep convolutional neural networks (CNNs), 3D object reconstruction has witnessed a significant progress in recent years. However, possibly due to the prohibitively high dimension of the 3D object space, the results from deep CNNs are often prone to missing some shape details. In this paper, we present an approach which aims to preserve more shape details and improve the reconstruction quality. The key idea of our method is to leverage object mask and pose estimation from CNNs to assist the 3D shape learning by constructing a probabilistic single-view visual hull inside of the network. Our method works by first predicting a coarse shape as well as the object pose and silhouette using CNNs, followed by a novel 3D refinement CNN which refines the coarse shapes using the constructed probabilistic visual hulls. Experiment on both synthetic data and real images show that embedding a single-view visual hull for shape refinement can significantly improve the reconstruction quality by recovering more shapes details and improving shape consistency with the input image.
+</div>
+<div id="15_bibtex">
+@article{wang2018deep,<br/>
+&nbsp;&nbsp;author = {Wang, Hanqing and Yang, Jiaolong and Liang, Wei and Tong, Xin},<br/>
+&nbsp;&nbsp;title = {Deep Single-View 3D Object Reconstruction with Visual Hull Embedding},<br/>
+&nbsp;&nbsp;journal = {arXiv:1809.03451},<br/>
+<!--&nbsp;&nbsp;pages = {111-126},<br/>-->
+&nbsp;&nbsp;year = {2018}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr><a name="deepintrinsicimage"></a>
+<td width="132px"><img src="tog18_thumbnail.png" width="140"/>
+</td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<a href="http://irc.cs.sdu.edu.cn/~qingnan/" target="_blank" style="text-decoration:underline;color:#000;">Qingnan Fan</a><sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>,  <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a>, <a href="http://www.cs.sdu.edu.cn/~baoquan" target="_blank" style="text-decoration:underline;color:#000;">Baoquan Chen</a> and <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<span class="jellon_d_i_c_name">Image Smoothing via Unsupervised Learning</span><br/>
+<span class="jellon_d_i_c_refer">ACM Transactions on Graphics <b>(TOG)</b>, 2018</span><br/>
+[<a href="#" onclick="show('14','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('14','bibtex');return false;">BibTex</a>] [<a href="#" onclick="alert('Available soon');return false;">PDF</a>] [<a href="#" onclick="alert('Available soon');return false;">Code</a>] [<a href="#" onclick="alert('Available soon');return false;">Supplementary Material</a>] [<a href="#" onclick="alert('Available soon');return false;">arXiv</a>]<br/> 
+(<sup>+</sup>: Intern at MSRA)
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<div id="14_abstract">
+Image smoothing represents a fundamental component of many disparate computer vision and graphics applications.  Contrary to existing solutions that often rely on specialized, mutually-incompatible ingredients to create each different smoothing effect, we propose a flexible, unified pipeline with a natural, transparent entry point for introducing application-specific tuning. To accomplish this, we first propose a spatially-adaptive $L_p$ flattening criterion, whereby different image regions receive different forms of regularization as modulated by a data-dependent guidance map, the latter of which can be easily tailored for each different image smoothing effect. To better maintain important yet potentially vulnerable image structures (such as slender edges in a salient object), we include an additional edge-preserving criterion incorporating neighborhood information. We treat the overall objective function as the final loss function/layer of a fully-convolutional deep neural network, which can be trained across a corpus of natural images in a completely unsupervised manner and is dramatically different from directly optimizing the combined objective using traditional descent methods. Thus the deep network becomes an optimizer instead of a regression tool commonly adopted for many other papers. In doing so, no expensive labeling is required, and network weights simultaneously reflect the combined structure from numerous images, as opposed to the limited content of a single image in isolation.  Moreover, once trained, the network serves as an extremely efficient image smoother, requiring a single forward pass to convert a new image.  We demonstrate the effectiveness and versatility of this approach on multiple image processing tasks, such as image abstraction, pencil sketching, detail enhancement, texture removal and content-aware image manipulation etc.</div>
+<div id="14_bibtex">
+@inproceedings{fan2018image,<br/>
+&nbsp;&nbsp;author = {Fan, Qingnan and Yang, Jiaolong and Wipf, David and Chen, Baoquan and Tong, Xin},<br/>
+&nbsp;&nbsp;title = {Image Smoothing via Unsupervised Learning},<br/>
+&nbsp;&nbsp;booktitle = {ACM Transactions on Graphics},<br/>
+<!--&nbsp;&nbsp;pages = {8944-8952},<br/>-->
+&nbsp;&nbsp;year = {2018}<br/>
+}
+</div>
+</td>
+</tr>
+
 <tr><a name="dnnquantization"></a>
 <td width="132px"><img src="eccv18_thumbnail.png" width="140"/>
 </td>
