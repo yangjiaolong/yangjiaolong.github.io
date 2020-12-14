@@ -131,9 +131,38 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">3D</a>, <a 
 <table id="jellon_papertable" style="width:100%;"  border="0" cellpadding="0" cellspacing="0">
 
 <tr>
+<td width="132px"><img src="arxiv_difnet.png" width="125"/>
+</td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="#" id="#"></a>
+Yu Deng<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<span class="jellon_d_i_c_name">Deformed Implicit Field: Modeling 3D Shapes with Learned Dense Correspondence</span><br/>
+<span class="jellon_d_i_c_refer">arXiv preprint Nov 2020</span><br/>
+[<a href="#" onclick="show('22','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('22','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2011.13650.pdf">PDF</a>] [<a target="_blank" href="https://github.com/microsoft/DIF-Net">Code</a>] [<a target="_blank" href="https://arxiv.org/pdf/2011.13650.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2011.13650">arXiv</a>]<br/>
+(<sup>+</sup>: Intern at MSRA)
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<div id="22_abstract">
+We propose a novel Deformed Implicit Field (DIF) representation for modeling 3D shapes of a category and generating dense correspondences among shapes. With DIF, a 3D shape is represented by a template implicit field shared across the category, together with a 3D deformation field and a correction field dedicated for each shape instance. Shape correspondences can be easily established using their deformation fields. Our neural network, dubbed DIF-Net, jointly learns a shape latent space and these fields for 3D objects belonging to a category without using any correspondence or part label. The learned DIF-Net can also provides reliable correspondence uncertainty measurement reflecting shape structure discrepancy. Experiments show that DIF-Net not only produces high-fidelity 3D shapes but also builds high-quality dense correspondences across different shapes. We also demonstrate several applications such as texture transfer and shape editing, where our method achieves compelling results that cannot be achieved by previous methods. 
+</div>
+<div id="22_bibtex">
+@article{deng2020deformed,<br/>
+&nbsp;&nbsp;author = {Deng, Yu and Yang, Jiaolong and Xin, Tong},<br/>
+&nbsp;&nbsp;title = {Deformed Implicit Field: Modeling 3D Shapes with Learned Dense Correspondence},<br/>
+&nbsp;&nbsp;journal = {arXiv preprint arXiv:2011.13650},<br/>
+<!--&nbsp;&nbsp;pages = {8178-8187},<br/>-->
+&nbsp;&nbsp;year = {2020}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr>
 <td width="132px"><img src="cvpr20_disenfacegan.png" width="140"/>
 </td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="disenfacegan" id="disenfacegan"></a>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="disenfacegan" id="disenfacegan"></a>
 Yu Deng<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/doch/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/fangwen/" target="_blank" style="text-decoration:underline;color:#000;">Fang Wen</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
 <span class="jellon_d_i_c_name">Disentangled and Controllable Face Image Generation via 3D Imitative-Contrastive Learning</span><br/>
 <span class="jellon_d_i_c_refer">The 36th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2020)</b>, Seattle, USA</span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
@@ -143,7 +172,7 @@ Yu Deng<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, 
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <div id="21_abstract">
 We propose DiscoFaceGAN, an approach for face image generation of virtual people with disentangled, precisely-controllable latent representations for identity, expression, pose, and illumination. We embed 3D priors into adversarial learning and train the network to imitate the image formation of an analytic 3D face deformation and rendering process. To deal with the generation freedom induced by the domain gap between real and rendered faces, we further introduce contrastive learning to promote disentanglement by comparing pairs of generated images. Experiments show that through our imitative-contrastive learning, the factor variations are very well disentangled and the properties of a generated face can be precisely controlled. We also analyze the learned latent space and present several meaningful properties supporting factor disentanglement. Our method can also be used to embed real images into the disentangled latent space. We hope our method could provide new understandings of the relationship between physical properties and deep image synthesis.
 </div>
@@ -162,7 +191,7 @@ We propose DiscoFaceGAN, an approach for face image generation of virtual people
 <tr>
 <td width="132px"><img src="cvpr20_deep3dportrait.png" width="125"/>
 </td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="deep3dportrait" id="deep3dportrait"></a>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="deep3dportrait" id="deep3dportrait"></a>
 Sicheng Xu<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/doch/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/fangwen/" target="_blank" style="text-decoration:underline;color:#000;">Fang Wen</a>, Yu Deng, <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
 <span class="jellon_d_i_c_name">Deep 3D Portrait from a Single Image</span><br/>
 <span class="jellon_d_i_c_refer">The 36th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2020)</b>, Seattle, USA</span><br/>
@@ -172,7 +201,7 @@ Sicheng Xu<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <div id="20_abstract">
 In this paper, we present a learning-based approach for recovering the 3D geometry of human head from a single portrait image. Our method is learned in an unsupervised manner without any ground-truth 3D data. We represent the head geometry with a parametric 3D face model together with a depth map for other head regions including hair and ear. A two-step geometry learning scheme is proposed to learn 3D head reconstruction from in-the-wild face images, where we first learn face shape on single images using self-reconstruction and then learn hair and ear geometry using pairs of images in a stereo-matching fashion. The second step is based on the output of the first to not only improve the accuracy but also ensure the consistency of overall head geometry. We evaluate the accuracy of our method both in 3D and with pose manipulation tasks on 2D images. We alter pose based on the recovered geometry and apply a refinement network trained with adversarial learning to ameliorate the reprojected images and translate them to the real image domain. Extensive evaluations and comparison with previous methods show that our new method can produce high-fidelity 3D head geometry and head pose manipulation results.
 </div>
@@ -191,7 +220,7 @@ In this paper, we present a learning-based approach for recovering the 3D geomet
 <tr>
 <td width="132px"><img src="cvpr20_lowlightdenosing.png" width="140"/>
 </td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="lowlightdenosing" id="lowlightdenosing"></a>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="lowlightdenosing" id="lowlightdenosing"></a>
 Kaixuan Wei, <a href="https://ying-fu.github.io/" target="_blank" style="text-decoration:underline;color:#000;"> Ying Fu</a>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://iitlab.bit.edu.cn/gvlab/info/teaminfo/HuangHua/home_eng.html" target="_blank" style="text-decoration:underline;color:#000;">Hua Huang</a><br/>
 <span class="jellon_d_i_c_name">A Physics-based Noise Formation Model for Extreme Low-light Raw Denoising</span><br/>
 <span class="jellon_d_i_c_refer">The 36th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2020)</b>, Seattle, USA</span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
@@ -200,7 +229,7 @@ Kaixuan Wei, <a href="https://ying-fu.github.io/" target="_blank" style="text-de
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <div id="19_abstract">
 Lacking rich and realistic data, learned single image denoising algorithms generalize poorly to real raw images that do not resemble the data used for training. Although the problem can be alleviated by the heteroscedastic Gaussian model for noise synthesis, the noise sources caused by digital camera electronics are still largely overlooked, despite their significant effect on raw measurement, especially under extremely low-light condition. To address this issue, we present a highly accurate noise formation model based on the characteristics of CMOS photosensors, thereby enabling us to synthesize realistic samples that better match the physics of image formation process. Given the proposed noise model, we additionally propose a method to calibrate the noise parameters for available modern digital cameras, which is simple and reproducible for any new device. We systematically study the generalizability of a neural network trained with existing schemes, by introducing a new low-light denoising dataset that covers many modern digital cameras from diverse brands. Extensive empirical results collectively show that by utilizing our proposed noise formation model, a network can reach the capability as if it had been trained with rich real data, which demonstrates the effectiveness of our noise formation model.
 </div>
@@ -219,7 +248,7 @@ Lacking rich and realistic data, learned single image denoising algorithms gener
 <tr>
 <td width="132px"><img src="iccv19_videofacedeblur.png" width="140"/>
 </td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="videofacedeblur" id="videofacedeblur"></a>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="videofacedeblur" id="videofacedeblur"></a>
 Wenqi Ren*, <span class="jellon_d_i_c_emphasize">Jiaolong Yang*</span>, Senyou Deng, <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a>, Xiaochun Cao, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
 <span class="jellon_d_i_c_name">Face Video Deblurring using 3D Facial Priors</span><br/>
 <span class="jellon_d_i_c_refer">The 17th International Conference on Computer Vision <b>(ICCV2019)</b>, Seoul, Korea</span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
@@ -229,7 +258,7 @@ Wenqi Ren*, <span class="jellon_d_i_c_emphasize">Jiaolong Yang*</span>, Senyou D
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <div id="18_abstract">
 Existing face deblurring methods only consider single frames and do not account for facial structure and identity information. These methods struggle to deblur face videos that exhibit significant pose variations and misalignment. In this paper we propose a novel face video deblurring network capitalizing on 3D facial priors. The model consists of two main branches: i) a face video deblurring sub-network based on the encoder-decoder architecture, and ii) a 3D face rendering branch for predicting 3D priors of salient facial structures and identity knowledge. These structures encourage the deblurring branch to generate sharp faces with detailed structures. Our method not only uses low-level information (i.e., intensity similarity), but also middle-level information (i.e., 3D facial structure) and high-level knowledge (i.e., identity content) to further explore spatial constraints of facial components from blurry face frames. Extensive experimental results demonstrate that the proposed algorithm performs favorably against the state-of-the-art methods. 
 </div>
@@ -248,7 +277,7 @@ Existing face deblurring methods only consider single frames and do not account 
 <tr>
 <td width="132px"><img src="cvpr19_reflectionremoval.png" width="140"/>
 </td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="ERRNet" id="ERRNet"></a>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="ERRNet" id="ERRNet"></a>
 Kaixuan Wei, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://ying-fu.github.io/" target="_blank" style="text-decoration:underline;color:#000;"> Ying Fu</a>,  <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a>, <a href="http://iitlab.bit.edu.cn/gvlab/info/teaminfo/HuangHua/home_eng.html" target="_blank" style="text-decoration:underline;color:#000;">Hua Huang</a><br/>
 <span class="jellon_d_i_c_name">Single Image Reflection Removal Exploiting Misaligned Training Data and Network Enhancements</span><br/>
 <span class="jellon_d_i_c_refer">The 35th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2019)</b>, Long Beach, USA</span><br/>
@@ -257,7 +286,7 @@ Kaixuan Wei, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href=
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <div id="17_abstract">
 Removing undesirable reflections from a single image captured through a glass window is of practical importance to visual computing systems. Although state-of-the-art methods can obtain decent results in certain situations, performance declines significantly when tackling more general real-world cases. These failures stem from the intrinsic difficulty of single image reflection removal--the fundamental ill-posedness of the problem, and the insufficiency of densely-labeled training data needed for resolving this ambiguity within learning-based neural network pipelines. In this paper, we address these issues by exploiting targeted network enhancements and the novel use of misaligned data. For the former, we augment a baseline network architecture by embedding context encoding modules that are capable of leveraging high-level contextual clues to reduce indeterminacy within areas containing strong reflections. For the latter, we introduce an alignment-invariant loss function that facilitates exploiting misaligned real-world training data that is much easier to collect. Experimental results collectively show that our method outperforms the state-of-the-art with aligned data, and that significant improvements are possible when using additional misaligned data.
 </div>
@@ -276,7 +305,7 @@ Removing undesirable reflections from a single image captured through a glass wi
 <tr>
 <td width="132px"><img src="cvprw19_3dface.png" width="140"/>
 </td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="face3drecon" id="face3drecon"></a>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="face3drecon" id="face3drecon"></a>
 Yu Deng<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, Sicheng Xu, <a href="https://www.microsoft.com/en-us/research/people/doch/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a>, and <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
 <span class="jellon_d_i_c_name">Accurate 3D Face Reconstruction with Weakly-Supervised Learning: From Single Image to Image Set</span><br/>
 <span class="jellon_d_i_c_refer">IEEE Computer Vision and Pattern Recognition Workshop on AMFG<b> (CVPRW2019)</b>, Long Beach, USA</span> (<span style="color:#e60000"><b>Best Paper Award</b>. Check out our code!</span>)<br/>
@@ -286,7 +315,7 @@ Yu Deng<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, 
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <div id="16_abstract">
 Recently, deep learning based 3D face reconstruction methods have shown promising results in both quality and efficiency. However, training deep neural networks typically requires a large volume of data, whereas face images with ground-truth 3D face shapes are scarce. In this paper, we propose a novel deep 3D face reconstruction approach that 1) leverages a robust, hybrid loss function for weakly-supervised learning which takes into account both
 low-level and perception-level information for supervision, and 2) performs multi-image face reconstruction by exploiting complementary information from different images for shape aggregation. Our method is fast, accurate, and robust to occlusion and large pose. We provide comprehensive experiments on MICC Florence and Facewarehouse datasets, systematically comparing our method with fifteen recent methods and demonstrating its state-of-the-art performance. Code available at https://github.com/Microsoft/Deep3DFaceReconstruction
@@ -306,7 +335,7 @@ low-level and perception-level information for supervision, and 2) performs mult
 <tr>
 <td width="132px"><img src="aaai19_singleview3d.png" width="140"/>
 </td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="object3drecon" id="object3drecon"></a>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="object3drecon" id="object3drecon"></a>
 Hanqing Wang<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://iitlab.bit.edu.cn/mcislab/~liangwei/" target="_blank" style="text-decoration:underline;color:#000;">Wei Liang</a> and <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
 <span class="jellon_d_i_c_name">Deep Single-View 3D Object Reconstruction with Visual Hull Embedding</span><br/>
 <span class="jellon_d_i_c_refer">The 33rd AAAI Conference on Artificial Intelligence <b>(AAAI2019)</b>, Honolulu, USA</span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
@@ -316,7 +345,7 @@ Hanqing Wang<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</sp
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <div id="15_abstract">
 3D object reconstruction is a fundamental task of many robotics and AI problems. With the aid of deep convolutional neural networks (CNNs), 3D object reconstruction has witnessed a significant progress in recent years. However, possibly due to the prohibitively high dimension of the 3D object space, the results from deep CNNs are often prone to missing some shape details. In this paper, we present an approach which aims to preserve more shape details and improve the reconstruction quality. The key idea of our method is to leverage object mask and pose estimation from CNNs to assist the 3D shape learning by constructing a probabilistic single-view visual hull inside of the network. Our method works by first predicting a coarse shape as well as the object pose and silhouette using CNNs, followed by a novel 3D refinement CNN which refines the coarse shapes using the constructed probabilistic visual hulls. Experiment on both synthetic data and real images show that embedding a single-view visual hull for shape refinement can significantly improve the reconstruction quality by recovering more shapes details and improving shape consistency with the input image.
 </div>
@@ -335,7 +364,7 @@ Hanqing Wang<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</sp
 <tr>
 <td width="132px"><img src="tog18_thumbnail.png" width="140"/>
 </td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="imagesmoothing" id="imagesmoothing"></a>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="imagesmoothing" id="imagesmoothing"></a>
 <a href="https://fqnchina.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Qingnan Fan</a><sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>,  <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a>, <a href="http://www.cs.sdu.edu.cn/~baoquan" target="_blank" style="text-decoration:underline;color:#000;">Baoquan Chen</a> and <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
 <span class="jellon_d_i_c_name">Image Smoothing via Unsupervised Learning</span><br/>
 <span class="jellon_d_i_c_refer">ACM Transactions on Graphics <b>(TOG)</b>, 2018 (Proc. <b>SIGGRAPH Asia</b>)</span> <br/>
@@ -345,7 +374,7 @@ Hanqing Wang<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</sp
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <div id="14_abstract">
 Image smoothing represents a fundamental component of many disparate computer vision and graphics applications. In this paper, we present a unified unsupervised (label-free) learning framework that facilitates generating flexible and high-quality smoothing effects by directly learning from data using deep convolutional neural networks (CNNs). The heart of the design is the training signal as a novel energy function that includes an edge-preserving regularizer which helps maintain important yet potentially vulnerable image structures, and a spatially-adaptive Lp flattening criterion which imposes different forms of regularization onto different image regions for better smoothing quality. We implement a diverse set of image smoothing solutions employing the unified framework targeting various applications such as, image abstraction, pencil sketching, detail enhancement, texture removal and content-aware image manipulation, and obtain results comparable with or better than previous methods. Moreover, our method is extremely fast with a modern GPU (e.g, 200 fps for 1280×720 images).</div>
 <div id="14_bibtex">
@@ -363,7 +392,7 @@ Image smoothing represents a fundamental component of many disparate computer vi
 <tr>
 <td width="132px"><img src="eccv18_thumbnail.png" width="140"/>
 </td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="dnnquantization", id="dnnquantization"></a>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="dnnquantization", id="dnnquantization"></a>
 Dongqing Zhang*, <span class="jellon_d_i_c_emphasize">Jiaolong Yang*</span>, Dongqiangzi Ye* and <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a><br/>
 <span class="jellon_d_i_c_name">LQ-Nets: Learned Quantization for Highly Accurate and Compact Deep Neural Networks</span><br/>
 <span class="jellon_d_i_c_refer">The 15th European Conference on Computer Vision <b>(ECCV2018)</b>, Munich, Germany</span><br/>
@@ -373,7 +402,7 @@ Dongqing Zhang*, <span class="jellon_d_i_c_emphasize">Jiaolong Yang*</span>, Don
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <div id="13_abstract">
 Although weight and activation quantization is an effective approach for Deep Neural Network (DNN) compression and has a lot of potentials to increase inference speed leveraging bit-operations, there is still a noticeable gap in terms of prediction accuracy between the quantized model and the full-precision model. To address this gap, we propose to jointly train a quantized, bit-operation-compatible DNN and its associated quantizers, as opposed to using fixed, handcrafted quantization schemes such as uniform or logarithmic quantization. Our method for learning the quantizers applies to both network weights and activations with arbitrary-bit precision, and our quantizers are easy to train. The comprehensive experiments on CIFAR-10 and ImageNet datasets show that our method works consistently well for various network structures such as AlexNet, VGG-Net, GoogLeNet, ResNet, and DenseNet, surpassing previous quantization methods in terms of accuracy by an appreciable margin. Code available at https://github.com/Microsoft/LQ-Nets
 </div>
@@ -392,7 +421,7 @@ Although weight and activation quantization is an effective approach for Deep Ne
 <tr>
 <td width="132px"><img src="cvpr18_thumbnail.png" width="140"/>
 </td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="deepintrinsicimage" id="deepintrinsicimage"></a>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="deepintrinsicimage" id="deepintrinsicimage"></a>
 <a href="https://fqnchina.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Qingnan Fan</a><sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>,  <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a>, <a href="http://www.cs.sdu.edu.cn/~baoquan" target="_blank" style="text-decoration:underline;color:#000;">Baoquan Chen</a> and <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a><br/>
 <span class="jellon_d_i_c_name">Revisiting Deep Intrinsic Image Decompositions</span><br/>
 <span class="jellon_d_i_c_refer">The 34th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2018)</b>, Salt Lake City, USA</span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
@@ -402,7 +431,7 @@ Although weight and activation quantization is an effective approach for Deep Ne
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <div id="12_abstract">
 While invaluable for many computer vision applications, decomposing a natural image into intrinsic reflectance and shading layers represents a challenging, underdetermined inverse problem. As opposed to strict reliance on conventional optimization or filtering solutions with strong prior assumptions, deep learning-based approaches have also been proposed to compute intrinsic image decompositions when granted access to sufficient labeled training data.  The downside is that current data sources are quite limited, and broadly speaking fall into one of two categories: either dense fully-labeled images in synthetic/narrow settings, or weakly-labeled data from relatively diverse natural scenes.  In contrast to many previous learning-based approaches, which are often tailored to the structure of a particular dataset (and may not work well on others), we adopt core network structures that universally reflect loose prior knowledge regarding the intrinsic image formation process and can be largely shared across datasets.  We then apply flexibly supervised loss layers that are customized for each source of ground truth labels.  The resulting deep architecture achieves state-of-the-art results on all of the major intrinsic image benchmarks, and runs considerably faster than most at test time.
 </div>
@@ -421,7 +450,7 @@ While invaluable for many computer vision applications, decomposing a natural im
 <tr>
 <td width="132px"><img src="iccv17_thumbnail.png" width="140"/>
 </td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="dcnnreflectionsmoothing" id="dcnnreflectionsmoothing"></a>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="dcnnreflectionsmoothing" id="dcnnreflectionsmoothing"></a>
 <a href="https://fqnchina.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Qingnan Fan</a><sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>,  <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a>, <a href="http://www.cs.sdu.edu.cn/~baoquan" target="_blank" style="text-decoration:underline;color:#000;">Baoquan Chen</a> and <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a><br/>
 <span class="jellon_d_i_c_name">A Generic Deep Architecture for Single Image Reflection Removal and Image Smoothing</span><br/>
 <span class="jellon_d_i_c_refer">The 16th International Conference on Computer Vision <b>(ICCV2017)</b>, Venice, Italy</span><br/>
@@ -431,7 +460,7 @@ While invaluable for many computer vision applications, decomposing a natural im
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <div id="11_abstract">
 This paper proposes a deep neural network structure that exploits edge information in addressing representative low-level vision tasks such as layer separation and image filtering. Unlike most other deep learning strategies applied in this context, our approach tackles these challenging problems by estimating edges and reconstructing images using only cascaded convolutional layers arranged such that no handcrafted or application-specific image-processing components are required.  We apply the resulting transferrable pipeline to two different problem domains that are both sensitive to edges, namely, single image reflection removal and image smoothing. For the former, using a mild reflection smoothness assumption and a novel synthetic data generation method that acts as a type of weak supervision, our network is able to solve much more difficult reflection cases that cannot be handled by previous methods. For the latter, we also exceed the state-of-the-art quantitative and qualitative results by wide margins.  In all cases, the proposed framework is simple, fast, and easy to transfer across disparate domains. </div>
 <div id="11_bibtex">
@@ -449,7 +478,7 @@ This paper proposes a deep neural network structure that exploits edge informati
 <tr>
 <td width="132px"><img src="cvprw17_thumbnail.png" width="140"/>
 </td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 Chen Zhou<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/chunzhao/" target="_blank" style="text-decoration:underline;color:#000;">Chunshui Zhao</a> and <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a><br/>
 <span class="jellon_d_i_c_name">Fast, Accurate Thin-Structure Obstacle Detection for Autonomous Mobile Robots</span><br/>
 <span class="jellon_d_i_c_refer">IEEE Computer Vision and Pattern Recognition Workshop on Embedded Vision <b>(CVPRW2017)</b>, Honolulu, USA</span><br/>
@@ -459,7 +488,7 @@ Chen Zhou<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <div id="10_abstract">
 Safety is paramount for mobile robotic platforms such as self-driving cars and unmanned aerial vehicles. This work is devoted to a task that is indispensable for safety yet was largely overlooked in the past -- detecting obstacles that are of very thin structures, such as wires, cables and tree branches. This is a challenging problem, as thin objects can be problematic for active sensors such as lidar and sonar and even for stereo cameras. In this work, we propose to use video sequences for thin obstacle detection. We represent obstacles with edges in the video frames, and reconstruct them in 3D using efficient edge-based visual odometry techniques. We provide both a monocular camera solution and a stereo camera solution. The former incorporates Inertial Measurement Unit (IMU) data to solve scale ambiguity, while the latter enjoys a novel, purely vision-based solution. Experiments demonstrated that the proposed methods are fast and able to detect thin obstacles robustly and accurately under various conditions. </div>
 <div id="10_bibtex">
@@ -477,7 +506,7 @@ Safety is paramount for mobile robotic platforms such as self-driving cars and u
 <tr>
 <td width="132px"><img src="cvpr17_thumbnail.png" width="140"/>
 </td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="videoface" id="videoface"></a>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="videoface" id="videoface"></a>
 <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://renpr.org/" target="_blank" style="text-decoration:underline;color:#000;">Peiran Ren</a>, Dongqing Zhang, <a href="https://www.microsoft.com/en-us/research/people/doch/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/fangwen/" target="_blank" style="text-decoration:underline;color:#000;">Fang Wen</a>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a> and <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a><br/>
 <span class="jellon_d_i_c_name">Neural Aggregation Network for Video Face Recognition</span><br/>
 <span class="jellon_d_i_c_refer">The 33th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2017)</b>, Honolulu, USA</span></span><br/>
@@ -486,7 +515,7 @@ Safety is paramount for mobile robotic platforms such as self-driving cars and u
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <div id="9_abstract">
 We present a Neural Aggregation Network (NAN) for video face recognition. The network takes a face video or face image set of a person with a variable number of face images as its input, and produces a compact and fixed-dimension feature representation. The whole network is composed of two modules. The feature embedding module is a deep Convolutional Neural Network (CNN), which maps each face image into a feature vector. The aggregation module consists of two attention blocks driven by a memory storing all the extracted features. It adaptively aggregates the features to form a single feature inside the convex hull spanned by them. Due to the attention mechanism, the aggregation is invariant to the image order. We found that NAN learns to advocate high-quality face images while repelling low-quality ones such as blurred, occluded and improperly exposed faces. The experiments on IJB-A, YouTube Face, Celebrity-1000 video face recognition benchmarks show that it consistently outperforms standard aggregation methods and achieves state-of-the-art accuracies. </div>
 <div id="9_bibtex">
@@ -504,7 +533,7 @@ We present a Neural Aggregation Network (NAN) for video face recognition. The ne
 <tr>
 <td width="132px"><img src="cvpr16_thumbnail.jpg" width="140"/>
 </td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="robustopticalflow" id="robustopticalflow"></a>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="robustopticalflow" id="robustopticalflow"></a>
 <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a>, <a href="http://users.cecs.anu.edu.au/~yuchao/" target="_blank" style="text-decoration:underline;color:#000;">Yuchao Dai</a> and <a href="http://tanrobby.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Robby T. Tan</a><br/>
 <span class="jellon_d_i_c_name">Robust Optical Flow Estimation of Double-Layer Images under Transparency or Reflection</span><br/>
 <span class="jellon_d_i_c_refer">The 32th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2016)</b>, Las Vegas, USA</span></span><br/>
@@ -513,7 +542,7 @@ We present a Neural Aggregation Network (NAN) for video face recognition. The ne
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <div id="8_abstract">
 This paper deals with a challenging, frequently encountered, yet not properly investigated problem in two-frame optical flow estimation. That is, the input frames are compounds of two imaging layers - one desired background layer of the scene, and one distracting, possibly moving layer due to transparency or reflection. In this situation, the conventional brightness constancy constraint - the cornerstone of most existing optical flow methods - will no longer be valid. In this paper, we propose a robust solution to this problem. The proposed method performs both optical flow estimation, and image layer separation. It exploits a generalized double-layer brightness consistency constraint connecting these two tasks, and utilizes the priors for both of them. Experiments on both synthetic data and real images have confirmed the efficacy of the proposed method. To the best of our knowledge, this is the first attempt towards handling generic optical flow fields of two-frame images containing transparency or reflection.</div>
 <div id="8_bibtex">
@@ -531,7 +560,7 @@ This paper deals with a challenging, frequently encountered, yet not properly in
 <tr>
 <td width="132px"><img src="tpami16_thumbnail.png" width="140"/>
 </td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="goicpjournal" id="goicpjournal"></a>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="goicpjournal" id="goicpjournal"></a>
 <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a>, Dylan Campbell and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
 <span class="jellon_d_i_c_name">Go-ICP: A Globally Optimal Solution to 3D ICP Point-Set Registration</span><br/>
 <span class="jellon_d_i_c_refer">IEEE Transactions on Pattern Analysis and Machine Intelligence <b>(T-PAMI)</b>, 2016</span><br/>
@@ -540,7 +569,7 @@ This paper deals with a challenging, frequently encountered, yet not properly in
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <div id="7_abstract">
 The Iterative Closest Point (ICP) algorithm is one of the most widely used methods for point-set registration. However, being based on local iterative optimization, ICP is known to be susceptible to local minima. Its performance critically relies on the quality of the initialization and only local optimality is guaranteed. This paper presents the first globally optimal algorithm, named Go-ICP, for Euclidean (rigid) registration of two 3D point-sets under the L2 error metric defined in ICP. The Go-ICP method is based on a branch-and-bound (BnB) scheme that searches the entire 3D motion space SE(3). By exploiting the special structure of SE(3) geometry, we derive novel upper and lower bounds for the registration error function. Local ICP is integrated into the BnB scheme, which speeds up the new method while guaranteeing global optimality. We also discuss extensions, addressing the issue of outlier robustness. The evaluation demonstrates that the proposed method is able to produce reliable registration results regardless of the initialization. Go-ICP can be applied in scenarios where an optimal solution is desirable or where a good initialization is not always available.</div>
 <div id="7_bibtex">
@@ -560,7 +589,7 @@ The Iterative Closest Point (ICP) algorithm is one of the most widely used metho
 <tr>
 <td width="132px"><img src="cvpr15_thumbnail.png" width="140"/>
 </td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span> and <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a> <br/>
 <span class="jellon_d_i_c_name">Dense, Accurate Optical Flow Estimation with Piecewise Parametric Model</span><br/>
 <span class="jellon_d_i_c_refer">The 31th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2015)</b>, Boston, USA</span><br/>
@@ -569,7 +598,7 @@ The Iterative Closest Point (ICP) algorithm is one of the most widely used metho
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <div id="6_abstract">
 This paper proposes a simple method for estimating dense and accurate optical flow field. It revitalizes an early idea of piecewise parametric flow model. A key innovation is that we fit a flow field piecewise to a variety of parametric models, where the domain of each piece (i.e., each piece's shape, position and size) as well as the total number of pieces are determined adaptively, while at the same time maintaining a global inter-piece flow continuity constraint.  We achieve this by a multi-model fitting scheme via energy minimization. Our energy takes into account both the piecewise constant model assumption, and the flow field continuity constraint. The proposed method effectively handles both homogeneous regions and complex motion. Experiments on three public optical flow benchmarks (KITTI, MPI Sintel, and Middlebury) show the superiority of our method compared with the state of the art: it achieves top-tier performances on all the three benchmarks.
 </div>
@@ -588,7 +617,7 @@ This paper proposes a simple method for estimating dense and accurate optical fl
 <tr>
 <td width="132px"><img src="eccv14_thumbnail.jpg" width="140"/>
 </td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
 <span class="jellon_d_i_c_name">Optimal Essential Matrix Estimation via Inlier-Set Maximization</span><br/>
 <span class="jellon_d_i_c_refer">The 13th European Conference on Computer Vision <b>(ECCV2014)</b>, Zürich, Switzerland</span><br/>
@@ -598,7 +627,7 @@ This paper proposes a simple method for estimating dense and accurate optical fl
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <div id="5_abstract">
 In this paper, we extend the globally optimal "rotation space search" method [11] to essential matrix estimation in the presence of feature mismatches or outliers. The problem is formulated as inlier-set cardinality maximization, and solved via branch-and-bound global optimization which searches the entire essential manifold formed by all essential matrices.  Our main contributions include an explicit, geometrically meaningful essential manifold parametrization using a 5D direct product space of a solid 2D disk and a solid 3D ball, as well as efficient closed-form bounding functions. Experiments on both synthetic data and real images have confirmed the efficacy of our method. The method is mostly suitable for applications where robustness and accuracy are paramount. It can also be used as a benchmark for method evaluation.
 </div>
@@ -617,7 +646,7 @@ In this paper, we extend the globally optimal "rotation space search" method [11
 <tr>
 <td><img src="iccv13_thumbnail.jpg" width="140"/>
 </td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
 <span class="jellon_d_i_c_name">Go-ICP: Solving 3D Registration Efficiently and Globally Optimally</span><br/>
 <span class="jellon_d_i_c_refer">The 14th International Conference on Computer Vision <b>(ICCV2013)</b>, Sydney, Australia</span><br/>
@@ -626,7 +655,7 @@ In this paper, we extend the globally optimal "rotation space search" method [11
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <div id="4_abstract">
 Registration is a fundamental task in computer vision. The Iterative Closest Point (ICP) algorithm is one of the widely-used methods for solving the registration problem. Based on local iteration, ICP is however well-known to suffer from local minima. Its performance critically relies on the quality of initialization, and only local optimality is guaranteed. This paper provides the very first globally optimal solution to Euclidean registration of two 3D pointsets or two 3D surfaces under the L2 error. Our method is built upon ICP, but combines it with a branch-and-bound (BnB) scheme which searches the 3D motion space SE(3) efficiently. By exploiting the special structure of the underlying geometry, we derive novel upper and lower bounds for the ICP error function. The integration of local ICP and global BnB enables the new method to run efficiently in practice, and its optimality is exactly guaranteed. We also discuss extensions, addressing the issue of outlier robustness.
 </div>
@@ -645,7 +674,7 @@ Registration is a fundamental task in computer vision. The Iterative Closest Poi
 <tr>
 <td><img src="ismar13_thumbnail.jpg" width="140"/>
 </td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:2px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:2px;">
 <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~yuchao/" target="_blank" style="text-decoration:underline;color:#000;">Yuchao Dai</a>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a>, <a href="http://cs.anu.edu.au/~Henry.Gardner/" target="_blank" style="text-decoration:underline;color:#000;">Henry Gardner</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
 <span class="jellon_d_i_c_name">Single-shot Extrinsic Calibration of a Generically Configured RGB-D Camera Rig from Scene Constraints</span><br/>
 <span class="jellon_d_i_c_refer">The 12th International Symposium on Mixed and Augmented Reality <b>(ISMAR2013)</b>, Adelaide, Australia</span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
@@ -655,7 +684,7 @@ Registration is a fundamental task in computer vision. The Iterative Closest Poi
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <div id="3_abstract">
 With the increasingly popular use of commodity RGB-D cameras for computer vision, robotics, mixed and augmented reality and other areas, it is of significant practical interest to calibrate the relative pose between a depth (D) camera and an RGB camera in these types of setups. In this paper, we propose a new single-shot, correspondence-free method to extrinsically calibrate a generically configured RGB-D camera rig. We formulate the extrinsic calibration problem as one of geometric 2D-3D registration which exploits scene constraints to achieve single-shot extrinsic calibration. Our method first reconstructs sparse point clouds from single view 2D image, which are then registered with dense point clouds from the depth camera. Finally, we directly optimize the warping quality by evaluating scene constraints in 3D point clouds. Our single-shot extrinsic calibration method does not require correspondences across multiple color images or across modality, achieving greater flexibility over existing methods. The scene constraints required by our method can be very simple and we demonstrate that a scene made up of three sheets of paper is sufficient to obtain reliable calibration and with lower geometric error than existing methods.
 </div>
@@ -674,7 +703,7 @@ With the increasingly popular use of commodity RGB-D cameras for computer vision
 <tr>
 <td><img src="icpr12_thumbnail.jpg" width="140"/>
 </td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://iitlab.bit.edu.cn/mcislab/~liangwei/" target="_blank" style="text-decoration:underline;color:#000;">Wei Liang</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
 <span class="jellon_d_i_c_name">Face Pose Estimation with Combined 2D and 3D HOG Features</span><br/>
 <span class="jellon_d_i_c_refer">The 21st International Conference on Pattern Recognition <b>(ICPR2012)</b>, Tsukuba, Japan</span><br/>
@@ -683,7 +712,7 @@ With the increasingly popular use of commodity RGB-D cameras for computer vision
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <div id="2_abstract">
 In this paper, a new stereo camera calibration technique that can realize automatic strong calibration is proposed. In order to achieve online camera calibration, an object covered with chess-board patterns, called embedded calibration device, is placed inside the cavity of the stereovision system. We estimate the structural configuration of the embedded calibration device, i.e. the 3D positions of all the grid points on the device, to calibrate the cameras. Since the device is close to the stereo camera, the calibration results are usually not valid for the volume around the object in the scene. Therefore we present a correction approach combining the embedded calibration and scene features to make the calibration valid in the scene. Experimental results demonstrate that our system performs robust and accurate, and is very applicable in unmanned systems.
 </div>
@@ -779,7 +808,7 @@ Machine Vision and Applications (MVA)<br/>
 
 <div id="jellon_footer">
 <b><i>Declaimer:</i></b> <i>Papers provided on this page are for personal, research use only; copyright and all rights therein are retained by authors and/or other copyright holders.</i><br/>
-<b><i>Last update: Apr 8, 2020</i></b><br/>
+<b><i>Last update: Dec 10, 2020</i></b><br/>
 
 </div>
 </div>
