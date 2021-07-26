@@ -93,11 +93,13 @@ Yang (杨): the family name from my forefathers, the sixth most common surname i
 <div style="float:left;height:70px;padding-top:35px;padding-right:1px;"><img src="new.jpg" height="35px" width="35px"/></div>
 <div style="padding-left:1px;">
 <font color="red">
-[03/04/2021] <i>The <a style="color:red;text-decoration:underline;" href="#difnet" onclick="show2('22','abstract');">deep deformed implicit filed (DIF-Net) paper</a> is accepted by CVPR'21</i><br/>
-[03/13/2020] <i>3 papers accepted by CVPR'20: <a style="color:red;text-decoration:underline;" href="#disenfacegan" onclick="show2('21','abstract');">disentangled face GAN</a> (Oral), <a style="color:red;text-decoration:underline;" href="#deep3dportrait" onclick="show2('20','abstract');">3D portrait reconstrucion</a>, <a style="color:red;text-decoration:underline;" href="#lowlightdenosing" onclick="show2('19','abstract');">low-light denoising</a> (Oral)</i><br/>
-[07/23/2019] <i>The <a style="color:red;text-decoration:underline;" href="#videofacedeblur" onclick="show2('18','abstract');">3D-aided face video  debluring paper</a> is accepted by ICCV'19 as Oral</i><br/>
-[03/03/2019] <i>The <a style="color:red;text-decoration:underline;" href="#ERRNet" onclick="show2('17','abstract');">deep reflection removal paper</a> is accepted by CVPR'19</i><br/>
-[03/30/2019] <i>The <a style="color:red;text-decoration:underline;" href="#face3drecon" onclick="show2('16','abstract');">3D face reconstruction paper</a> received the Best Paper Award at CVPR'19 workshop on AMFG</i><br/>
+[07/23/2021] <i>2 papers accepted by ICCV'21 <a style="color:red;text-decoration:underline;" href="#1dflow" onclick="show2('26','abstract');">high-res optical flow estimation</a> (Oral) and <a style="color:red;text-decoration:underline;" href="#facetexcomp" onclick="show2('25','abstract');">High-res face texture completion</a>.</i><br/>
+[07/20/2021] <i>A <a href="https://github.com/sicxu/Deep3DFaceRecon_pytorch" target="_blank" style="color:red;text-decoration:underline;">PyTorch version</a> of our <a style="color:red;text-decoration:underline;" href="#face3drecon" onclick="show2('16','abstract');">Deep3DFace</a> method is released: more accurate and easier to use!</a></i><br/>
+[03/04/2021] <i>The <a style="color:red;text-decoration:underline;" href="#difnet" onclick="show2('22','abstract');">deep deformed implicit filed (DIF-Net) paper</a> is accepted by CVPR'21.</i><br/>
+[03/13/2020] <i>3 papers accepted by CVPR'20: <a style="color:red;text-decoration:underline;" href="#disenfacegan" onclick="show2('21','abstract');">disentangled face GAN</a> (Oral), <a style="color:red;text-decoration:underline;" href="#deep3dportrait" onclick="show2('20','abstract');">3D portrait reconstrucion</a>, <a style="color:red;text-decoration:underline;" href="#lowlightdenosing" onclick="show2('19','abstract');">low-light denoising</a> (Oral).</i><br/>
+[07/23/2019] <i>The <a style="color:red;text-decoration:underline;" href="#videofacedeblur" onclick="show2('18','abstract');">3D-aided face video  debluring paper</a> is accepted by ICCV'19 as Oral.</i><br/>
+<!--[03/03/2019] <i>The <a style="color:red;text-decoration:underline;" href="#ERRNet" onclick="show2('17','abstract');">deep reflection removal paper</a> is accepted by CVPR'19</i><br/>-->
+<!--[03/30/2019] <i>The <a style="color:red;text-decoration:underline;" href="#face3drecon" onclick="show2('16','abstract');">3D face reconstruction paper</a> received the Best Paper Award at CVPR'19 workshop on AMFG</i><br/>-->
 <!--[07/04/2018] <i>The <a style="color:red;text-decoration:underline;" href="#dnnquantization" onclick="show2('13','abstract');">neural network quantization paper</a> is accepted by ECCV'18</i><br/>-->
 <!--[03/08/2018] <i>The <a style="color:red;text-decoration:underline;" href="#deepintrinsicimage" onclick="show2('12','abstract');">intrinsic image decomposition paper</a> is accepted by CVPR'18 as Oral</i><br/>-->
 <!--[07/17/2017] <i>The <a style="color:red;text-decoration:underline;" href="#dcnnreflectionsmoothing" onclick="show2('11','abstract');">deep reflection removal paper</a> is accepted by ICCV'17</i><br/>-->
@@ -132,10 +134,123 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">3D</a>, <a 
 <table id="jellon_papertable" style="width:100%;"  border="0" cellpadding="0" cellspacing="0">
 
 <tr>
-<td width="132px"><img src="cvpr21_difnet.png" width="125"/>
+<td width="132px"><img src="iccv21_1dflow.png" width="140"/>
+</td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="1dflow" id="1dflow"></a>
+Haofei Xu<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://jianfei-cai.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Jianfei Cai</a>, <a href="http://staff.ustc.edu.cn/~juyong/" target="_blank" style="text-decoration:underline;color:#000;">Juyong Zhang</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;"> Xin Tong</a><br/>
+<span class="jellon_d_i_c_name">High-Resolution Optical Flow from 1D Attention and Correlation</span><br/>
+<span class="jellon_d_i_c_refer">The 18th International Conference on Computer Vision <b>(ICCV2021)</b></span> (<b><span style="color:#e60000">Oral</span></b>) <br/>
+[<a href="#" onclick="show('26','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('26','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2104.13918.pdf">PDF</a>] [<a target="_blank" href="#" onclick="alert('Available soon');return false;">Code</a>] [<a target="_blank" href="https://arxiv.org/pdf/2104.13918.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2104.13918">arXiv</a>]<br />
+(<sup>+</sup>: Intern at MSRA)
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<div id="26_abstract">
+Optical flow is inherently a 2D search problem, and thusthe computational complexity grows quadratically with re-spect  to  the  search  window,  making  large  displacementsmatching infeasible for high-resolution images.  In this pa-per,  we propose a new method for high-resolution opticalflow estimation with significantly less computation,  whichis achieved by factorizing 2D optical flow with 1D attentionand correlation.  Specifically, we first perform a 1D atten-tion operation in the vertical direction of the target image,and then a simple 1D correlation in the horizontal direc-tion of the attended image can achieve 2D correspondencemodeling effect. The directions of attention and correlationcan also be exchanged,  resulting in two 3D cost volumesthat are concatenated for optical flow estimation. The novel1D formulation empowers our method to scale to very high-resolution input images while maintaining competitive per-formance. Extensive experiments on Sintel, KITTI and real-world 4K (2160×3840) resolution images demonstrated theeffectiveness and superiority of our proposed method.
+</div>
+<div id="26_bibtex">
+@article{deng2020deformed,<br/>
+&nbsp;&nbsp;author = {Xu, Haofei and Yang, Jiaolong and Cai, Jianfei and Zhang, Juyong and Tong, Xin},<br/>
+&nbsp;&nbsp;title = {High-Resolution Optical Flow from 1D Attention and Correlation},<br/>
+&nbsp;&nbsp;booktitle = {Proceedings of the International Conference on Computer Vision (ICCV)},<br/>
+<!--&nbsp;&nbsp;pages = {8178-8187},<br/>-->
+&nbsp;&nbsp;year = {2021}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr>
+<td width="132px"><img src="iccv21_facetexcomp.png" width="140"/>
+</td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="facetexcomp" id="facetexcomp"></a>
+Jongyoo Kim, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;"> Xin Tong</a><br/>
+<span class="jellon_d_i_c_name">Learning High-Fidelity Face Texture Completion without Complete Face Texture</span><br/>
+<span class="jellon_d_i_c_refer">The 18th International Conference on Computer Vision <b>(ICCV2021)</b></span><br/>
+[<a href="#" onclick="show('25','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('25','bibtex');return false;">BibTex</a>] [<a target="_blank" href="#" onclick="alert('Available soon');return false;">PDF</a>] [<a target="_blank" href="#" onclick="alert('Available soon');return false;">Code</a>] [<a target="_blank" href="#" onclick="alert('Available soon');return false;">Suppl. Material</a>] [<a target="_blank" href="#" onclick="alert('Available soon');return false;">arXiv</a>]
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<div id="25_abstract">
+For face texture completion, previous methods typically use some complete textures captured by multiview imaging systems or 3D scanners for supervised learning. This paper deals with a new challenging problem – learning to complete invisible texture in a single face image without using any complete texture. We simply leverage a large corpus of face images of different subjects (e. g., FFHQ) to train a texture completion model in an unsupervised manner. To achieve this, we propose DSD-GAN, a novel deep neural network based method that applies two discriminators in UV map space and image space. These two discriminators work in a complementary manner to learn both facial structures and texture details. We show that their combination is essential to obtain high-fidelity results. Despite the network never sees any complete facial appearance, it is able to generate compelling full textures from single images.
+</div>
+<div id="25_bibtex">
+@article{deng2020deformed,<br/>
+&nbsp;&nbsp;author = {Kim, Jongyoo and Yang, Jiaolong and Tong, Xin},<br/>
+&nbsp;&nbsp;title = {Learning High-Fidelity Face Texture Completion without Complete Face Texture},<br/>
+&nbsp;&nbsp;booktitle = {Proceedings of the International Conference on Computer Vision (ICCV)},<br/>
+<!--&nbsp;&nbsp;pages = {8178-8187},<br/>-->
+&nbsp;&nbsp;year = {2021}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr>
+<td width="132px"><img src="ijcai21_IALS.png" width="140"/>
+</td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="IALS" id="IALS"></a>
+Yuxuan Han, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://ying-fu.github.io/" target="_blank" style="text-decoration:underline;color:#000;"> Ying Fu</a><br/>
+<span class="jellon_d_i_c_name">Disentangled Face Attribute Editing via Instance-Aware Latent Space Search</span><br/>
+<span class="jellon_d_i_c_refer">The 30th International Joint Conference on Artificial Intelligence <b>(IJCAI2021)</b></span><br/>
+[<a href="#" onclick="show('24','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('24','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2105.12660.pdf">PDF</a>] [<a target="_blank" href="https://github.com/yxuhan/IALS">Code</a>] [<a target="_blank" href="https://arxiv.org/pdf/2105.12660.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2105.12660">arXiv</a>]
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<div id="24_abstract">
+Recent works have shown that a rich set of semantic directions exist in the latent space of Generative Adversarial Networks (GANs), which enables various facial attribute editing applications. However, existing methods may suffer poor attribute variation disentanglement, leading to unwanted change of other attributes when altering the desired one. The semantic directions used by existing methods are at attribute level, which are difficult to model complex attribute correlations, especially in the presence of attribute distribution bias in GAN’s training set. In this paper, we propose a novel framework (IALS) that performs Instance-Aware Latent-Space Search to find semantic directions for disentangled attribute editing. The instance information is injected by leveraging the supervision from a set of attribute classifiers evaluated on the input images. We further propose a Disentanglement-Transformation (DT) metric to quantify the attribute transformation and disentanglement efficacy and find the optimal control factor between attribute-level and instance-specific directions based on it. Experimental results on both GAN-generated and real-world images collectively show that our method outperforms state-of-the-art methods proposed recently by a wide margin.
+</div>
+<div id="24_bibtex">
+@article{deng2020deformed,<br/>
+&nbsp;&nbsp;author = {Han, Yuxuan and Yang, Jiaolong and Fu, Ying},<br/>
+&nbsp;&nbsp;title = {Disentangled Face Attribute Editing via Instance-Aware Latent Space Search},<br/>
+&nbsp;&nbsp;booktitle = {Proceedings of the International Joint Conference on Artificial Intelligence (IJCAI)},<br/>
+<!--&nbsp;&nbsp;pages = {8178-8187},<br/>-->
+&nbsp;&nbsp;year = {2021}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr>
+<td width="132px"><img src="tog21_thumbnail.jpg" width="140"/>
+</td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="stylecarigan" id="stylecarigan"></a>
+Wongjong Jang, Gwangjin Ju, <a href="https://ycjung.info/" target="_blank" style="text-decoration:underline;color:#000;">Yucheol Jung</a>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a>, <a href="http://phome.postech.ac.kr/~leesy/" target="_blank" style="text-decoration:underline;color:#000;">Seungyong Lee</a><br/>
+<span class="jellon_d_i_c_name">StyleCariGAN: Caricature Generation via StyleGAN Feature Map Modulation</span><br/>
+<span class="jellon_d_i_c_refer">ACM Transactions on Graphics <b>(TOG)</b>, 2021 (Proc. <b>SIGGRAPH2021</b>) </span><br/>
+[<a href="#" onclick="show('23','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('23','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2107.04331.pdf">PDF</a>] [<a target="_blank" href="https://github.com/PeterZhouSZ/StyleCariGAN">Code</a>] [<a target="_blank" href="http://arxiv.org/abs/2107.04331">Suppl. Material</a>] [<a target="_blank" href="http://arxiv.org/abs/2107.04331">arXiv</a>]
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<div id="23_abstract">
+We present a caricature generation framework based on shape and style manipulation using StyleGAN. Our framework, dubbed StyleCariGAN, automatically creates a realistic and detailed caricature from an input photo with optional controls on shape exaggeration degree and color stylization type. The key component of our method is shape exaggeration blocks that are used for modulating coarse layer feature maps of StyleGAN to produce desirable caricature shape exaggerations. We first build a layer-mixed StyleGAN for photo-to-caricature style conversion by swapping fine layers of the StyleGAN for photos to the corresponding layers of the StyleGAN trained to generate caricatures. Given an input photo, the layer-mixed model produces detailed color stylization for a caricature but without shape exaggerations. We then append shape exaggeration blocks to the coarse layers of the layer-mixed model and train the blocks to create shape exaggerations while preserving the characteristic appearances of the input. Experimental results show that our StyleCariGAN generates realistic and detailed caricatures compared to the current state-of-the-art methods. We demonstrate StyleCariGAN also supports other StyleGAN-based image manipulations, such as facial expression control.
+</div>
+<div id="23_bibtex">
+@article{jang2021stylecarigan,<br/>
+&nbsp;&nbsp;author = {Jang, Wongjong and Ju, Gwangjin and Jung, Yucheol and Yang, Jiaolong and Xin, Tong and Lee, Seungyong},<br/>
+&nbsp;&nbsp;title = {StyleCariGAN: Caricature Generation via StyleGAN Feature Map Modulation},<br/>
+&nbsp;&nbsp;journal = {ACM Transactions on Graphics},<br/>
+<!--&nbsp;&nbsp;pages = {8178-8187},<br/>-->
+&nbsp;&nbsp;year = {2021}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr>
+<td width="132px"><img src="cvpr21_difnet.png" width="130"/>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="difnet" id="difnet"></a>
-Yu Deng<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a><sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
 <span class="jellon_d_i_c_name">Deformed Implicit Field: Modeling 3D Shapes with Learned Dense Correspondence</span><br/>
 <span class="jellon_d_i_c_refer">The 37th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2021)</b></span><br/>
 [<a href="#" onclick="show('22','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('22','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2011.13650.pdf">PDF</a>] [<a target="_blank" href="https://github.com/microsoft/DIF-Net">Code</a>] [<a target="_blank" href="https://arxiv.org/pdf/2011.13650.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2011.13650">arXiv</a>]<br/>
@@ -152,8 +267,8 @@ We propose a novel Deformed Implicit Field (DIF) representation for modeling 3D 
 @article{deng2020deformed,<br/>
 &nbsp;&nbsp;author = {Deng, Yu and Yang, Jiaolong and Xin, Tong},<br/>
 &nbsp;&nbsp;title = {Deformed Implicit Field: Modeling 3D Shapes with Learned Dense Correspondence},<br/>
-&nbsp;&nbsp;journal = {arXiv preprint arXiv:2011.13650},<br/>
-<!--&nbsp;&nbsp;pages = {8178-8187},<br/>-->
+&nbsp;&nbsp;booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},<br/>
+&nbsp;&nbsp;pages = {10286-10296},<br/>
 &nbsp;&nbsp;year = {2020}<br/>
 }
 </div>
@@ -164,7 +279,7 @@ We propose a novel Deformed Implicit Field (DIF) representation for modeling 3D 
 <td width="132px"><img src="cvpr20_disenfacegan.png" width="140"/>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="disenfacegan" id="disenfacegan"></a>
-Yu Deng<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/doch/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/fangwen/" target="_blank" style="text-decoration:underline;color:#000;">Fang Wen</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a><sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/doch/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/fangwen/" target="_blank" style="text-decoration:underline;color:#000;">Fang Wen</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
 <span class="jellon_d_i_c_name">Disentangled and Controllable Face Image Generation via 3D Imitative-Contrastive Learning</span><br/>
 <span class="jellon_d_i_c_refer">The 36th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2020)</b>, Seattle, USA</span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
 [<a href="#" onclick="show('21','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('21','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2004.11660.pdf">PDF</a>] [<a target="_blank" href="https://github.com/microsoft/DiscoFaceGAN">Code</a>] [<a target="_blank" href="https://arxiv.org/pdf/2004.11660.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2004.11660">arXiv</a>]<br/>
@@ -182,7 +297,7 @@ We propose DiscoFaceGAN, an approach for face image generation of virtual people
 &nbsp;&nbsp;author = {Deng, Yu and Yang, Jiaolong and Chen, Dong and Wen, Fang and Xin, Tong},<br/>
 &nbsp;&nbsp;title = {Disentangled and Controllable Face Image Generation via 3D Imitative-Contrastive Learning},<br/>
 &nbsp;&nbsp;booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},<br/>
-<!--&nbsp;&nbsp;pages = {8178-8187},<br/>-->
+&nbsp;&nbsp;pages = {5154-5163},<br/>
 &nbsp;&nbsp;year = {2020}<br/>
 }
 </div>
@@ -193,7 +308,7 @@ We propose DiscoFaceGAN, an approach for face image generation of virtual people
 <td width="132px"><img src="cvpr20_deep3dportrait.png" width="125"/>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="deep3dportrait" id="deep3dportrait"></a>
-Sicheng Xu<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/doch/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/fangwen/" target="_blank" style="text-decoration:underline;color:#000;">Fang Wen</a>, Yu Deng, <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+Sicheng Xu<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/doch/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/fangwen/" target="_blank" style="text-decoration:underline;color:#000;">Fang Wen</a>, <a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a>, <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
 <span class="jellon_d_i_c_name">Deep 3D Portrait from a Single Image</span><br/>
 <span class="jellon_d_i_c_refer">The 36th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2020)</b>, Seattle, USA</span><br/>
 [<a href="#" onclick="show('20','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('20','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2004.11598.pdf">PDF</a>] [<a target="_blank" href="https://github.com/sicxu/Deep3dPortrait">Code</a>] [<a target="_blank" href="https://arxiv.org/pdf/2004.11598.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2004.11598">arXiv</a>]<br/>
@@ -211,7 +326,7 @@ In this paper, we present a learning-based approach for recovering the 3D geomet
 &nbsp;&nbsp;author = {Xu, Sicheng and Yang, Jiaolong and Chen, Dong and Wen, Fang and Deng, Yu and Jia, Yunde and Xin, Tong},<br/>
 &nbsp;&nbsp;title = {Deep 3D Portrait from a Single Image},<br/>
 &nbsp;&nbsp;booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},<br/>
-<!--&nbsp;&nbsp;pages = {8178-8187},<br/>-->
+&nbsp;&nbsp;pages = {7710-7720},<br/>
 &nbsp;&nbsp;year = {2020}<br/>
 }
 </div>
@@ -222,7 +337,7 @@ In this paper, we present a learning-based approach for recovering the 3D geomet
 <td width="132px"><img src="cvpr20_lowlightdenosing.png" width="140"/>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="lowlightdenosing" id="lowlightdenosing"></a>
-Kaixuan Wei, <a href="https://ying-fu.github.io/" target="_blank" style="text-decoration:underline;color:#000;"> Ying Fu</a>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://iitlab.bit.edu.cn/gvlab/info/teaminfo/HuangHua/home_eng.html" target="_blank" style="text-decoration:underline;color:#000;">Hua Huang</a><br/>
+<a href="https://kxwei.net/" target="_blank" style="text-decoration:underline;color:#000;">Kaixuan Wei</a>, <a href="https://ying-fu.github.io/" target="_blank" style="text-decoration:underline;color:#000;"> Ying Fu</a>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://iitlab.bit.edu.cn/gvlab/info/teaminfo/HuangHua/home_eng.html" target="_blank" style="text-decoration:underline;color:#000;">Hua Huang</a><br/>
 <span class="jellon_d_i_c_name">A Physics-based Noise Formation Model for Extreme Low-light Raw Denoising</span><br/>
 <span class="jellon_d_i_c_refer">The 36th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2020)</b>, Seattle, USA</span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
 [<a href="#" onclick="show('19','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('19','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2003.12751.pdf">PDF</a>] [<a target="_blank" href="https://github.com/Vandermode/NoiseModel">Code</a>] [<a href="#" onclick="alert('Available soon');return false;">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2003.12751">arXiv</a>]<br/>
@@ -239,7 +354,7 @@ Lacking rich and realistic data, learned single image denoising algorithms gener
 &nbsp;&nbsp;author = {Wei, Kaixuan and Fu, Ying and Yang, Jiaolong and Huang, Hua},<br/>
 &nbsp;&nbsp;title = {A Physics-based Noise Formation Model for Extreme Low-light Raw Denoising},<br/>
 &nbsp;&nbsp;booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},<br/>
-<!--&nbsp;&nbsp;pages = {8178-8187},<br/>-->
+&nbsp;&nbsp;pages = {2758-2767},<br/>
 &nbsp;&nbsp;year = {2020}<br/>
 }
 </div>
@@ -250,7 +365,7 @@ Lacking rich and realistic data, learned single image denoising algorithms gener
 <td width="132px"><img src="iccv19_videofacedeblur.png" width="140"/>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="videofacedeblur" id="videofacedeblur"></a>
-Wenqi Ren*, <span class="jellon_d_i_c_emphasize">Jiaolong Yang*</span>, Senyou Deng, <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a>, Xiaochun Cao, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<a href="https://sites.google.com/site/renwenqi888/" target="_blank" style="text-decoration:underline;color:#000;">Wenqi Ren</a>*, <span class="jellon_d_i_c_emphasize">Jiaolong Yang*</span>, Senyou Deng, <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a>, <a href="https://xiaochun-cas.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Xiaochun Cao</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
 <span class="jellon_d_i_c_name">Face Video Deblurring using 3D Facial Priors</span><br/>
 <span class="jellon_d_i_c_refer">The 17th International Conference on Computer Vision <b>(ICCV2019)</b>, Seoul, Korea</span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
 [<a href="#" onclick="show('18','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('18','bibtex');return false;">BibTex</a>] [<a target="_blank" href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Ren_Face_Video_Deblurring_Using_3D_Facial_Priors_ICCV_2019_paper.pdf">PDF</a>] [<a target="_blank" href="https://github.com/rwenqi/3Dfacedeblurring">Code</a>] [<a target="_blank" href="iccv19_videofacedeblur_supmat.pdf">Suppl. Material</a>] [<a href="#">arXiv</a>]<br/> 
@@ -268,7 +383,7 @@ Existing face deblurring methods only consider single frames and do not account 
 &nbsp;&nbsp;author = {Ren, Wenqi and Yang, Jiaolong and Deng, Senyou and Wipf, David and Cao, Xiaochun and Xin, Tong},<br/>
 &nbsp;&nbsp;title = {Face Video Deblurring using a 3D Facial Prior},<br/>
 &nbsp;&nbsp;booktitle = {Proceedings of the International Conference on Computer Vision (ICCV)},<br/>
-<!--&nbsp;&nbsp;pages = {8178-8187},<br/>-->
+&nbsp;&nbsp;pages = {9388-9397},<br/>
 &nbsp;&nbsp;year = {2019}<br/>
 }
 </div>
@@ -279,7 +394,7 @@ Existing face deblurring methods only consider single frames and do not account 
 <td width="132px"><img src="cvpr19_reflectionremoval.png" width="140"/>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="ERRNet" id="ERRNet"></a>
-Kaixuan Wei, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://ying-fu.github.io/" target="_blank" style="text-decoration:underline;color:#000;"> Ying Fu</a>,  <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a>, <a href="http://iitlab.bit.edu.cn/gvlab/info/teaminfo/HuangHua/home_eng.html" target="_blank" style="text-decoration:underline;color:#000;">Hua Huang</a><br/>
+<a href="https://kxwei.net/" target="_blank" style="text-decoration:underline;color:#000;">Kaixuan Wei</a>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://ying-fu.github.io/" target="_blank" style="text-decoration:underline;color:#000;"> Ying Fu</a>,  <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a>, <a href="http://iitlab.bit.edu.cn/gvlab/info/teaminfo/HuangHua/home_eng.html" target="_blank" style="text-decoration:underline;color:#000;">Hua Huang</a><br/>
 <span class="jellon_d_i_c_name">Single Image Reflection Removal Exploiting Misaligned Training Data and Network Enhancements</span><br/>
 <span class="jellon_d_i_c_refer">The 35th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2019)</b>, Long Beach, USA</span><br/>
 [<a href="#" onclick="show('17','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('17','bibtex');return false;">BibTex</a>] [<a target="_blank" href="cvpr19_reflectionremoval.pdf">PDF</a>] [<a target="_blank" href="https://github.com/Vandermode/ERRNet">Code</a>] [<a target="_blank" href="cvpr19_reflectionremoval_supmat.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/1904.00637">arXiv</a>]<br/> 
@@ -307,10 +422,10 @@ Removing undesirable reflections from a single image captured through a glass wi
 <td width="132px"><img src="cvprw19_3dface.png" width="140"/>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="face3drecon" id="face3drecon"></a>
-Yu Deng<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, Sicheng Xu, <a href="https://www.microsoft.com/en-us/research/people/doch/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a>, and <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a><sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, Sicheng Xu, <a href="https://www.microsoft.com/en-us/research/people/doch/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a>, and <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
 <span class="jellon_d_i_c_name">Accurate 3D Face Reconstruction with Weakly-Supervised Learning: From Single Image to Image Set</span><br/>
 <span class="jellon_d_i_c_refer">IEEE Computer Vision and Pattern Recognition Workshop on AMFG<b> (CVPRW2019)</b>, Long Beach, USA</span> (<span style="color:#e60000"><b>Best Paper Award</b>. Check out our code!</span>)<br/>
-[<a href="#" onclick="show('16','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('16','bibtex');return false;">BibTex</a>] [<a target="_blank" href="cvprw19_3dface.pdf">PDF</a>] [<a target="_blank" href="https://github.com/microsoft/Deep3DFaceReconstruction">Code</a>] [<a target="_blank" href="cvprw19_3dface_supmat.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/1903.08527">arXiv</a>]<br/> 
+[<a href="#" onclick="show('16','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('16','bibtex');return false;">BibTex</a>] [<a target="_blank" href="cvprw19_3dface.pdf">PDF</a>] [<a target="_blank" href="https://github.com/sicxu/Deep3DFaceRecon_pytorch">Code</a>] [<a target="_blank" href="cvprw19_3dface_supmat.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/1903.08527">arXiv</a>]<br/> 
 (<sup>+</sup>: Intern at MSRA)
 </td>
 </tr>
@@ -319,7 +434,7 @@ Yu Deng<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, 
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 <div id="16_abstract">
 Recently, deep learning based 3D face reconstruction methods have shown promising results in both quality and efficiency. However, training deep neural networks typically requires a large volume of data, whereas face images with ground-truth 3D face shapes are scarce. In this paper, we propose a novel deep 3D face reconstruction approach that 1) leverages a robust, hybrid loss function for weakly-supervised learning which takes into account both
-low-level and perception-level information for supervision, and 2) performs multi-image face reconstruction by exploiting complementary information from different images for shape aggregation. Our method is fast, accurate, and robust to occlusion and large pose. We provide comprehensive experiments on MICC Florence and Facewarehouse datasets, systematically comparing our method with fifteen recent methods and demonstrating its state-of-the-art performance. Code available at https://github.com/Microsoft/Deep3DFaceReconstruction
+low-level and perception-level information for supervision, and 2) performs multi-image face reconstruction by exploiting complementary information from different images for shape aggregation. Our method is fast, accurate, and robust to occlusion and large pose. We provide comprehensive experiments on MICC Florence and Facewarehouse datasets, systematically comparing our method with fifteen recent methods and demonstrating its state-of-the-art performance.
 </div>
 <div id="16_bibtex">
 @inproceedings{deng2019accurate,<br/>
@@ -337,7 +452,7 @@ low-level and perception-level information for supervision, and 2) performs mult
 <td width="132px"><img src="aaai19_singleview3d.png" width="140"/>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a name="object3drecon" id="object3drecon"></a>
-Hanqing Wang<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://iitlab.bit.edu.cn/mcislab/~liangwei/" target="_blank" style="text-decoration:underline;color:#000;">Wei Liang</a> and <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<a href="https://hanqingwangai.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Hanqing Wang</a><sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://iitlab.bit.edu.cn/mcislab/~liangwei/" target="_blank" style="text-decoration:underline;color:#000;">Wei Liang</a> and <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
 <span class="jellon_d_i_c_name">Deep Single-View 3D Object Reconstruction with Visual Hull Embedding</span><br/>
 <span class="jellon_d_i_c_refer">The 33rd AAAI Conference on Artificial Intelligence <b>(AAAI2019)</b>, Honolulu, USA</span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
 [<a href="#" onclick="show('15','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('15','bibtex');return false;">BibTex</a>] [<a target="_blank" href="aaai19_singleview3d.pdf">PDF</a>] [<a target="_blank" href="https://github.com/qweas120/PSVH-3d-reconstruction">Code</a>] [<a target="_blank" href="aaai19_singleview3d_supmat.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/1809.03451">arXiv</a>]<br/> 
@@ -368,7 +483,7 @@ Hanqing Wang<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</sp
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="imagesmoothing" id="imagesmoothing"></a>
 <a href="https://fqnchina.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Qingnan Fan</a><sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>,  <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a>, <a href="http://www.cs.sdu.edu.cn/~baoquan" target="_blank" style="text-decoration:underline;color:#000;">Baoquan Chen</a> and <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
 <span class="jellon_d_i_c_name">Image Smoothing via Unsupervised Learning</span><br/>
-<span class="jellon_d_i_c_refer">ACM Transactions on Graphics <b>(TOG)</b>, 2018 (Proc. <b>SIGGRAPH Asia</b>)</span> <br/>
+<span class="jellon_d_i_c_refer">ACM Transactions on Graphics <b>(TOG)</b>, 2018 (Proc. <b>SIGGRAPH Asia 2018</b>)</span> <br/>
 [<a href="#" onclick="show('14','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('14','bibtex');return false;">BibTex</a>] [<a target="_blank" href="tog18_imagesmoothing.pdf">PDF</a>] [<a target="_blank" href="https://github.com/fqnchina/ImageSmoothing">Code</a>] [<a target="_blank" href="https://drive.google.com/open?id=1un1KGSiVl3mi_d0Xq6tgZN2Ffrp85MPh">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/1811.02804">arXiv</a>]<br/> 
 (<sup>+</sup>: Intern at MSRA)
 </td>
@@ -383,7 +498,9 @@ Image smoothing represents a fundamental component of many disparate computer vi
 &nbsp;&nbsp;author = {Fan, Qingnan and Yang, Jiaolong and Wipf, David and Chen, Baoquan and Tong, Xin},<br/>
 &nbsp;&nbsp;title = {Image Smoothing via Unsupervised Learning},<br/>
 &nbsp;&nbsp;booktitle = {ACM Transactions on Graphics},<br/>
-<!--&nbsp;&nbsp;pages = {8944-8952},<br/>-->
+&nbsp;&nbsp;volume = {37},
+&nbsp;&nbsp;number = {6},
+&nbsp;&nbsp;pages = {1--14},
 &nbsp;&nbsp;year = {2018}<br/>
 }
 </div>
@@ -812,7 +929,7 @@ Machine Vision and Applications (MVA)<br/>
 
 <div id="jellon_footer">
 <b><i>Declaimer:</i></b> <i>Papers provided on this page are for personal, research use only; copyright and all rights therein are retained by authors and/or other copyright holders.</i><br/>
-<b><i>Last update: Mar 4, 2021</i></b><br/>
+<b><i>Last update: Jul 26, 2021</i></b><br/>
 
 </div>
 </div>
