@@ -123,7 +123,7 @@ Yang (杨): the family name from my forefathers, the sixth most common surname i
 <!-- ITEM BEGIN -->
 <div class="jellon_d_item">
 <div class="jellon_d_i_title">Bio</div>
-<div class="jellon_d_i_content">I'm currently a Senior Researcher in the Microsoft Research Asia (MSRA) Lab located in Beijing, China. I do research in Computer Vision, where my interests include 3D reconstruction, face analysis & synthesis, camera and image motion estimation, and low-level vision & image processing. Part of my research has been transfered to various Microsoft Products such as Microsoft Cognitive Services, Windows Hello, Microsoft XiaoIce, etc. I serve regularly
+<div class="jellon_d_i_content">I'm currently a Senior Researcher in the Microsoft Research Asia (MSRA) Lab located in Beijing, China. I do research in Computer Vision, where my interests include 3D reconstruction, human face &  body rendering, camera and image motion estimation, and low-level vision & image processing. Part of my research has been transfered to various Microsoft Products such as Microsoft Cognitive Services, Windows Hello, Microsoft XiaoIce, etc. I serve regularly
 as program committee member/reviewer for major computer vision conferences and journals including CVPR/ICCV/ECCV/TPAMI/IJCV, and am an Area Chair for CVPR’21, ICCV'21, CVPR'22 and WACV'22.
 <p>Before joining MSRA in Sep 2016, I received dual PhD degrees from The Australian National University (ANU) and Beijing Institute of Technology (BIT) in 2016. I was a research intern at MSRA from Nov 2015 to Mar 2016, and was an visiting graduate researcher at Harvard University between Jul 2016 and Aug 2016. I received the Excellent PhD Thesis Award from China Society of Image and Graphics (CSIG) in 2017 (4 recipients in China).</p></div>
 </div>
@@ -141,21 +141,21 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">3D</a>, <a 
 <tr>
 <td width="132px"><img src="arxiv22_gramhd.png" width="140"/><a name="gramhd" id="gramhd"></a>
 </td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 Jianfeng Xiang<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
 <span class="jellon_d_i_c_name">GRAM-HD: 3D-Consistent Image Generation at High Resolution with Generative Radiance Manifolds</span><br/>
 <span class="jellon_d_i_c_refer">arXiv:2206.07255, 2022</b></span><br/>
-[<a href="#" onclick="show('34','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('34','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2206.07255.pdf">PDF</a>] [<a target="_blank" href="#" onclick="alert('Available soon');return false;">Code</a>] [<a target="_blank" href="https://jeffreyxiang.github.io/GRAM-HD/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2206.07255.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2206.07255">arXiv</a>]<br />
+[<a href="#" onclick="show('35','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('35','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2206.07255.pdf">PDF</a>] [<a target="_blank" href="#" onclick="alert('Available soon');return false;">Code</a>] [<a target="_blank" href="https://jeffreyxiang.github.io/GRAM-HD/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2206.07255.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2206.07255">arXiv</a>]<br />
 (<sup>+</sup>: Intern at MSRA)
 </td>
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-<div id="34_abstract">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<div id="35_abstract">
 Recent works have shown that 3D-aware GANs trained on unstructured single image collections can generate multiview images of novel instances. The key underpinnings to achieve this are a 3D radiance field generator and a volume rendering process. However, existing methods either cannot generate high-resolution images (e.g., up to 256X256) due to the high computation cost of neural volume rendering, or rely on 2D CNNs for image-space upsampling which jeopardizes the 3D consistency across different views. This paper proposes a novel 3D-aware GAN that can generate high resolution images (up to 1024X1024) while keeping strict 3D consistency as in volume rendering. Our motivation is to achieve super-resolution directly in the 3D space to preserve 3D consistency. We avoid the otherwise prohibitively-expensive computation cost by applying 2D convolutions on a set of 2D radiance manifolds defined in the recent generative radiance manifold (GRAM) approach, and apply dedicated loss functions for effective GAN training at high resolution. Experiments on FFHQ and AFHQv2 datasets show that our method can produce high-quality 3D-consistent results that significantly outperform existing methods. Videos can be found on the project page.
 </div>
-<div id="34_bibtex">
+<div id="35_bibtex">
 @inproceedings{xiang2022gramhd,<br/>
 &nbsp;&nbsp;author = {Xiang, Jianfeng and Yang, Jiaolong and Deng, Yu and Tong, Xin},<br/>
 &nbsp;&nbsp;title = {GRAM-HD: 3D-Consistent Image Generation at High Resolution with Generative Radiance Manifolds},<br/>
@@ -170,25 +170,53 @@ Recent works have shown that 3D-aware GANs trained on unstructured single image 
 <tr>
 <td width="132px"><img src="tpami22_mpsnerf.png" width="140"/><a name="mpsnerf" id="mpsnerf"></a>
 </td>
-<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
 Xiangjun Gao<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span><sup>$</sup>, Jongyoo Kim, <a href="https://pengsida.net/" target="_blank" style="text-decoration:underline;color:#000;">Sida Peng</a> <a href="https://www.microsoft.com/en-us/research/people/zliu/" target="_blank" style="text-decoration:underline;color:#000;">Zicheng Liu</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
 <span class="jellon_d_i_c_name">MPS-NeRF: Generalizable 3D Human Rendering from Multiview Images</span><br/>
 <span class="jellon_d_i_c_refer">IEEE Transactions on Pattern Analysis and Machine Intelligence <b>(TPAMI)</b>, 2022 (Conditionally accpeted)</span><br/>
-[<a href="#" onclick="show('33','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('33','bibtex');return false;">BibTex</a>] [<a target="_blank" href="#" onclick="alert('Available soon');return false;">PDF</a>] [<a target="_blank" href="#" onclick="alert('Available soon');return false;">Code</a>] [<a target="_blank" href="https://gaoxiangjun.github.io/mps_nerf/">Webpage</a>] [<a target="_blank" href="#" onclick="alert('Available soon');return false;">Suppl. Material</a>] [<a target="_blank" href="#" onclick="alert('Available soon');return false;">arXiv</a>]<br />
+[<a href="#" onclick="show('34','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('34','bibtex');return false;">BibTex</a>] [<a target="_blank" href="#" onclick="alert('Available soon');return false;">PDF</a>] [<a target="_blank" href="#" onclick="alert('Available soon');return false;">Code</a>] [<a target="_blank" href="https://gaoxiangjun.github.io/mps_nerf/">Webpage</a>] [<a target="_blank" href="#" onclick="alert('Available soon');return false;">Suppl. Material</a>] [<a target="_blank" href="#" onclick="alert('Available soon');return false;">arXiv</a>]<br />
 (<sup>+</sup>: Intern at MSRA. <sup>$</sup>: Corresponding author)
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<div id="34_abstract">
+There has been rapid progress recently on 3D human rendering, including novel view synthesis and pose animation, based on the advances of neural radiance fields (NeRF). However, most existing methods focus on person-specific training and their training typically requires multi-view videos. This paper deals with a new challenging task – rendering novel views and novel poses for a person unseen in training, using only multiview still images as input without videos. For this task, we propose a simple yet surprisingly effective method to train a generalizable NeRF with multiview images as conditional input. The key ingredient is a dedicated representation combining a canonical NeRF and a volume deformation scheme. Using a canonical space enables our method to learn shared properties of human and easily generalize to different people. Volume deformation is used to connect the canonical space with input and target images and query image features for radiance and density prediction. We leverage the parametric 3D human model fitted on the input images to derive the deformation, which works quite well in practice when combined with our canonical NeRF. The experiments on both real and synthetic data with the novel view synthesis and pose animation tasks ollectively demonstrate the efficacy of our method.
+</div>
+<div id="34_bibtex">
+@inproceedings{deng2021gram,<br/>
+&nbsp;&nbsp;author = {Gao, Xiangjun and Yang, Jiaolong and Kim, Jongyoo and Peng, Sida and Liu, Zicheng and Tong, Xin},<br/>
+&nbsp;&nbsp;title = {MPS-NeRF: Generalizable 3D Human Rendering from Multiview Images},<br/>
+&nbsp;&nbsp;booktitle = {IEEE Transactions on Pattern Analysis and Machine Intelligence (to appear)},<br/>
+<!--&nbsp;&nbsp;pages = {8178-8187},<br/>-->
+&nbsp;&nbsp;year = {2022}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr>
+<td width="132px"><img src="eccv22_pgmpi.png" width="140"/><a name="mpsnerf" id="mpsnerf"></a>
+</td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<a href="https://ken-ouyang.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Hao Ouyang</a>, <a href="https://bo-zhang.me/" target="_blank" style="text-decoration:underline;color:#000;">Bo Zhang</a>, <a href="https://panzhang0212.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Pan Zhang</a>, <a href="https://www.haya.pro" target="_blank" style="text-decoration:underline;color:#000;">Hao Yang</a>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://www.dongchen.pro" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="https://cqf.io" target="_blank" style="text-decoration:underline;color:#000;">Qifeng Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/fangwen/" target="_blank" style="text-decoration:underline;color:#000;">Fang Wen</a><br/>
+<span class="jellon_d_i_c_name">Real-Time Neural Character Rendering with Pose-Guided Multiplane Images</span><br/>
+<span class="jellon_d_i_c_refer">The 17th European Conference on Computer Vision<b> (ECCV2022)</b></span><br/>
+[<a href="#" onclick="show('33','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('33','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2204.11820.pdf">PDF</a>] [<a target="_blank" href="https://ken-ouyang.github.io/cmpi/index.html">Code</a>] [<a target="_blank" href="https://ken-ouyang.github.io/cmpi/index.html">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2204.11820.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2204.11820">arXiv</a>]
 </td>
 </tr>
 <tr style="width:100%;height:100%">
 <td></td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 <div id="33_abstract">
-There has been rapid progress recently on 3D human rendering, including novel view synthesis and pose animation, based on the advances of neural radiance fields (NeRF). However, most existing methods focus on person-specific training and their training typically requires multi-view videos. This paper deals with a new challenging task – rendering novel views and novel poses for a person unseen in training, using only multiview still images as input without videos. For this task, we propose a simple yet surprisingly effective method to train a generalizable NeRF with multiview images as conditional input. The key ingredient is a dedicated representation combining a canonical NeRF and a volume deformation scheme. Using a canonical space enables our method to learn shared properties of human and easily generalize to different people. Volume deformation is used to connect the canonical space with input and target images and query image features for radiance and density prediction. We leverage the parametric 3D human model fitted on the input images to derive the deformation, which works quite well in practice when combined with our canonical NeRF. The experiments on both real and synthetic data with the novel view synthesis and pose animation tasks ollectively demonstrate the efficacy of our method.
+We propose pose-guided multiplane image (MPI) synthesis which can render an animatable character in real scenes with photorealistic quality. We use a portable camera rig to capture the multi-view images along with the driving signal for the moving subject. Our method generalizes the image-to-image translation paradigm, which translates the human pose to a 3D scene representation --- MPIs that can be rendered in free viewpoints, using the multi-views captures as supervision. To fully cultivate the potential of MPI, we propose depth-adaptive MPI which can be learned using variable exposure images while being robust to inaccurate camera registration. Our method demonstrates advantageous novel-view synthesis quality over the state-of-the-art approaches for characters with challenging motions. Moreover, the proposed method is generalizable to novel combinations of training poses and can be explicitly controlled. Our method achieves such expressive and animatable character rendering all in real time, serving as a promising solution for practical applications.
 </div>
 <div id="33_bibtex">
-@inproceedings{deng2021gram,<br/>
-&nbsp;&nbsp;author = {Gao, Xiangjun and Yang, Jiaolong and Kim, Jongyoo and Peng, Sida and Liu, Zicheng and Tong, Xin},<br/>
-&nbsp;&nbsp;title = {MPS-NeRF: Generalizable 3D Human Rendering from Multiview Images},<br/>
-&nbsp;&nbsp;booktitle = {IEEE Transactions on Pattern Analysis and Machine Intelligence (to appear)},<br/>
+@inproceedings{hao2022real,<br/>
+&nbsp;&nbsp;author = {Ouyang, Hao and Zhang, Bo and Zhang, Pan and Yang, Hao and Yang, Jiaolong and Chen, Dong and Chen, Qifeng and Wen, Fang},<br/>
+&nbsp;&nbsp;title = {Real-Time Neural Character Rendering with Pose-Guided Multiplane Images},<br/>
+&nbsp;&nbsp;booktitle = {European Conference on Computer Vision},<br/>
 <!--&nbsp;&nbsp;pages = {8178-8187},<br/>-->
 &nbsp;&nbsp;year = {2022}<br/>
 }
@@ -1166,7 +1194,7 @@ Machine Vision and Applications (MVA)<br/>
 
 <div id="jellon_footer">
 <b><i>Declaimer:</i></b> <i>Papers provided on this page are for personal, research use only; copyright and all rights therein are retained by authors and/or other copyright holders.</i><br/>
-<b><i>Last update: Jun 17, 2022</i></b><br/>
+<b><i>Last update: Jul 13, 2022</i></b><br/>
 
 </div>
 </div>
