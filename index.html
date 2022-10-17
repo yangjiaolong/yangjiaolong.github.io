@@ -142,12 +142,41 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">3D</a>, <a 
 <tr>
 <td width="132px"><a name="gramhd" id="gramhd"><img src="arxiv22_gramhd.png" width="140"/></a>
 </td>
-<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 Jianfeng Xiang<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
 <span class="jellon_d_i_c_name">GRAM-HD: 3D-Consistent Image Generation at High Resolution with Generative Radiance Manifolds</span><br/>
-<span class="jellon_d_i_c_refer">arXiv:2206.07255, 2022</b></span><br/>
-[<a href="#" onclick="show('36','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('36','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2206.07255.pdf">PDF</a>] [<a target="_blank" href="#" onclick="alert('Available soon');return false;">Code</a>] [<a target="_blank" href="https://jeffreyxiang.github.io/GRAM-HD/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2206.07255.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2206.07255">arXiv</a>]<br />
+<span class="jellon_d_i_c_refer">arXiv:2206.07255, 2022</span><br/>
+[<a href="#" onclick="show('37','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('37','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2206.07255.pdf">PDF</a>] [<a target="_blank" href="#" onclick="alert('Available soon');return false;">Code</a>] [<a target="_blank" href="https://jeffreyxiang.github.io/GRAM-HD/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2206.07255.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2206.07255">arXiv</a>]<br />
 (<sup>+</sup>: Intern at MSRA)
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<div id="37_abstract">
+Recent works have shown that 3D-aware GANs trained on unstructured single image collections can generate multiview images of novel instances. The key underpinnings to achieve this are a 3D radiance field generator and a volume rendering process. However, existing methods either cannot generate high-resolution images (e.g., up to 256X256) due to the high computation cost of neural volume rendering, or rely on 2D CNNs for image-space upsampling which jeopardizes the 3D consistency across different views. This paper proposes a novel 3D-aware GAN that can generate high resolution images (up to 1024X1024) while keeping strict 3D consistency as in volume rendering. Our motivation is to achieve super-resolution directly in the 3D space to preserve 3D consistency. We avoid the otherwise prohibitively-expensive computation cost by applying 2D convolutions on a set of 2D radiance manifolds defined in the recent generative radiance manifold (GRAM) approach, and apply dedicated loss functions for effective GAN training at high resolution. Experiments on FFHQ and AFHQv2 datasets show that our method can produce high-quality 3D-consistent results that significantly outperform existing methods. Videos can be found on the project page.
+</div>
+<div id="37_bibtex">
+@inproceedings{xiang2022gramhd,<br/>
+&nbsp;&nbsp;author = {Xiang, Jianfeng and Yang, Jiaolong and Deng, Yu and Tong, Xin},<br/>
+&nbsp;&nbsp;title = {GRAM-HD: 3D-Consistent Image Generation at High Resolution with Generative Radiance Manifolds},<br/>
+&nbsp;&nbsp;booktitle = {arXiv:2206.07255},<br/>
+<!--&nbsp;&nbsp;pages = {8178-8187},<br/>-->
+&nbsp;&nbsp;year = {2022}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr>
+<td width="132px"><a name="anifacegan" id="anifacegan"><img src="neurips22_anifacegan.png" width="140"/></a>
+</td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<a href="https://yuewuhkust.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yue Wu</a><sup>+</sup>, <a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a><sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span><sup>$</sup>, <a href="https://cqf.io" target="_blank" style="text-decoration:underline;color:#000;">Qifeng Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<span class="jellon_d_i_c_name">AniFaceGAN: Animatable 3D-Aware Face Image Generation for Video Avatars</span><br/>
+<span class="jellon_d_i_c_refer">The 36th Conference on Neural Information Processing Systems <b>(NeurIPS 2022)</b></span><br/>
+[<a href="#" onclick="show('36','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('36','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2210.06465.pdf">PDF</a>] [<a target="_blank" href="https://yuewuhkust.github.io/AniFaceGAN/">Webpage</a>] [<a target="_blank" href="https://yuewuhkust.github.io/AniFaceGAN/">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2210.06465">arXiv</a>]<br />
+(<sup>+</sup>: Intern at MSRA. <sup>$</sup>: Corresponding author)
 </td>
 </tr>
 <tr style="width:100%;height:100%">
@@ -158,10 +187,9 @@ Recent works have shown that 3D-aware GANs trained on unstructured single image 
 </div>
 <div id="36_bibtex">
 @inproceedings{xiang2022gramhd,<br/>
-&nbsp;&nbsp;author = {Xiang, Jianfeng and Yang, Jiaolong and Deng, Yu and Tong, Xin},<br/>
-&nbsp;&nbsp;title = {GRAM-HD: 3D-Consistent Image Generation at High Resolution with Generative Radiance Manifolds},<br/>
-&nbsp;&nbsp;booktitle = {arXiv:2206.07255},<br/>
-<!--&nbsp;&nbsp;pages = {8178-8187},<br/>-->
+&nbsp;&nbsp;author = {Wu, Yue and Deng, Yu and Yang, Jiaolong and Wei, Fangyun and Chen, Qifeng and Tong, Xin},<br/>
+&nbsp;&nbsp;title = {AniFaceGAN: Animatable 3D-Aware Face Image Generation for Video Avatars},<br/>
+&nbsp;&nbsp;booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},<br/>
 &nbsp;&nbsp;year = {2022}<br/>
 }
 </div>
@@ -1225,7 +1253,7 @@ Machine Vision and Applications (MVA)<br/>
 
 <div id="jellon_footer">
 <b><i>Declaimer:</i></b> <i>Papers provided on this page are for personal, research use only; copyright and all rights therein are retained by authors and/or other copyright holders.</i><br/>
-<b><i>Last update: Sep 13, 2022</i></b><br/>
+<b><i>Last update: Oct 15, 2022</i></b><br/>
 
 </div>
 </div>
