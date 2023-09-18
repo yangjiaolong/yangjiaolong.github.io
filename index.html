@@ -68,7 +68,7 @@ function shownamedesc()
 <span id="jellon_b_l_name">Jiaolong YANG (杨蛟龙)</span> <span style="padding:3px 0px 0px 10px;">(<a href="#" onclick="javascript:shownamedesc();return false;">?</a>)</span><br/>
 <span id="jellon_b_l_title">Ph.D. (Computer Science and Engineering)</span>
 <p>
-Senior Researcher<br />
+Principal Researcher<br />
 Visual Computing Group<br />
 Microsoft Research Asia (MSRA)<br />
 </p>
@@ -125,7 +125,7 @@ Yang (杨): the family name from my forefathers, the sixth most common surname i
 <!-- ITEM BEGIN -->
 <div class="jellon_d_item">
 <div class="jellon_d_i_title">Bio</div>
-<div class="jellon_d_i_content">I'm currently a Senior Researcher in the Microsoft Research Asia (MSRA) Lab located in Beijing, China. I do research in Computer Vision, where my interests include 3D reconstruction and generation, human face & body rendering, camera and image motion estimation, and low-level vision & image processing. Part of my research has been transfered to various Microsoft Products such as Microsoft Cognitive Services, Windows Hello, Microsoft XiaoIce, etc. I serve regularly
+<div class="jellon_d_i_content">I'm currently a Principal Researcher in the Microsoft Research Asia (MSRA) Lab located in Beijing, China. I do research in Computer Vision, where my interests include 3D reconstruction and generation, human face & body rendering, camera and image motion estimation, and low-level vision & image processing. Part of my research has been transfered to various Microsoft Products such as Microsoft Cognitive Services, Windows Hello, Microsoft XiaoIce, etc. I serve regularly
 as program committee member/reviewer for major computer vision conferences and journals including CVPR/ICCV/ECCV/TPAMI/IJCV, and am an Area Chair for CVPR’21, ICCV'21, CVPR'22 and WACV'22.
 <p>Before joining MSRA in Sep 2016, I received dual PhD degrees from The Australian National University (ANU) and Beijing Institute of Technology (BIT) in 2016. I was a research intern at MSRA from Nov 2015 to Mar 2016, and was an visiting graduate researcher at Harvard University between Jul 2016 and Aug 2016. I received the Excellent PhD Thesis Award from China Society of Image and Graphics (CSIG) in 2017 (4 recipients in China).</p></div>
 </div>
@@ -137,8 +137,38 @@ as program committee member/reviewer for major computer vision conferences and j
 <div class="jellon_d_i_title">Publications <span style="font-style:normal;font-weight:normal;">(<a target="_blank" href="https://scholar.google.com/citations?user=GuqoolgAAAAJ&hl=en" style="text-decoration:underline;font-size:15px;font-weight:normal;">Google Scholar</a><!--, <a target="_blank" href="full_publications.html" style="text-decoration:underline;font-size:15px;font-weight:normal;">Full List</a>-->)</span></div>
 <!--By year: <a href="#" onclick="show('10','bibtex');return false;">2017</a>, <a href="#" onclick="show('10','bibtex');return false;">2016</a>, <a href="#" onclick="show('10','bibtex');return false;">2015</a>, <a href="#" onclick="show('10','bibtex');return false;">2014</a>, <a href="#" onclick="show('10','bibtex');return false;">2013</a>, <a href="#" onclick="show('10','bibtex');return false;">2012</a><br/>
 By keywords: <a href="#" onclick="show('10','bibtex');return false;">3D</a>, <a href="#" onclick="show('10','bibtex');return false;">Deep Learning</a>, <a href="#" onclick="show('10','bibtex');return false;">Optical Flow</a>, <a href="#" onclick="show('10','bibtex');return false;">Face</a>, <a href="#" onclick="show('10','bibtex');return false;">Camera Motion</a>, <a href="#" onclick="show('10','bibtex');return false;">Registration</a>, <a href="#" onclick="show('10','bibtex');return false;">Relection Removal</a><br/>-->
+<!--All 3D Generation Face & Body 3D Conferening-->
 <div class="jellon_d_i_content">
 <table id="jellon_papertable" style="width:100%;"  border="0" cellpadding="0" cellspacing="0">
+
+<tr>
+<td width="132px"><a name="aniportraitgan" id="aniportraitgan"><img src="sa23_aniportraitgan.png" width="140"/></a>
+</td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<a href="https://yuewuhkust.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yue Wu</a><sup>+*</sup>, Sicheng Xu<sup>*</sup>, <a href="https://jeffreyxiang.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Jianfeng Xiang</a>, Fangyun Wei, <a href="https://cqf.io" target="_blank" style="text-decoration:underline;color:#000;">Qifeng Chen</a>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang<sup>$</sup></span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<span class="jellon_d_i_c_name">AniPortraitGAN: Animatable 3D Portrait Generation from 2D Image Collections</span><br/>
+<span class="jellon_d_i_c_refer">ACM <b>SIGGRAPH Asia</b> 2023</span><br/>
+[<a href="#" onclick="show('40','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('40','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2309.02186.pdf">PDF</a>] [<a target="_blank" href="#" onclick="alert('Available soon');return false;">Code</a>] [<a target="_blank" href="https://yuewuhkust.github.io/AniPortraitGAN/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2309.02186.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2309.02186">arXiv</a>]<br />
+(<sup>+</sup>: Intern at MSRA. <sup>*</sup>: Equal contributuons. <sup>$</sup>: Corresponding author)
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<div id="40_abstract">
+Previous animatable 3D-aware GANs for human generation have primarily focused on either the human head or full body. However, head-only videos are relatively uncommon in real life, and full body generation typically does not deal with facial expression control and still has challenges in generating high-quality results. Towards applicable video avatars, we present an animatable 3D-aware GAN that generates portrait images with controllable facial expression, head pose, and shoulder movements. It is a generative model trained on unstructured 2D image collections without using 3D or video data. For the new task, we base our method on the generative radiance manifold representation and equip it with learnable facial and head-shoulder deformations. A dual-camera rendering and adversarial learning scheme is proposed to improve the quality of the generated faces, which is critical for portrait images. A pose deformation processing network is developed to generate plausible deformations for challenging regions such as long hair. Experiments show that our method, trained on unstructured 2D images, can generate diverse and high-quality 3D portraits with desired control over different properties. 
+</div>
+<div id="40_bibtex">
+@inproceedings{wu2023aniportraitgan,<br/>
+&nbsp;&nbsp;author = {Wu, Yue and Xu, Sicheng and Xiang, Jianfeng and Wei, Fangyun and Chen, Qifeng and Yang, Jiaolong and Tong, Xin},<br/>
+&nbsp;&nbsp;title = {AniPortraitGAN: Animatable 3D Portrait Generation from 2D Image Collections},<br/>
+&nbsp;&nbsp;booktitle = {SIGGRAPH Asia 2023 Conference Proceedings},<br/>
+<!--&nbsp;&nbsp;pages = {8178-8187},<br/>-->
+&nbsp;&nbsp;year = {2023}<br/>
+}
+</div>
+</td>
+</tr>
 
 <tr>
 <td width="132px"><a name="gramhd" id="gramhd"><img src="iccv23_3dawarediffusion.jpg" width="140"/></a>
@@ -1311,7 +1341,7 @@ Machine Vision and Applications (MVA)<br/>
 
 <div id="jellon_footer">
 <b><i>Declaimer:</i></b> <i>Papers provided on this page are for personal, research use only; copyright and all rights therein are retained by authors and/or other copyright holders.</i><br/>
-<b><i>Last update: Jul 14, 2023</i></b><br/>
+<b><i>Last update: Sep 19, 2023</i></b><br/>
 
 </div>
 </div>
