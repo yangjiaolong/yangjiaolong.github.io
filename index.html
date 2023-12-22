@@ -1,14 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
+<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"> -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Jiaolong Yang,杨蛟龙,homepage,主页,Computer Vision,PhD,Microsoft Research Asia,MSRA,微软亚洲研究院,3D Reconstruction,3D Face,3D Human,3D GAN,Face Synthesis,GRAM,GRAM-HD,AdaMPI,NeRF, MPS-NeRF,VirtualCube,V-Cube,DIF,DIF-Net,DIFNet,Deep3DFace,Deep3DFaceReconstruction,DiscoFaceGAN,Reflection Removal,ERRNet,CEILNet,Neural Aggregation Network,NAN,Video Face,Go-ICP,GoICP,3D Registration" />
+<meta name="keywords" content="Jiaolong Yang,杨蛟龙,homepage,主页,Computer Vision,PhD,Microsoft Research Asia,MSRA,微软亚洲研究院,3D Reconstruction,3D Face,3D Human,3D GAN,Face Synthesis,AniFaceGAN,AniPortraitGAN,GRAM,GRAM-HD,AdaMPI,NeRF,MPS-NeRF,VirtualCube,VCube,V-Cube,DIF,DIF-Net,DIFNet,Deep3DFace,Deep3DFaceReconstruction,DiscoFaceGAN,Reflection Removal,ERRNet,CEILNet,Neural Aggregation Network,NAN,Video Face,Go-ICP,GoICP,3D Registration" />
 <meta name="description" content="Jiaolong Yang's Homepage"/>
 <link rel="icon" type="x-icon" href="favicon.ico" />
 <title>Jiaolong Yang (杨蛟龙)'s Homepage</title>
 <link rel="stylesheet" type="text/css" href="style.css"/>
-</head>
-<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"> -->
 <script src="jquery-1.10.2.min.js"> 
 </script>
 <script type="text/javascript">
@@ -56,13 +55,14 @@ function shownamedesc()
 }
 
 </script>
+</head>
 <body>
 
 <div id="jellon">
 
 <div id="jellon_basic">
 
-<div id="jellon_b_left"><div id="jellon_b_r_photo"><img src="photo1.jpg" height="170"/></div></div>
+<div id="jellon_b_left"><div id="jellon_b_r_photo"><img src="photo2.jpg" height="170"/></div></div>
 
 <div id="jellon_b_middle">
 <span id="jellon_b_l_name">Jiaolong YANG (杨蛟龙)</span> <span style="padding:3px 0px 0px 10px;">(<a href="#" onclick="javascript:shownamedesc();return false;">?</a>)</span><br/>
@@ -91,32 +91,45 @@ Yang (杨): the family name from my forefathers, the sixth most common surname i
 
 <div class="jellon_d_item">
 <div style="float:left;height:70px;padding-top:33px;padding-right:1px;"><img src="new.jpg" height="35px" width="35px"/></div>
-<div style="padding-left:1px;">
-<font color="red">
-[07/14/2023] <i>2 papers accepted by ICCV'23: <a style="color:red;text-decoration:underline;" href="https://jeffreyxiang.github.io/ivid/" target="_blank">3D-aware Diffusion</a> and <a style="color:red;text-decoration:underline;" href="https://jeffreyxiang.github.io/GRAM-HD/" target="_blank">GRAM-HD - high-resolution 3D Image GAN</a> .</i><br/>
-<!--[06/15/2022] <i>Check out our latest, high-resolution 3D Image GAN: <a style="color:red;text-decoration:underline;" href="https://jeffreyxiang.github.io/GRAM-HD/" target="_blank">GRAM-HD</a>!</i><br/>-->
-[04/01/2022] <i>2 papers accepted by SIGGRAPH'22: <a style="color:red;text-decoration:underline;" href="#adampi"  onclick="show2('32','abstract');">AdaMPI - Single-photo 3D view synthisis</a> and <a style="color:red;text-decoration:underline;" href="#deformcaricature" onclick="show2('31','abstract');">Deformable 3D caricature faces</a>.</i><br/>
-[03/29/2022] <i>Our <a style="color:red;text-decoration:underline;" href="https://yudeng.github.io/GRAM/" target="_blank">GRAM - 3D Image GAN</a> paper is accepted by CVPR'22 as Oral presentation.</i><br/>
-[03/16/2022] <i>Our <a style="color:red;text-decoration:underline;" href="https://www.microsoft.com/en-us/research/project/virtualcube/" target="_blank">VirtualCube - 3D Video Conferecing</a> paper received the <a href="VirtualCube_IEEE_VR22_Best_Paper_Award_Certification.jpg" target="_blank" style="color:red;text-decoration:underline;">IEEE VR'22 Best Paper Award</a>! </i><br/>
-<!--[12/17/2021] <i>Checkout our recent exciting projects: <a style="color:red;text-decoration:underline;" href="https://www.microsoft.com/en-us/research/project/virtualcube/" target="_blank">VirtualCube - 3D Video Conferecing</a> and <a style="color:red;text-decoration:underline;" href="https://yudeng.github.io/GRAM/" target="_blank">GRAM - 3D-Aware GAN</a>.</i><br/>-->
-<!--[08/02/2021] <i>The <a style="color:red;text-decoration:underline;" href="#1dflow" onclick="show2('26','abstract');">low-light raw image denosing</a> paper is accepted by TPAMI</a>.</i><br/>-->
-<!--[07/23/2021] <i>2 papers accepted by ICCV'21: <a style="color:red;text-decoration:underline;" href="#facetexcomp" onclick="show2('26','abstract');">high-res face texture completion</a> and <a style="color:red;text-decoration:underline;" href="#1dflow" onclick="show2('25','abstract');">high-res optical flow estimation</a> (Oral).</i><br/>-->
-[07/20/2021] <i>A <a href="https://github.com/sicxu/Deep3DFaceRecon_pytorch" target="_blank" style="color:red;text-decoration:underline;">PyTorch version</a> of our <a style="color:red;text-decoration:underline;" href="#face3drecon" onclick="show2('16','abstract');">Deep3DFace</a> method is released: more accurate and easier to use!</a></i><br/>
-<!--[03/04/2021] <i>The <a style="color:red;text-decoration:underline;" href="#difnet" onclick="show2('22','abstract');">deep deformed implicit filed (DIF-Net) paper</a> is accepted by CVPR'21.</i><br/>-->
-<!--[03/13/2020] <i>3 papers accepted by CVPR'20: <a style="color:red;text-decoration:underline;" href="#disenfacegan" onclick="show2('21','abstract');">disentangled face GAN</a> (Oral), <a style="color:red;text-decoration:underline;" href="#deep3dportrait" onclick="show2('20','abstract');">3D portrait reconstrucion</a>, <a style="color:red;text-decoration:underline;" href="#lowlightdenosing" onclick="show2('19','abstract');">low-light denoising</a> (Oral).</i><br/>-->
-<!--[07/23/2019] <i>The <a style="color:red;text-decoration:underline;" href="#videofacedeblur" onclick="show2('18','abstract');">3D-aided face video  debluring paper</a> is accepted by ICCV'19 as Oral.</i><br/>-->
-<!--[03/03/2019] <i>The <a style="color:red;text-decoration:underline;" href="#ERRNet" onclick="show2('17','abstract');">deep reflection removal paper</a> is accepted by CVPR'19</i><br/>-->
-<!--[03/30/2019] <i>The <a style="color:red;text-decoration:underline;" href="#face3drecon" onclick="show2('16','abstract');">3D face reconstruction paper</a> received the Best Paper Award at CVPR'19 workshop on AMFG</i><br/>-->
-<!--[07/04/2018] <i>The <a style="color:red;text-decoration:underline;" href="#dnnquantization" onclick="show2('13','abstract');">neural network quantization paper</a> is accepted by ECCV'18</i><br/>-->
-<!--[03/08/2018] <i>The <a style="color:red;text-decoration:underline;" href="#deepintrinsicimage" onclick="show2('12','abstract');">intrinsic image decomposition paper</a> is accepted by CVPR'18 as Oral</i><br/>-->
-<!--[07/17/2017] <i>The <a style="color:red;text-decoration:underline;" href="#dcnnreflectionsmoothing" onclick="show2('11','abstract');">deep reflection removal paper</a> is accepted by ICCV'17</i><br/>-->
-<!--[03/18/2017] <i>The <a style="color:red;text-decoration:underline;" href="#videoface" onclick="show2('9','abstract');">video face recognition paper</a> is accepted by CVPR'17</i><br/>-->
-<!--[01/03/2016] <i>The <a style="color:red;text-decoration:underline;" href="#robustopticalflow" onclick="show2('8','abstract');">robust optical flow paper</a> is accepted by CVPR'16</i><br/>-->
-<!--[16/02/2016] <i>I will join <a style="color:red;text-decoration:underline;" target="_blank" href="http://research.microsoft.com/en-us/labs/asia/">Microsoft Research Asia (MSRA)</a> as an Associate Researcher</i><br/>-->
-<!--[23/11/2015] <i>I joined <a style="color:red;text-decoration:underline;" target="_blank" href="http://research.microsoft.com/en-us/labs/asia/">Microsoft Research Asia (MSRA)</a> as a Research Intern</i><br/>-->
-<!--[10/11/2015] <i>The <a style="color:red;text-decoration:underline;" href="#goicpjournal" onclick="show2('7','abstract');">Go-ICP paper</a> is accepted by T-PAMI</i><br/>-->
-<!--[02/03/2015] <i>The <a style="color:red;text-decoration:underline;" target="_blank" href="cvpr2015_opticalflow.pdf">optical flow paper</a> is accepted by CVPR'15</i><br/>-->
-<!--[05/08/2014] <i>Project page and source code for Go-ICP can be found <a target="_blank" href="./go-icp" style="color:red;text-decoration:underline;">here</a></i><br/>-->
+<div style="padding-left:1px; overflow-y: scroll; overflow-x: hidden; max-height: 105px;">
+<font color="#c90000">
+[08/19/2023] <i>Invited as an Area Chair for <a style="color:#c90000;text-decoration:underline;" href="https://2024.acmmm.org/" target="_blank">ACM MM 2024</a>.</i><br/>
+[08/19/2023] <i>Invited to give a talk and joined panel disussion for the AIGC Forum of <a style="color:#c90000;text-decoration:underline;" href="https://dmcv.sjtu.edu.cn/cadcg2023/invitedspeaker/" target="_blank">2023 CCF CAD/CG Conference</a>.</i><br/>
+[08/03/2023] <i>1 paper accepted SIGGRAPH Asia 2023: <a style="color:#c90000;text-decoration:underline;" href="https://yuewuhkust.github.io/AniPortraitGAN/" target="_blank">AniPortraitGAN</a>  for animatable 3D human portrait generation.</i><br/>
+[07/14/2023] <i>2 papers accepted by ICCV'23: <a style="color:#c90000;text-decoration:underline;" href="https://jeffreyxiang.github.io/ivid/" target="_blank">3D-aware Diffusion</a> and <a style="color:#c90000;text-decoration:underline;" href="https://jeffreyxiang.github.io/GRAM-HD/" target="_blank">GRAM-HD - high-resolution 3D Image GAN</a>.</i><br/>
+[03/01/2023] <i>Invited to give a talk and joined panel disussion for the Digital Human Forum of <a style="color:#c90000;text-decoration:underline;" href="https://mp.weixin.qq.com/s?__biz=MzUxMDE4MzAzOA==&mid=2247669667&idx=2&sn=d0ffe8ce1c6e60e6fde35343c92b52f0" target="_blank">China 3DV 2023</a>.</i><br/>
+[08/19/2022] <i>Invited to give a talk for the 3D Vision Forum of <a style="color:#c90000;text-decoration:underline;" href="https://mp.weixin.qq.com/s?__biz=MzUxMDE4MzAzOA==&mid=2247569736&idx=1&sn=4c18befa8bad7b23b4f9ac929c8e2b25" target="_blank">CCIG 2022</a>.</i><br/>
+<!--[08/10/2022] <i>Invited to give a <a style="color:#c90000;text-decoration:underline;" href="https://www.techbeat.net/talk-info?id=702" target="_blank">lecture</a> for the JiangMen-TechBeat Tech Community.</i><br/>-->
+[07/04/2022] <i>Invited to give a lecture for the <a style="color:#c90000;text-decoration:underline;" href="http://staff.ustc.edu.cn/~renjiec/SummerSchool_2022/" target="_blank">2022 USTC Summer School: Advances in Computer Graphics</a>.</i><br/>
+[04/01/2022] <i>2 papers accepted by SIGGRAPH'22: <a style="color:#c90000;text-decoration:underline;" href="#adampi"  onclick="show2('32','abstract');">AdaMPI - Single-photo 3D view synthisis</a> and <a style="color:#c90000;text-decoration:underline;" href="#deformcaricature" onclick="show2('31','abstract');">Deformable 3D caricature faces</a>.</i><br/>
+[03/29/2022] <i>Our <a style="color:#c90000;text-decoration:underline;" href="https://yudeng.github.io/GRAM/" target="_blank">GRAM - 3D Image GAN</a> paper is accepted by CVPR'22 as Oral presentation.</i><br/>
+[03/16/2022] <i>Our <a style="color:#c90000;text-decoration:underline;" href="https://www.microsoft.com/en-us/research/project/virtualcube/" target="_blank">VirtualCube - Immersive 3D Video Conferecing</a> paper received the <a href="VirtualCube_IEEE_VR22_Best_Paper_Award_Certification.jpg" target="_blank" style="color:#c90000;text-decoration:underline;">IEEE VR'22 Best Paper Award</a>! </i><br/>
+[01/10/2022] <i>Invited to give a talk and joined panel disussion for the <a style="color:#c90000;text-decoration:underline;" href="http://tc.ccf.org.cn/ccfcv/zyhd/sjwx/2021-12-29/752337.shtml" target="_blank">CCF-CV Seminar on AIGC</a>.</i><br/>
+[08/02/2021] <i>The <a style="color:#c90000;text-decoration:underline;" href="#1dflow" onclick="show2('26','abstract');">low-light raw image denosing</a> paper is accepted by TPAMI</a>.</i><br/>
+[08/01/2021] <i>Invited as an Area Chair for <a style="color:#c90000;text-decoration:underline;" href="https://wacv2022.thecvf.com/home" target="_blank">WACV 2022</a>.</i><br/>
+[07/23/2021] <i>2 papers accepted by ICCV'21: <a style="color:#c90000;text-decoration:underline;" href="#facetexcomp" onclick="show2('26','abstract');">high-res face texture completion</a> and <a style="color:#c90000;text-decoration:underline;" href="#1dflow" onclick="show2('25','abstract');">high-res optical flow estimation</a> (Oral).</i><br/>
+[07/20/2021] <i>A <a href="https://github.com/sicxu/Deep3DFaceRecon_pytorch" target="_blank" style="color:#c90000;text-decoration:underline;">PyTorch version</a> of our <a style="color:#c90000;text-decoration:underline;" href="#face3drecon" onclick="show2('16','abstract');">Deep3DFace</a> method is released: more accurate and easier to use!</a></i><br/>
+[04/29/2021] <i>Invited as an Area Chair for <a style="color:#c90000;text-decoration:underline;" href="https://cvpr2022.thecvf.com/" target="_blank">CVPR 2022</a>.</i><br/>
+[03/04/2021] <i>The <a style="color:#c90000;text-decoration:underline;" href="#difnet" onclick="show2('22','abstract');">deep deformed implicit filed (DIF-Net) paper</a> is accepted by CVPR'21.</i><br/>
+[11/17/2020] <i>Invited as an Area Chair for <a style="color:#c90000;text-decoration:underline;" href="https://iccv2021.thecvf.com/home" target="_blank">ICCV 2021</a>.</i><br/>
+[03/13/2020] <i>3 papers accepted by CVPR'20: <a style="color:#c90000;text-decoration:underline;" href="#disenfacegan" onclick="show2('21','abstract');">disentangled face GAN</a> (Oral), <a style="color:#c90000;text-decoration:underline;" href="#deep3dportrait" onclick="show2('20','abstract');">3D portrait reconstrucion</a>, <a style="color:#c90000;text-decoration:underline;" href="#lowlightdenosing" onclick="show2('19','abstract');">low-light denoising</a> (Oral).</i><br/>
+[01/22/2020] <i>Invited as an Area Chair for <a style="color:#c90000;text-decoration:underline;" href="https://cvpr2021.thecvf.com/" target="_blank">CVPR 2021</a>.</i><br/>
+[07/23/2019] <i>The <a style="color:#c90000;text-decoration:underline;" href="#videofacedeblur" onclick="show2('18','abstract');">3D-aided face video  debluring paper</a> is accepted by ICCV'19 as Oral.</i><br/>
+[03/03/2019] <i>The <a style="color:#c90000;text-decoration:underline;" href="#ERRNet" onclick="show2('17','abstract');">deep reflection removal paper</a> is accepted by CVPR'19</i><br/>
+[03/30/2019] <i>The <a style="color:#c90000;text-decoration:underline;" href="#face3drecon" onclick="show2('16','abstract');">3D face reconstruction paper</a> received the <a href="Deep3DFace_CVPRW19-AMFG_Best_Paper_Award_Certification.jpg" target="_blank" style="color:#c90000;text-decoration:underline;">Best Paper Award</a> at CVPR'19 workshop on AMFG</i><br/>
+[07/04/2018] <i>The <a style="color:#c90000;text-decoration:underline;" href="#dnnquantization" onclick="show2('13','abstract');">neural network quantization paper</a> is accepted by ECCV'18</i><br/>
+<!--[03/08/2018] <i>The <a style="color:#c90000;text-decoration:underline;" href="#deepintrinsicimage" onclick="show2('12','abstract');">intrinsic image decomposition paper</a> is accepted by CVPR'18 as Oral</i><br/>-->
+<!--[07/17/2017] <i>The <a style="color:#c90000;text-decoration:underline;" href="#dcnnreflectionsmoothing" onclick="show2('11','abstract');">deep reflection removal paper</a> is accepted by ICCV'17</i><br/>-->
+<!--[03/18/2017] <i>The <a style="color:#c90000;text-decoration:underline;" href="#videoface" onclick="show2('9','abstract');">video face recognition paper</a> is accepted by CVPR'17</i><br/>-->
+<!--[01/03/2016] <i>The <a style="color:#c90000;text-decoration:underline;" href="#robustopticalflow" onclick="show2('8','abstract');">robust optical flow paper</a> is accepted by CVPR'16</i><br/>-->
+<!--[16/02/2016] <i>I will join <a style="color:#c90000;text-decoration:underline;" target="_blank" href="http://research.microsoft.com/en-us/labs/asia/">Microsoft Research Asia (MSRA)</a> as an Associate Researcher</i><br/>-->
+<!--[23/11/2015] <i>I joined <a style="color:#c90000;text-decoration:underline;" target="_blank" href="http://research.microsoft.com/en-us/labs/asia/">Microsoft Research Asia (MSRA)</a> as a Research Intern</i><br/>-->
+<!--[10/11/2015] <i>The <a style="color:#c90000;text-decoration:underline;" href="#goicpjournal" onclick="show2('7','abstract');">Go-ICP paper</a> is accepted by T-PAMI</i><br/>-->
+<!--[02/03/2015] <i>The <a style="color:#c90000;text-decoration:underline;" target="_blank" href="cvpr2015_opticalflow.pdf">optical flow paper</a> is accepted by CVPR'15</i><br/>-->
+<!--[05/08/2014] <i>Project page and source code for Go-ICP can be found <a target="_blank" href="./go-icp" style="color:#c90000;text-decoration:underline;">here</a></i><br/>-->
+
+<br />
+
 </font>
 </div>
 </div>
@@ -140,6 +153,33 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">3D</a>, <a 
 <!--All 3D Generation Face & Body 3D Conferening-->
 <div class="jellon_d_i_content">
 <table id="jellon_papertable" style="width:100%;"  border="0" cellpadding="0" cellspacing="0">
+
+<tr>
+<td width="132px"><a name="coponerf" id="coponerf"><img src="arxiv23_coponerf.jpg" width="140"/></a>
+</td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<a href="https://sunghwanhong.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Sunghwan Hong</a>, Jaewoo Jung, Heeseong Shin, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://cvlab.korea.ac.kr/members/faculty" target="_blank" style="text-decoration:underline;color:#000;">Seungryong Kim</a>, <a href="https://www.microsoft.com/en-us/research/people/cluo" target="_blank" style="text-decoration:underline;color:#000;">Chong Luo</a></span><br/>
+<span class="jellon_d_i_c_name">CoPoNeRF: Unifying Correspondence, Pose and NeRF for Pose-Free Novel View Synthesis from Stereo Pairs</span><br/>
+<span class="jellon_d_i_c_refer">arXiv preprint 2023</span><br/>
+[<a href="#" onclick="show('41','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('41','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2312.07246.pdf">PDF</a>] [<a target="_blank" href="https://github.com/KU-CVLAB/CoPoNeRF">Code</a>] [<a target="_blank" href="https://ku-cvlab.github.io/CoPoNeRF/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2312.07246.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2312.07246">arXiv</a>]<br />
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<div id="41_abstract">
+This work delves into the task of pose-free novel view synthesis from stereo pairs, a challenging and pioneering task in 3D vision. Our innovative framework, unlike any before, seamlessly integrates 2D correspondence matching, camera pose estimation, and NeRF rendering, fostering a synergistic enhancement of these tasks. We achieve this through designing an architecture that utilizes a shared representation, which serves as a foundation for enhanced 3D geometry understanding. Capitalizing on the inherent interplay between the tasks, our unified framework is trained end-to-end with the proposed training strategy to improve overall model accuracy. Through extensive evaluations across diverse indoor and outdoor scenes from two real-world datasets, we demonstrate that our approach achieves substantial improvement over previous methodologies, especially in scenarios characterized by extreme viewpoint changes and the absence of accurate camera poses. 
+</div>
+<div id="41_bibtex">
+@inproceedings{hong2023unifying,<br/>
+&nbsp;&nbsp;author = {Hong, Sunghwan and Jung, Jaewoo and Shin, Heeseong and Yang, Jiaolong and Kim, Seungryong and Luo, Chong},<br/>
+&nbsp;&nbsp;title = {Unifying Correspondence, Pose and NeRF for Pose-Free Novel View Synthesis from Stereo Pairs},<br/>
+&nbsp;&nbsp;booktitle = {arXiv preprint arXiv:2312.07246},<br/>
+&nbsp;&nbsp;year = {2023}<br/>
+}
+</div>
+</td>
+</tr>
 
 <tr>
 <td width="132px"><a name="aniportraitgan" id="aniportraitgan"><img src="sa23_aniportraitgan.png" width="140"/></a>
@@ -234,7 +274,7 @@ Recent works have shown that 3D-aware GANs trained on unstructured single image 
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
 Yu Yin, Kamran Ghasedi, <a href="https://www.microsoft.com/en-us/research/people/musclewu/" target="_blank" style="text-decoration:underline;color:#000;">HsiangTao Wu</a>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a>, Yun Fu<br/>
 <span class="jellon_d_i_c_name">NeRFInvertor: High Fidelity NeRF-GAN Inversion for Single-Shot Real Image Animation</span><br/>
-<span class="jellon_d_i_c_refer">The 39th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2023)</b></span></b></span><br/>
+<span class="jellon_d_i_c_refer">The 39th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2023)</b></span><br/>
 [<a href="#" onclick="show('37','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('37','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2211.17235.pdf">PDF</a>] [<a target="_blank" href="https://github.com/YuYin1/NeRFInvertor">Code</a>] [<a target="_blank" href="https://yuyin1.github.io/NeRFInvertor_Homepage/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2211.17235.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2211.17235">arXiv</a>]<br />
 (<sup>+</sup>: Intern at MSRA)
 </td>
