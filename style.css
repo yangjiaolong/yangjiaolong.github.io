@@ -110,6 +110,7 @@ ul {
 
 #jellon_detail {
 	padding:0px 32px;
+	width:916px;
 }
 
 .jellon_d_item {
@@ -162,7 +163,8 @@ ul {
 }
 
 #jellon_footer {
-	width:100%;
+	/*width:100%;*/
+	width:916px;
 	text-align:center;
 
 	line-height:20px;
