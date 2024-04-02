@@ -106,7 +106,7 @@ Yang (杨): the family name from my forefathers, the sixth most common surname i
 [03/29/2022] <i>Our <a style="color:#c90000;text-decoration:underline;" href="https://yudeng.github.io/GRAM/" target="_blank">GRAM - 3D Image GAN</a> paper is accepted by CVPR'22 as Oral presentation</i><br/>
 [03/16/2022] <i>Our <a style="color:#c90000;text-decoration:underline;" href="https://www.microsoft.com/en-us/research/project/virtualcube/" target="_blank">VirtualCube - Immersive 3D Video Conferecing</a> paper received the <a href="VirtualCube_IEEE_VR22_Best_Paper_Award_Certification.jpg" target="_blank" style="color:#c90000;text-decoration:underline;">IEEE VR'22 Best Paper Award</a>! </i><br/>
 [01/10/2022] <i>Invited to give a talk and joined panel disussion for the <a style="color:#c90000;text-decoration:underline;" href="http://tc.ccf.org.cn/ccfcv/zyhd/sjwx/2021-12-29/752337.shtml" target="_blank">CCF-CV Seminar on AIGC</a></i><br/>
-[08/02/2021] <i>The <a style="color:#c90000;text-decoration:underline;" href="#1dflow" onclick="show2('26','abstract');">low-light raw image denosing</a> paper is accepted by TPAMI</a></i><br/>
+[08/02/2021] <i>The <a style="color:#c90000;text-decoration:underline;" href="#1dflow" onclick="show2('26','abstract');">low-light raw image denosing</a> paper is accepted by TPAMI</i><br/>
 [08/01/2021] <i>Invited to be an Area Chair for <a style="color:#c90000;text-decoration:underline;" href="https://wacv2022.thecvf.com/home" target="_blank">WACV 2022</a></i><br/>
 [07/23/2021] <i>2 papers accepted by ICCV'21: <a style="color:#c90000;text-decoration:underline;" href="#facetexcomp" onclick="show2('26','abstract');">high-res face texture completion</a> and <a style="color:#c90000;text-decoration:underline;" href="#1dflow" onclick="show2('25','abstract');">high-res optical flow estimation</a> (Oral)</i><br/>
 [07/20/2021] <i>A <a href="https://github.com/sicxu/Deep3DFaceRecon_pytorch" target="_blank" style="color:#c90000;text-decoration:underline;">PyTorch version</a> of our <a style="color:#c90000;text-decoration:underline;" href="#face3drecon" onclick="show2('16','abstract');">Deep3DFace</a> method is released: more accurate and easier to use!</a></i><br/>
@@ -156,6 +156,63 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">3D</a>, <a 
 <table id="jellon_papertable" style="width:100%;"  border="0" cellpadding="0" cellspacing="0">
 
 <tr>
+<td width="132px"><a name="gaussiancube" id="gaussiancube"><img src="arxiv24_gaussiancube.png" width="140"/></a>
+</td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<a href="http://home.ustc.edu.cn/~zhangbowen/" target="_blank" style="text-decoration:underline;color:#000;">Bowen Zhang</a><sup>+</sup>, Yiji Chen<sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.chunyuwang.org" target="_blank" style="text-decoration:underline;color:#000;">Chunyu Wang</a>, Feng Zhao, Yansong Tang, <a href="http://www.dongchen.pro/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" style="text-decoration:underline;color:#000;">Baining Guo</a></span><br/>
+<span class="jellon_d_i_c_name">GaussianCube: Structuring Gaussian Splatting using Optimal Transport for 3D Generative Modeling</span><br/>
+<span class="jellon_d_i_c_refer">arXiv 2403.19655, 2024</span><br/>
+[<a href="#" onclick="show('43','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('43','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2403.19655.pdf">PDF</a>] [<a target="_blank" href="https://github.com/GaussianCube/GaussianCube">Code</a>] [<a target="_blank" href="https://gaussiancube.github.io/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2403.19655.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2403.19655">arXiv</a>]<br />
+(<sup>+</sup>: Intern at MSRA)
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
+<div id="43_abstract">
+3D Gaussian Splatting (GS) have achieved considerable improvement over Neural Radiance Fields in terms of 3D fitting fidelity and rendering speed. However, this unstructured representation with scattered Gaussians poses a significant challenge for generative modeling. To address the problem, we introduce GaussianCube, a structured GS representation that is both powerful and efficient for generative modeling. We achieve this by first proposing a modified densification-constrained GS fitting algorithm which can yield high-quality fitting results using a fixed number of free Gaussians, and then re-arranging the Gaussians into a predefined voxel grid via Optimal Transport. The structured grid representation allows us to use standard 3D U-Net as our backbone in diffusion generative modeling without elaborate designs. Extensive experiments conducted on ShapeNet and OmniObject3D show that our model achieves state-of-the-art generation results both qualitatively and quantitatively, underscoring the potential of GaussianCube as a powerful and versatile 3D representation. 
+</div>
+<div id="43_bibtex">
+@inproceedings{zhang2024gaussiancube,<br/>
+&nbsp;&nbsp;author = {Zhang, Bowen and Chen, Yiji and Wang, Chunyu and Zhao, Feng and Tang, Yansong and Chen, Dong and Guo, Baining},<br/>
+&nbsp;&nbsp;title = {GaussianCube: Structuring Gaussian Splatting using Optimal Transport for 3D Generative Modeling},<br/>
+&nbsp;&nbsp;booktitle = {arXiv preprint: 2403.19655},<br/>
+&nbsp;&nbsp;year = {2024}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr>
+<td width="132px"><a name="diffcriticedit" id="diffcriticedit"><img src="arxiv24_diffcriticedit.png" width="140"/></a>
+</td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<a href="https://yuewuhkust.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Ruicheng Wang</a><sup>+</sup>, <a href="https://jeffreyxiang.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Jianfeng Xiang</a><sup>+</sup>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<span class="jellon_d_i_c_name">Diffusion Models are Geometry Critics: Single Image 3D Editing Using Pre-Trained Diffusion Priors</span><br/>
+<span class="jellon_d_i_c_refer">arXiv 2403.11503, 2024</span><br/>
+[<a href="#" onclick="show('42','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('42','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2403.11503.pdf">PDF</a>] [<a target="_blank" href="https://wangrc.site/DiffCriticEdit/">Code</a>] [<a target="_blank" href="https://wangrc.site/DiffCriticEdit/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2403.11503.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2403.11503">arXiv</a>]<br />
+(<sup>+</sup>: Intern at MSRA)
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<div id="42_abstract">
+We propose a novel image editing technique that enables 3D manipulations on single images, such as object rotation and translation. Existing 3D-aware image editing approaches typically rely on synthetic multi-view datasets for training specialized models, thus constraining their effectiveness on open-domain images featuring significantly more varied layouts and styles. In contrast, our method directly leverages powerful image diffusion models trained on a broad spectrum of text-image pairs and thus retain their exceptional generalization abilities. This objective is realized through the development of an iterative novel view synthesis and geometry alignment algorithm. The algorithm harnesses diffusion models for dual purposes: they provide appearance prior by predicting novel views of the selected object using estimated depth maps, and they act as a geometry critic by correcting misalignments in 3D shapes across the sampled views. Our method can generate high-quality 3D-aware image edits with large viewpoint transformations and high appearance and shape consistency with the input image, pushing the boundaries of what is possible with single-image 3D-aware editing. 
+</div>
+<div id="42_bibtex">
+@inproceedings{wang2024diffusion,<br/>
+&nbsp;&nbsp;author = {Wang, Ruicheng and Xiang, Jianfeng and Yang, Jiaolong and Tong, Xin},<br/>
+&nbsp;&nbsp;title = {Diffusion Models are Geometry Critics: Single Image 3D Editing Using Pre-Trained Diffusion Priors},<br/>
+&nbsp;&nbsp;booktitle = {arXiv preprint: 2403.11503},<br/>
+<!--&nbsp;&nbsp;pages = {8178-8187},<br/>-->
+&nbsp;&nbsp;year = {2024}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr>
 <td width="132px"><a name="coponerf" id="coponerf"><img src="cvpr24_coponerf.jpg" width="140"/></a>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
@@ -189,7 +246,7 @@ This work delves into the task of pose-free novel view synthesis from stereo pai
 <a href="https://yuewuhkust.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yue Wu</a><sup>+*</sup>, Sicheng Xu<sup>*</sup>, <a href="https://jeffreyxiang.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Jianfeng Xiang</a>, Fangyun Wei, <a href="https://cqf.io" target="_blank" style="text-decoration:underline;color:#000;">Qifeng Chen</a>, <span class="jellon_d_i_c_emphasize">Jiaolong Yang<sup>$</sup></span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
 <span class="jellon_d_i_c_name">AniPortraitGAN: Animatable 3D Portrait Generation from 2D Image Collections</span><br/>
 <span class="jellon_d_i_c_refer">ACM <b>SIGGRAPH Asia</b> 2023</span><br/>
-[<a href="#" onclick="show('40','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('40','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2309.02186.pdf">PDF</a>] [<a target="_blank" href="#" onclick="alert('Available soon');return false;">Code</a>] [<a target="_blank" href="https://yuewuhkust.github.io/AniPortraitGAN/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2309.02186.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2309.02186">arXiv</a>]<br />
+[<a href="#" onclick="show('40','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('40','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2309.02186.pdf">PDF</a>] [<a target="_blank" href="https://yuewuhkust.github.io/AniPortraitGAN/">Code</a>] [<a target="_blank" href="https://yuewuhkust.github.io/AniPortraitGAN/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2309.02186.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2309.02186">arXiv</a>]<br />
 (<sup>+</sup>: Intern at MSRA. <sup>*</sup>: Equal contributuons. <sup>$</sup>: Corresponding author)
 </td>
 </tr>
@@ -1383,7 +1440,7 @@ Machine Vision and Applications (MVA)<br/>
 
 <div id="jellon_footer">
 <b><i>Declaimer:</i></b> <i>Papers provided on this page are for personal, research use only; copyright and all rights therein are retained by authors and/or other copyright holders.</i><br/>
-<b><i>Last update: Feb 27, 2024</i></b><br/>
+<b><i>Last update: Apr 1, 2024</i></b><br/>
 
 </div>
 </div>
