@@ -26,12 +26,12 @@ ul {
 	list-style:none;
 }
 
-#jellon_papertable tr{   
+#jlyang_papertable tr{   
     background:#FFFFFF;
 	height:120px;
 }        
 
-#jellon_papertable div{
+#jlyang_papertable div{
 	padding:4px;
 	padding:4px;
 	border-top:1px dashed #CCCCCC;
@@ -40,40 +40,40 @@ ul {
 
 /***/
 
-#jellon {
+#jlyang {
 	width:980px;
 	margin:16px auto;
 	border: 1px solid #CCCCCC;
 	box-shadow: 0 0 30px #CCCCCC;
 }
 
-#jellon_basic {
+#jlyang_basic {
 	overflow:hidden;
 }
 
-#jellon_b_left {
+#jlyang_b_left {
 	float:left;
 	padding:33px 16px 32px 32px;
 }
 
-#jellon_b_middle {
+#jlyang_b_middle {
 	float:left;
 	width:333px;
 	padding:30px 10px 32px 10px;
 }
 
-#jellon_b_right {
+#jlyang_b_right {
 	float:left;
-	width:250px;
+	width:265px;
 	margin:40px 0px 32px 0px;
-	padding:4px;
+	padding:3px;
 	border: 1px solid #B0B0B0;
 	box-shadow: 0 0 16px #DDDDDD; 
 	display:none;
 }
 
 
-#jellon_b_l_name {
+#jlyang_b_l_name {
 	font-size:20px;
 	/*font-family:Verdana, Geneva, "Microsoft Yahei", sans-serif;*/
 	font-family:Georgia,Times New Roman, Microsoft Yahei;
@@ -84,19 +84,19 @@ ul {
 	text-shadow:0 0 1px #CCCCCC;
 }
 
-#jellon_b_l_title {
+#jlyang_b_l_title {
 	font-size:13px;
 	display:block;
 	font-style:italic;
 }
 
-#jellon_b_l_contact {
+#jlyang_b_l_contact {
 	/*font-family: Consolas, "Courier New", Courier, monospace;*/
 	font-style:italic;
 	line-height:18px;
 }
 
-#jellon_b_r_photo {
+#jlyang_b_r_photo {
 	/*padding:4px;*/
 	/*border: 1px solid #B0B0B0;*/
 	/*background:#F0F0F0;*/
@@ -104,29 +104,30 @@ ul {
 	box-shadow: 0 0 18px #CCCCCC; 
 }
 
-#jellon_b_r_photo img {
+#jlyang_b_r_photo img {
 	border: 1px solid #CCCCCC;
+	padding:0px;
 }
 
-#jellon_detail {
+#jlyang_detail {
 	padding:0px 32px;
 	width:916px;
 }
 
-.jellon_d_item {
+.jlyang_d_item {
 	margin-bottom:24px;
 }
 
-.jellon_d_i_authorurl {
+.jlyang_d_i_authorurl {
 	text-decoration:underline;
 	color:#000;
 }
-.jellon_d_i_authorurl:hover {
+.jlyang_d_i_authorurl:hover {
 	text-decoration:underline;
 	color:#000;
 }
 
-.jellon_d_i_title {
+.jlyang_d_i_title {
 	font-weight: bold;
 	font-size:19px;
 	line-height:20px;
@@ -136,33 +137,33 @@ ul {
 	text-shadow:0 0 1px #CCCCCC;
 }
 
-.jellon_d_i_c_year {
+.jlyang_d_i_c_year {
 	display:inline-block;
 	width:160px;
 	font-weight:bold;
 	color:#333333;
 }
 
-.jellon_d_i_c_label {
+.jlyang_d_i_c_label {
 	font-weight:bold;
 	color:#333333;
 }
 
-.jellon_d_i_c_emphasize {
+.jlyang_d_i_c_emphasize {
 	font-weight:bold;
 	color:#333333;
 }
-.jellon_d_i_c_name{
+.jlyang_d_i_c_name{
 	font-weight:bold;
 	color:#333333;
 }
 
-.jellon_d_i_c_refer {
+.jlyang_d_i_c_refer {
 	font-style:italic;
 	color:#333333;
 }
 
-#jellon_footer {
+#jlyang_footer {
 	/*width:100%;*/
 	width:916px;
 	float:left;
