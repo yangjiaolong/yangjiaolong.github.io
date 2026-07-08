@@ -3,10 +3,10 @@
 <!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"> -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Jiaolong Yang,æ¨è›Ÿé¾™,homepage,ä¸»é¡µ,Computer Vision,PhD,Microsoft Research Asia,MSRA,å¾®è½¯äºšæ´²ç ”ç©¶é™¢,Trelli2,Trellis.2,Trellis,Trellis3D,Embodied AI,VASA,VASA-1,VASA-3D,MoGe,MoGe-2,3D Reconstruction,3D Face,3D Human,3D GAN,Face Synthesis,AniFaceGAN,AniPortraitGAN,GRAM,GRAM-HD,AdaMPI,NeRF,MPS-NeRF,VirtualCube,VCube,V-Cube,DIF,DIF-Net,DIFNet,Deep3DFace,Deep3DFaceReconstruction,DiscoFaceGAN,Reflection Removal,ERRNet,CEILNet,Neural Aggregation Network,NAN,Video Face,Go-ICP,GoICP,3D Registration" />
+<meta name="keywords" content="Jiaolong Yang,杨蛟龙,homepage,主页,Computer Vision,PhD,Microsoft Research Asia,MSRA,微软亚洲研究院,Trelli2,Trellis.2,Trellis,Trellis3D,Embodied AI,VASA,VASA-1,VASA-3D,MoGe,MoGe-2,3D Reconstruction,3D Face,3D Human,3D GAN,Face Synthesis,AniFaceGAN,AniPortraitGAN,GRAM,GRAM-HD,AdaMPI,NeRF,MPS-NeRF,VirtualCube,VCube,V-Cube,DIF,DIF-Net,DIFNet,Deep3DFace,Deep3DFaceReconstruction,DiscoFaceGAN,Reflection Removal,ERRNet,CEILNet,Neural Aggregation Network,NAN,Video Face,Go-ICP,GoICP,3D Registration" />
 <meta name="description" content="Jiaolong Yang's Homepage"/>
 <link rel="icon" type="x-icon" href="favicon.ico" />
-<title>Jiaolong Yang (æ¨è›Ÿé¾™)'s Homepage</title>
+<title>Jiaolong Yang (杨蛟龙)'s Homepage</title>
 <link rel="stylesheet" type="text/css" href="style.css"/>
 <script src="jquery-1.10.2.min.js"> 
 </script>
@@ -36,6 +36,21 @@
 	border-color: #7c7c7c;
 	background: #7c7c7c;
 	color: #ffffff;
+}
+
+#jlyang_papertable .paper-main-row td,
+#jlyang_papertable .paper-detail-row td {
+	background: linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%) !important;
+	background-clip: padding-box;
+	box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), inset 0 -1px 0 rgba(0, 0, 0, 0.03);
+}
+
+#jlyang_papertable .paper-main-row td {
+	border-top: 1px solid rgba(0, 0, 0, 0.02);
+}
+
+#jlyang_papertable .paper-detail-row td {
+	border-bottom: 1px solid rgba(0, 0, 0, 0.03);
 }
 </style>
 <script type="text/javascript">
@@ -178,9 +193,11 @@ function initPublicationFilters(){
 
 		row.setAttribute("data-pub-id", publicationId);
 		row.setAttribute("data-pub-tags", tags.join(" "));
+		row.className = row.className ? row.className + " paper-main-row" : "paper-main-row";
 		if (detailRow && detailRow.tagName && detailRow.tagName.toLowerCase() === "tr"){
 			detailRow.setAttribute("data-pub-id", publicationId);
 			detailRow.setAttribute("data-pub-tags", tags.join(" "));
+			detailRow.className = detailRow.className ? detailRow.className + " paper-detail-row" : "paper-detail-row";
 		}
 
 		entries.push({
@@ -277,7 +294,7 @@ Yang (杨): the family name from my forefathers, the sixth most common surname i
 <td width="100%;overflow:scroll;">
 <div style="padding-left:1px;height:185px;width:910px;overflow:scroll;overflow-x:hidden;">
 <span style="color:#c90000;">
-[07/03/2026] <i>Invited to give a talk at <a style="color:#c90000;text-decoration:underline;" target="_blank" href="https://mp.weixin.qq.com/s/9GxDWbRvKQyr5-wnca9Few">2026 AGIBot World Developer Day</a> and <a style="color:#c90000;text-decoration:underline;" target="_blank" href="#">Summer3DV</a>.</i><br/>
+[07/03/2026] <i>Invited to give talks at <a style="color:#c90000;text-decoration:underline;" target="_blank" href="https://mp.weixin.qq.com/s/9GxDWbRvKQyr5-wnca9Few">2026 AGIBot World Developer Day</a> and <a style="color:#c90000;text-decoration:underline;" target="_blank" href="#">Summer3DV</a>.</i><br/>
 [06/18/2026] <i>4 papers accepted by ECCV'26.</i><br/>
 [06/05/2026] <i>Our <a style="color:#c90000;text-decoration:underline;" href="#TRELLIS-2" onclick="show2('59','abstract');">TRELLIS.2</a> paper received <a style="color:#c90000;text-decoration:underline;" href="TRELLIS2_CVPR26_Best_Student_Paper_Award.png" target="_blank">CVPR'26 Best Student Paper Award</a> (1/16092 submissions). Congrats to all co-authors!</i><br/>
 [05/09/2026] <i>Invited to give a Tutorial on "Spatial Intelligence" at <a style="color:#c90000;text-decoration:underline;" target="_blank" href="https://valser.org/2026/#/tutorial">VALSE 2026</a>.</i><br/>
@@ -470,7 +487,7 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">All</a>, <a
 		Achieving human-like spatial intelligence for vision-language models (VLMs) requires inferring 3D structures from 2D observations, recognizing object properties and relations in 3D space, and performing high-level spatial reasoning. In this paper, we propose a principled hierarchical framework that decomposes the learning of 3D spatial understanding in VLMs into four progressively complex levels, from geometric perception to abstract spatial reasoning. Guided by this framework, we construct an automated pipeline that processes approximately 5M images with over 45M objects to generate 3D spatial VQA pairs across diverse tasks and scenes for VLM supervised fine-tuning. We also develop an RGB-D VLM incorporating metric-scale point maps as auxiliary inputs to further enhance spatial understanding. Extensive experiments demonstrate that our approach achieves state-of-the-art performance on multiple spatial understanding and reasoning benchmarks, surpassing specialized spatial models and large proprietary systems such as Gemini-2.5-pro and GPT-5. Moreover, our analysis reveals clear dependencies among hierarchical task levels, offering new insights into how multi-level task design facilitates the emergence of 3D spatial intelligence.
 	</div>
 	<div id="60_bibtex">
-	@article{liang2026hispatial,<br/>
+	@inproceedings{liang2026hispatial,<br/>
 	&nbsp;&nbsp;author = {Liang, Huizhi and Shen, Yichao and Deng, Yu and Xu, Sicheng and Feng, Zhiyuan and Zhang, Tong and Liang, Yaobo and Yang, Jiaolong},<br/>
 	&nbsp;&nbsp;title = {HiSpatial: Taming Hierarchical 3D Spatial Understanding in Vision-Language Models},<br/>
 	&nbsp;&nbsp;inproceedings = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},<br/>
