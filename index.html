@@ -10,6 +10,34 @@
 <link rel="stylesheet" type="text/css" href="style.css"/>
 <script src="jquery-1.10.2.min.js"> 
 </script>
+<style type="text/css">
+.pub-filter-bar {
+	margin-top: 8px;
+	line-height: 26px;
+}
+
+.pub-filter-btn {
+	display: inline-block;
+	padding: 0 6px;
+	margin: 0 6px 6px 0;
+	border: 1px solid #c8c8c8;
+	border-radius: 11px;
+	font-size: 12px;
+	color: #444444;
+	text-decoration: none;
+	background: #f5f5f5;
+}
+
+.pub-filter-btn:hover {
+	background: #ececec;
+}
+
+.pub-filter-btn.active {
+	border-color: #7c7c7c;
+	background: #7c7c7c;
+	color: #ffffff;
+}
+</style>
 <script type="text/javascript">
 var visible = new Array();
 function show(id, item){
@@ -54,6 +82,157 @@ function shownamedesc()
 	return false;
 }
 
+var publicationTagMapById = {
+	"61": ["human-modeling"],
+	"60": ["3d-vision", "embodied-ai"],
+	"59": ["3d-generation", "3d-vision"],
+	"58": ["embodied-ai"],
+	"57": ["embodied-ai", "3d-vision"],
+	"56": ["embodied-ai"],
+	"55": ["3d-generation", "human-modeling"],
+	"54": ["3d-vision"],
+	"53": ["3d-generation", "3d-vision"],
+	"52": ["human-modeling", "3d-generation"],
+	"51": ["embodied-ai"],
+	"50": ["embodied-ai"],
+	"49": ["3d-generation", "3d-vision"],
+	"48": ["3d-vision"],
+	"47": ["3d-vision"],
+	"46": ["human-modeling"],
+	"45": ["3d-generation", "3d-vision"],
+	"44": ["3d-generation", "3d-vision"],
+	"43": ["3d-generation", "human-modeling"],
+	"42": ["human-modeling"],
+	"41": ["3d-vision"],
+	"40": ["human-modeling", "3d-generation"],
+	"39": ["3d-generation"],
+	"38": ["3d-generation"],
+	"37": ["3d-generation", "human-modeling"],
+	"36": ["human-modeling", "3d-generation"],
+	"35": ["3d-generation", "3d-vision"],
+	"34": ["human-modeling", "3d-vision"],
+	"33": ["human-modeling", "3d-vision"],
+	"32": ["3d-vision"],
+	"31": ["human-modeling", "3d-generation"],
+	"30": ["human-modeling", "3d-vision"],
+	"29": ["3d-generation"],
+	"28": ["human-modeling"],
+	"27": ["others"],
+	"26": ["human-modeling"],
+	"25": ["3d-vision"],
+	"24": ["human-modeling", "3d-generation"],
+	"23": ["human-modeling", "3d-generation"],
+	"22": ["3d-vision"],
+	"21": ["human-modeling", "3d-generation"],
+	"20": ["human-modeling", "3d-vision"],
+	"19": ["others"],
+	"18": ["human-modeling"],
+	"17": ["others"],
+	"16": ["human-modeling", "3d-vision"],
+	"15": ["3d-vision"],
+	"14": ["3d-vision"],
+	"13": ["3d-vision"],
+	"12": ["3d-vision"],
+	"11": ["others"],
+	"10": ["embodied-ai", "3d-vision"],
+	"9": ["human-modeling"],
+	"8": ["3d-vision"],
+	"7": ["3d-vision"],
+	"6": ["3d-vision"],
+	"5": ["3d-vision"],
+	"4": ["3d-vision"],
+	"3": ["3d-vision"],
+	"2": ["human-modeling"]
+};
+
+function getHardcodedPublicationTags(publicationId){
+	var tags = publicationTagMapById[publicationId];
+	if (!tags || !tags.length){
+		return ["3d-vision"];
+	}
+	return tags;
+}
+
+function initPublicationFilters(){
+	var paperTable = document.getElementById("jlyang_papertable");
+	var filterBar = document.getElementById("pub-filter-bar");
+	if (!paperTable || !filterBar){
+		return;
+	}
+
+	var rows = paperTable.getElementsByTagName("tr");
+	var entries = [];
+
+	for (var i = 0; i < rows.length; i++){
+		var row = rows[i];
+		var titleNode = row.querySelector(".jlyang_d_i_c_name");
+		if (!titleNode){
+			continue;
+		}
+
+		var idMatch = row.innerHTML.match(/show\('([0-9]+)','abstract'\)/);
+		var publicationId = idMatch ? idMatch[1] : "";
+		var tags = getHardcodedPublicationTags(publicationId);
+		var detailRow = row.nextElementSibling;
+
+		row.setAttribute("data-pub-id", publicationId);
+		row.setAttribute("data-pub-tags", tags.join(" "));
+		if (detailRow && detailRow.tagName && detailRow.tagName.toLowerCase() === "tr"){
+			detailRow.setAttribute("data-pub-id", publicationId);
+			detailRow.setAttribute("data-pub-tags", tags.join(" "));
+		}
+
+		entries.push({
+			main: row,
+			detail: detailRow,
+			tags: tags
+		});
+	}
+
+	var buttons = filterBar.getElementsByClassName("pub-filter-btn");
+
+	function setActiveButton(activeFilter){
+		for (var b = 0; b < buttons.length; b++){
+			var btn = buttons[b];
+			if (btn.getAttribute("data-filter") === activeFilter){
+				btn.className = "pub-filter-btn active";
+			}
+			else{
+				btn.className = "pub-filter-btn";
+			}
+		}
+	}
+
+	function applyPublicationFilter(filterTag){
+		for (var e = 0; e < entries.length; e++){
+			var entry = entries[e];
+			var matched = filterTag === "all";
+			if (!matched){
+				matched = entry.tags.indexOf(filterTag) !== -1;
+			}
+
+			entry.main.style.display = matched ? "" : "none";
+			if (entry.detail){
+				entry.detail.style.display = matched ? "" : "none";
+			}
+		}
+		setActiveButton(filterTag);
+	}
+
+	for (var j = 0; j < buttons.length; j++){
+		buttons[j].onclick = function(){
+			applyPublicationFilter(this.getAttribute("data-filter"));
+			return false;
+		};
+	}
+
+	applyPublicationFilter("all");
+}
+
+$(function(){
+	initPublicationFilters();
+});
+
 </script>
 </head>
 <body>
@@ -97,6 +276,7 @@ Yang (杨): the family name from my forefathers, the sixth most common surname i
 <td width="100%;overflow:scroll;">
 <div style="padding-left:1px;height:185px;width:910px;overflow:scroll;overflow-x:hidden;">
 <span style="color:#c90000;">
+[07/03/2026] <i>Invited to give a talk at <a style="color:#c90000;text-decoration:underline;" href="https://mp.weixin.qq.com/s/9GxDWbRvKQyr5-wnca9Few">2026 AGIBot World Developer Day</a> and <a style="color:#c90000;text-decoration:underline;" href="#">Summer3DV</a>.</i><br/>
 [06/18/2026] <i>4 papers accepted by ECCV'26.</i><br/>
 [06/05/2026] <i>Our <a style="color:#c90000;text-decoration:underline;" href="#TRELLIS-2" onclick="show2('59','abstract');">TRELLIS.2</a> paper received <a style="color:#c90000;text-decoration:underline;" href="TRELLIS2_CVPR26_Best_Student_Paper_Award.png" target="_blank">CVPR'26 Best Student Paper Award</a> (1/16092 submissions). Congrats to all co-authors!</i><br/>
 [05/09/2026] <i>Invited to give a Tutorial on "Spatial Intelligence" at <a style="color:#c90000;text-decoration:underline;" href="https://valser.org/2026/#/tutorial">VALSE 2026</a></i><br/>
@@ -183,9 +363,9 @@ Yang (杨): the family name from my forefathers, the sixth most common surname i
 <table style="width:100%;margin-top:8px;-webkit-text-size-adjust:100%;" border="0" cellpadding="0" cellspacing="0">
 <tr style="height:100%;">
 <td width="100%">
-I'm currently a Principal Researcher and Research Manager in the Microsoft Research Asia (MSRA) Lab located in Beijing, China. I lead a team to do cutting-edge, foundational research in Spatial and Physical AI, including but not limited to 3D reconstruction and generation, human-centric modeling, immersive AI experiences, and physical AI embodiments. Part of my research outcomes has been transitioned into various Microsoft products and services, including Microsoft Copilot, Azure AI, Cognitive Services, Windows Hello, and XiaoIce, delivering real-world impact at scale. I serve regularly as the program committee member/reviewer for major computer vision conferences and journals including CVPR/ICCV/ECCV/TPAMI/IJCV, the Area Chair/Senior Area Chair for CVPR/ICCV/ECCV/WACV, and the Associate Editor for the prestigious journal International Journal on Computer Vision (IJCV). My research has been recognized with several distinct honors: the <i>Excellent PhD Thesis Award</i> from China Society of Image and Graphics (中国图形图像学会优博) in 2017 (only 4 recipients in China), the <i>Best Student Paper Award</i> of CVPR 2026, the <i>Best Paper Award</i> of IEEE VR 2022, and the <i>Best Paper Award Honorable Mention</i> of IEEE VR 2025.
+I'm currently a Principal Researcher and Research Manager in the Microsoft Research Asia (MSRA) Lab located in Beijing, China. I lead a team to do cutting-edge, foundational research in Spatial and Physical AI, including but not limited to 3D reconstruction and generation, human-centric modeling, immersive AI experiences, and physical AI embodiments. Part of my research outcomes has been transitioned into various Microsoft products and services, including Microsoft Copilot, Azure AI, Cognitive Services, Windows Hello, and XiaoIce, delivering real-world impact at scale. I serve regularly as the program committee member/reviewer for major computer vision conferences and journals including CVPR/ICCV/ECCV/TPAMI/IJCV as well as the Area Chair/Senior Area Chair for CVPR/ICCV/ECCV/WACV, and I'm the Associate Editor for the prestigious journal International Journal on Computer Vision (IJCV). My research has been recognized with several distinct honors: the <i>Excellent PhD Thesis Award</i> from China Society of Image and Graphics (中国图形图像学会优博) in 2017 (only 4 recipients in China), the <i>Best Student Paper Award</i> of CVPR 2026, the <i>Best Paper Award</i> of IEEE VR 2022, and the <i>Best Paper Award Honorable Mention</i> of IEEE VR 2025.
 
-<p>Before joining MSRA in Sep 2016, I received dual PhD degrees from The Australian National University (Advisor: Prof. <a href="https://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a>) and Beijing Institute of Technology (Advisor: Prof. <a href="https://cs.bit.edu.cn/szdw/jsml/js/jyd/index.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a>) in 2016. I was a research intern at MSRA from Nov 2015 to Mar 2016 (Mentor: Dr. <a href="https://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a>), and was an visiting graduate researcher at Harvard University between Jul 2016 and Aug 2016 (Host: Dr. <a href="https://deqings.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Deqing Sun</a>).  Even earlier in my academic studies, I was a prolific coder, a commercial system builder, a frequent competition winner, and a multi-time National Scholarship recipient.</p>
+<p>Before joining MSRA in Sep 2016, I received dual PhD degrees from The Australian National University (Advisor: Prof. <a href="https://users.cecs.anu.edu.au/~hongdong/" target="_blank" class="jlyang_d_i_authorurl">Hongdong Li</a>) and Beijing Institute of Technology (Advisor: Prof. <a href="https://cs.bit.edu.cn/szdw/jsml/js/jyd/index.htm" target="_blank" class="jlyang_d_i_authorurl">Yunde Jia</a>) in 2016. I was a research intern at MSRA from Nov 2015 to Mar 2016 (Mentor: Dr. <a href="https://www.ganghua.org/" target="_blank" class="jlyang_d_i_authorurl">Gang Hua</a>), and was an visiting graduate researcher at Harvard University between Jul 2016 and Aug 2016 (Host: Dr. <a href="https://deqings.github.io/" target="_blank" class="jlyang_d_i_authorurl">Deqing Sun</a>).  Even earlier in my academic studies, I was a prolific coder, a commercial system builder, a frequent competition winner, and a multi-time National Scholarship recipient.</p>
 </td>
 </tr>
 </table>
@@ -204,6 +384,13 @@ I'm currently a Principal Researcher and Research Manager in the Microsoft Resea
 <!--<br />By year: <a href="#" onclick="show('10','bibtex');return false;">All</a>, <a href="#" onclick="show('10','bibtex');return false;">2017</a>, <a href="#" onclick="show('10','bibtex');return false;">2016</a>, <a href="#" onclick="show('10','bibtex');return false;">2015</a>, <a href="#" onclick="show('10','bibtex');return false;">2014</a>, <a href="#" onclick="show('10','bibtex');return false;">2013</a>, <a href="#" onclick="show('10','bibtex');return false;">2012</a><br/>
 By keywords: <a href="#" onclick="show('10','bibtex');return false;">All</a>, <a href="#" onclick="show('10','bibtex');return false;">3D</a>, <a href="#" onclick="show('10','bibtex');return false;">Deep Learning</a>, <a href="#" onclick="show('10','bibtex');return false;">Optical Flow</a>, <a href="#" onclick="show('10','bibtex');return false;">Face</a>, <a href="#" onclick="show('10','bibtex');return false;">Camera Motion</a>, <a href="#" onclick="show('10','bibtex');return false;">Registration</a>, <a href="#" onclick="show('10','bibtex');return false;">Relection Removal</a><br/>-->
 <!--All, 3D Generation, Face & Body, 3D Conferening-->
+<div id="pub-filter-bar" class="pub-filter-bar">
+	<a href="#" class="pub-filter-btn active" data-filter="all">All</a>
+	<a href="#" class="pub-filter-btn" data-filter="embodied-ai">Embodied AI</a>
+	<a href="#" class="pub-filter-btn" data-filter="3d-vision">3D Vision</a>
+	<a href="#" class="pub-filter-btn" data-filter="3d-generation">3D Generation</a>
+	<a href="#" class="pub-filter-btn" data-filter="human-modeling">Human Modeling</a>
+</div>
 </td>
 </tr>
 </table>
@@ -214,7 +401,7 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">All</a>, <a
 <tr>
 	<td width="132px"><a name="RealTimeTalkingPortrait" id="RealTimeTalkingPortrait"><img src="cvpr26_talkingportrait.jpg" width="140"/></a>
 	</td>
-	<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a href="https://sicxu.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Sicheng Xu</a>, <a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a>, <a href="https://skhu101.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Shoukang Hu</a>, Yichuan Wang, Yizhong Zhang, Zhan Chen, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" style="text-decoration:underline;color:#000;">Baining Guo</a><br/>
+	<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a href="https://sicxu.github.io/" target="_blank" class="jlyang_d_i_authorurl">Sicheng Xu</a>, <a href="https://yudeng.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yu Deng</a>, <a href="https://skhu101.github.io/" target="_blank" class="jlyang_d_i_authorurl">Shoukang Hu</a>, Yichuan Wang, Yizhong Zhang, Zhan Chen, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" class="jlyang_d_i_authorurl">Baining Guo</a><br/>
 	<span class="jlyang_d_i_c_name">Real-Time Generation of Streamable Talking Portrait Video with Reference-Guided Deep Compression VAEs</span><br/>
 	<span class="jlyang_d_i_c_refer">The 42th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2026)</b></span> (<span style="color:#e60000"><b>Highlight</b></span>)<br/>
 	[<a href="#" onclick="show('61','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('61','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2606.01620">PDF</a>] [<a target="_blank" href="https://arxiv.org/abs/2606.01620">Webpage</a>] [<a target="_blank" href="https://arxiv.org/abs/2606.01620">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2606.01620">arXiv</a>]<br/>
@@ -241,7 +428,7 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">All</a>, <a
 <tr>
 	<td width="132px"><a name="HiSpatial" id="HiSpatial"><img src="cvpr26_hispatial.jpg" width="140"/></a>
 	</td>
-	<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">Huizhi Liang<sup>*</sup>, Yichao Shen<sup>*</sup>, <a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a>, Sicheng Xu, Zhiyuan Feng, <a href="https://sites.google.com/view/tong-zhang" target="_blank" style="text-decoration:underline;color:#000;">Tong Zhang</a>, Yaobo Liang, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span><br/>
+	<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">Huizhi Liang<sup>*</sup>, Yichao Shen<sup>*</sup>, <a href="https://yudeng.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yu Deng</a>, Sicheng Xu, Zhiyuan Feng, <a href="https://sites.google.com/view/tong-zhang" target="_blank" class="jlyang_d_i_authorurl">Tong Zhang</a>, Yaobo Liang, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span><br/>
 	<span class="jlyang_d_i_c_name">HiSpatial: Taming Hierarchical 3D Spatial Understanding in Vision-Language Models</span><br/>
 	<span class="jlyang_d_i_c_refer">The 42th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2026)</b></span><br/>
 	[<a href="#" onclick="show('60','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('60','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2603.25411">PDF</a>] [<a target="_blank" href="https://microsoft.github.io/HiSpatial/">Webpage</a>] [<a target="_blank" href="https://microsoft.github.io/HiSpatial/">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2603.25411">arXiv</a>]<br/>
@@ -268,7 +455,7 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">All</a>, <a
 <tr>
 	<td width="132px"><a name="TRELLIS2" id="TRELLIS2"><img src="cvpr26_trellis2.jpg" width="140"/></a>
 	</td>
-	<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a href="https://jeffreyxiang.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Jianfeng Xiang</a><sup>+</sup>, <a href="https://cxx226.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Xiaoxue Chen</a><sup>+</sup>, Sicheng Xu, Ruicheng Wang, Zelong Lv, Yu Deng, Hongyuan Zhu, Yue Dong, <a href="https://sites.google.com/view/fromandto" target="_blank" style="text-decoration:underline;color:#000;">Hao Zhao</a>, <a href="https://www.microsoft.com/en-us/research/people/nicholasyuan/" target="_blank" style="text-decoration:underline;color:#000;">Nicholas Jing Yuan</a>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span><sup>$</sup><br/>
+	<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a href="https://jeffreyxiang.github.io/" target="_blank" class="jlyang_d_i_authorurl">Jianfeng Xiang</a><sup>+</sup>, <a href="https://cxx226.github.io/" target="_blank" class="jlyang_d_i_authorurl">Xiaoxue Chen</a><sup>+</sup>, Sicheng Xu, Ruicheng Wang, Zelong Lv, Yu Deng, Hongyuan Zhu, Yue Dong, <a href="https://sites.google.com/view/fromandto" target="_blank" class="jlyang_d_i_authorurl">Hao Zhao</a>, <a href="https://www.microsoft.com/en-us/research/people/nicholasyuan/" target="_blank" class="jlyang_d_i_authorurl">Nicholas Jing Yuan</a>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span><sup>$</sup><br/>
 	<span class="jlyang_d_i_c_name">Native and Compact Structured Latents for 3D Generation</span><br/>
 	<span class="jlyang_d_i_c_refer">The 42th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2026)</b></span> (<span style="color:#e60000"><b><a href="TRELLIS2_CVPR26_Best_Student_Paper_Award.png" target="_blank" style="color:#e60000;text-decoration:underline;">Best Student Paper Award</a></b>, 1/16092 submissions</span>)<br/>
 	[<a href="#" onclick="show('59','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('59','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2512.14692">PDF</a>] [<a target="_blank" href="https://microsoft.github.io/TRELLIS.2/">Webpage</a>] [<a target="_blank" href="https://microsoft.github.io/TRELLIS.2/">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2512.14692">arXiv</a>]<br/>
@@ -295,7 +482,7 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">All</a>, <a
 <tr>
 	<td width="132px"><a name="VITRA" id="VITRA"><img src="icra26_vitra.jpg" width="140"/></a>
 	</td>
-	<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">Qixiu Li<sup>*</sup>, <a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a><sup>*</sup>, <a href="https://www.microsoft.com/en-us/research/people/yalia/" target="_blank" style="text-decoration:underline;color:#000;">Yaobo Liang</a><sup>*</sup>, Lin Luo<sup>*</sup>, Lei Zhou, Chengtang Yao, Lingqi Zeng, Zhiyuan Feng, Huizhi Liang, Sicheng Xu, Yizhong Zhang, Xi Chen, Hao Chen, Lily Sun, Dong Chen, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span><sup>$</sup>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" style="text-decoration:underline;color:#000;">Baining Guo</a><br/>
+	<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">Qixiu Li<sup>*</sup>, <a href="https://yudeng.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yu Deng</a><sup>*</sup>, <a href="https://www.microsoft.com/en-us/research/people/yalia/" target="_blank" class="jlyang_d_i_authorurl">Yaobo Liang</a><sup>*</sup>, Lin Luo<sup>*</sup>, Lei Zhou, Chengtang Yao, Lingqi Zeng, Zhiyuan Feng, Huizhi Liang, Sicheng Xu, Yizhong Zhang, Xi Chen, Hao Chen, Lily Sun, Dong Chen, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span><sup>$</sup>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" class="jlyang_d_i_authorurl">Baining Guo</a><br/>
 	<span class="jlyang_d_i_c_name">Scalable Vision-Language-Action Model Pretraining for Robotic Manipulation with Real-Life Human Activity Videos</span><br/>
 	<span class="jlyang_d_i_c_refer">IEEE International Conference on Robotics <b>(ICRA2026)</b></span><br/>
 	[<a href="#" onclick="show('58','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('58','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2510.21571">PDF</a>] [<a target="_blank" href="https://microsoft.github.io/VITRA/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2510.21571">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2510.21571">arXiv</a>]<br/>
@@ -323,7 +510,7 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">All</a>, <a
 <tr>
 	<td width="132px"><a name="MVRoboBench" id="MVRoboBench"><img src="iclr26_mvrobobench.jpg" width="140"/></a>
 	</td>
-	<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">Z. Feng<sup>*</sup>, Z. Kang<sup>*</sup>, Q. Wang<sup>*</sup>, Z. Du<sup>*</sup>, J. Yan, S. Shi, C. Yuan, H. Liang, Y. Deng, Q. Li, R. Yang, R. An, L. Zheng, W. Wang, S. Chen, S. Xu, Y. Liang, <span class="jlyang_d_i_c_emphasize">J. Yang</span><sup>$</sup>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" style="text-decoration:underline;color:#000;">B. Guo</a><br/>
+	<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">Z. Feng<sup>*</sup>, Z. Kang<sup>*</sup>, Q. Wang<sup>*</sup>, Z. Du<sup>*</sup>, J. Yan, S. Shi, C. Yuan, H. Liang, Y. Deng, Q. Li, R. Yang, R. An, L. Zheng, W. Wang, S. Chen, S. Xu, Y. Liang, <span class="jlyang_d_i_c_emphasize">J. Yang</span><sup>$</sup>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" class="jlyang_d_i_authorurl">B. Guo</a><br/>
 	<span class="jlyang_d_i_c_name">Seeing Across Views: Benchmarking Spatial Reasoning of Vision-Language Models in Robotic Scenes</span><br/>
 	<span class="jlyang_d_i_c_refer">The 14th International Conference on Learning Representations <b>(ICLR2026)</b></span><br/>
 	[<a href="#" onclick="show('57','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('57','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2510.19400">PDF</a>] [<a target="_blank" href="https://github.com/microsoft/MV-RoboBench">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2510.19400">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2510.19400">arXiv</a>]<br/>
@@ -350,7 +537,7 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">All</a>, <a
 <tr>
 	<td width="132px"><a name="videovla" id="videovla"><img src="neurips25_videovla.jpg" width="140"/></a>
 	</td>
-	<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">Yichao Shen<sup>+</sup>, Fangyun Wei<sup>$</sup>, Zhiying Du, <a href="https://www.microsoft.com/en-us/research/people/yalia/" target="_blank" style="text-decoration:underline;color:#000;">Yaobo Liang</a>, Yan Lu, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang<sup>$</sup></span>, Nanning Zheng<sup>$</sup>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" style="text-decoration:underline;color:#000;">Baining Guo</a><br/>
+	<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">Yichao Shen<sup>+</sup>, Fangyun Wei<sup>$</sup>, Zhiying Du, <a href="https://www.microsoft.com/en-us/research/people/yalia/" target="_blank" class="jlyang_d_i_authorurl">Yaobo Liang</a>, Yan Lu, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang<sup>$</sup></span>, Nanning Zheng<sup>$</sup>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" class="jlyang_d_i_authorurl">Baining Guo</a><br/>
 	<span class="jlyang_d_i_c_name">VideoVLA: Video Generators Can Be Generalizable Robot Manipulators</span><br/>
 	<span class="jlyang_d_i_c_refer">The 39th Annual Conference on Neural Information Processing Systems <b>(NeurIPS2025)</b></span><br/>
 	[<a href="#" onclick="show('56','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('56','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://www.arxiv.org/pdf/2512.06963">PDF</a>] [<a target="_blank" href="https://videovla-nips2025.github.io/">Webpage</a>] [<a target="_blank" href="https://www.arxiv.org/abs/2512.06963">Suppl. Material</a>] [<a target="_blank" href="https://www.arxiv.org/abs/2512.06963">arXiv</a>]<br/>
@@ -377,7 +564,7 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">All</a>, <a
 <tr>
 	<td width="132px"><a name="vasa3d" id="vasa3d"><img src="neurips25_vasa3d.jpg" width="140"/></a>
 	</td>
-	<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">Sicheng Xu<sup>*</sup>, Guojun Chen<sup>*</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span><sup>$</sup>, Yizhong Zhang, <a href="https://www.microsoft.com/en-us/research/people/stevelin/" target="_blank" style="text-decoration:underline;color:#000;">Stephen Lin</a>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" style="text-decoration:underline;color:#000;">Baining Guo</a><br/>
+	<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">Sicheng Xu<sup>*</sup>, Guojun Chen<sup>*</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span><sup>$</sup>, Yizhong Zhang, <a href="https://www.microsoft.com/en-us/research/people/stevelin/" target="_blank" class="jlyang_d_i_authorurl">Stephen Lin</a>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" class="jlyang_d_i_authorurl">Baining Guo</a><br/>
 	<span class="jlyang_d_i_c_name">VASA-3D: Lifelike Audio-Driven Gaussian Head Avatars from a Single Image</span><br/>
 	<span class="jlyang_d_i_c_refer">The 39th Annual Conference on Neural Information Processing Systems <b>(NeurIPS2025)</b></span><br/>
 	[<a href="#" onclick="show('55','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('55','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://openreview.net/pdf/4a75fd0dde05e15d28875d32306617dab3c75fbf.pdf">PDF</a>] [<a target="_blank" href="https://www.microsoft.com/en-us/research/project/vasa-3d/">Webpage</a>] [<a target="_blank" href="#" onclick="alert('Available soon.');return false;">Suppl. Material</a>] [<a target="_blank" href="#" onclick="alert('Available soon.');return false;">arXiv</a>]<br/>
@@ -404,7 +591,7 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">All</a>, <a
 <tr>
 	<td width="132px"><a name="moge2" id="moge2"><img src="neurips25_moge2.jpg" width="140"/></a>
 	</td>
-	<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a href="https://wangrc.site" target="_blank" style="text-decoration:underline;color:#000;">Ruicheng Wang</a><sup>+</sup>, Sicheng Xu, <a href="https://yuedong.shading.me/" target="_blank" style="text-decoration:underline;color:#000;">Yue Dong</a>, <a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a>, <a href="https://jeffreyxiang.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Jianfeng Xiang</a><sup>+</sup>, Zelong Lv<sup>+</sup>, Guangzhong Sun, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a></span>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang<sup>$</sup></span><br/>
+	<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a href="https://wangrc.site" target="_blank" class="jlyang_d_i_authorurl">Ruicheng Wang</a><sup>+</sup>, Sicheng Xu, <a href="https://yuedong.shading.me/" target="_blank" class="jlyang_d_i_authorurl">Yue Dong</a>, <a href="https://yudeng.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yu Deng</a>, <a href="https://jeffreyxiang.github.io/" target="_blank" class="jlyang_d_i_authorurl">Jianfeng Xiang</a><sup>+</sup>, Zelong Lv<sup>+</sup>, Guangzhong Sun, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a></span>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang<sup>$</sup></span><br/>
 	<span class="jlyang_d_i_c_name">MoGe-2: Accurate Monocular Geometry with Metric Scale and Sharp Details</span><br/>
 	<span class="jlyang_d_i_c_refer">The 39th Annual Conference on Neural Information Processing Systems <b>(NeurIPS2025)</b></span><br/>
 	[<a href="#" onclick="show('54','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('54','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2507.02546">PDF</a>] [<a target="_blank" href="https://wangrc.site/MoGe2Page/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2507.02546">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2507.02546">arXiv</a>]<br/>
@@ -431,7 +618,7 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">All</a>, <a
 <tr>
 	<td width="132px"><a name="gvfdiffusion" id="gvfdiffusion"><img src="iccv25_gvfdiffusion.jpg" width="140"/></a>
 	</td>
-	<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a href="http://home.ustc.edu.cn/~zhangbowen/" target="_blank" style="text-decoration:underline;color:#000;">Bowen Zhang</a>, Sicheng Xu, Chuxin Wang, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, Feng Zhao, <a href="http://dongchen.pro/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" style="text-decoration:underline;color:#000;">Baining Guo</a><br/>
+	<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a href="http://home.ustc.edu.cn/~zhangbowen/" target="_blank" class="jlyang_d_i_authorurl">Bowen Zhang</a>, Sicheng Xu, Chuxin Wang, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, Feng Zhao, <a href="http://dongchen.pro/" target="_blank" class="jlyang_d_i_authorurl">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" class="jlyang_d_i_authorurl">Baining Guo</a><br/>
 	<span class="jlyang_d_i_c_name">Gaussian Variation Field Diffusion for High-fidelity Video-to-4D Synthesis</span><br/>
 	<span class="jlyang_d_i_c_refer">The 20th International Conference on Computer Vision <b>(ICCV2025)</b></span><br/>
 	[<a href="#" onclick="show('53','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('53','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2507.23785">PDF</a>] [<a target="_blank" href="https://gvfdiffusion.github.io/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2507.23785">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2507.23785">arXiv</a>]
@@ -457,7 +644,7 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">All</a>, <a
 <tr>
 	<td width="132px"><a name="VASA-Rig" id="VASA-Rig"><img src="vr25_vasarig.jpg" width="140"/></a>
 	</td>
-	<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a href="https://sjtu-characterlab.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Ye Pan</a>, Chang Liu, Sicheng Xu, Shuai Tan, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang<sup>$</sup></span><br/>
+	<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a href="https://sjtu-characterlab.github.io/" target="_blank" class="jlyang_d_i_authorurl">Ye Pan</a>, Chang Liu, Sicheng Xu, Shuai Tan, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang<sup>$</sup></span><br/>
 	<span class="jlyang_d_i_c_name">VASA-Rig: Audio-Driven 3D Facial Animation with 'Live' Mood Dynamics in Virtual Reality</span><br/>
 	<span class="jlyang_d_i_c_refer">IEEE Conference on Virtual Reality and 3D User Interfaces <b>(VR2025)</b> (& <b>IEEE TVCG</b>)</span> (<span style="color:#e60000"><b><a href="VASA-Rig_IEEE_VR_2025_HM.png" target="_blank" style="color:#e60000;text-decoration:underline;">Best Paper Award Honorable Mention</a></b></span>)<br/>
 	[<a href="#" onclick="show('52','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('52','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://ieeexplore.ieee.org/document/10916977">PDF</a>] [<a target="_blank" href="https://ieeexplore.ieee.org/document/10916977">Webpage</a>] [<a target="_blank" href="https://ieeexplore.ieee.org/document/10916977">Suppl. Material</a>] [<a target="_blank" href="https://ieeexplore.ieee.org/document/10916977">arXiv</a>]
@@ -484,7 +671,7 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">All</a>, <a
 <td width="132px"><a name="PF3plat" id="PF3plat"><img src="icml25_PF3plat.jpg" width="140"/></a>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-<a href="https://sunghwanhong.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Sunghwan Hong</a>, Jaewoo Jung, Heeseong Shin, Jisang Han, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang<sup>$</sup></span>, <a href="https://www.microsoft.com/en-us/research/people/cluo/" target="_blank" style="text-decoration:underline;color:#000;">Chong Luo</a><sup>$</sup>, <a href="https://cvlab.kaist.ac.kr/members/faculty" target="_blank" style="text-decoration:underline;color:#000;">Seungryong Kim</a><sup>$</sup><br/>
+<a href="https://sunghwanhong.github.io/" target="_blank" class="jlyang_d_i_authorurl">Sunghwan Hong</a>, Jaewoo Jung, Heeseong Shin, Jisang Han, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang<sup>$</sup></span>, <a href="https://www.microsoft.com/en-us/research/people/cluo/" target="_blank" class="jlyang_d_i_authorurl">Chong Luo</a><sup>$</sup>, <a href="https://cvlab.kaist.ac.kr/members/faculty" target="_blank" class="jlyang_d_i_authorurl">Seungryong Kim</a><sup>$</sup><br/>
 <span class="jlyang_d_i_c_name">PF3plat: Pose-Free Feed-Forward 3D Gaussian Splatting</span><br/>
 <span class="jlyang_d_i_c_refer">The 42th International Conference on Machine Learning <b>(ICML2025)</b></span><br/>
 [<a href="#" onclick="show('47','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('47','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2410.22128.pdf">PDF</a>] [<a target="_blank" href="https://cvlab-kaist.github.io/PF3plat/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2410.22128.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/pdf/2410.22128">arXiv</a>]<br />
@@ -512,7 +699,7 @@ We consider the problem of novel view synthesis from unposed images in a single 
 	<td width="132px"><a name="UniGraspTransformer" id="UniGraspTransformer"><img src="cvpr25_unigrasptransformer.jpg" width="140"/></a>
 	</td>
 	<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-	<a href="https://wenbwa.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Wenbo Wang</a>, <a href="https://www.microsoft.com/en-us/research/people/fawe/" target="_blank" style="text-decoration:underline;color:#000;">Fangyun Wei</a>, Lei Zhou, Xi Chen, Lin Luo, Xiaohan Yi, Yizhong Zhang, <a href="https://www.microsoft.com/en-us/research/people/yalia/" target="_blank" style="text-decoration:underline;color:#000;">Yaobo Liang</a>, Chang Xu, Yan Lu, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" style="text-decoration:underline;color:#000;">Baining Guo</a><br/>
+	<a href="https://wenbwa.github.io/" target="_blank" class="jlyang_d_i_authorurl">Wenbo Wang</a>, <a href="https://www.microsoft.com/en-us/research/people/fawe/" target="_blank" class="jlyang_d_i_authorurl">Fangyun Wei</a>, Lei Zhou, Xi Chen, Lin Luo, Xiaohan Yi, Yizhong Zhang, <a href="https://www.microsoft.com/en-us/research/people/yalia/" target="_blank" class="jlyang_d_i_authorurl">Yaobo Liang</a>, Chang Xu, Yan Lu, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" class="jlyang_d_i_authorurl">Baining Guo</a><br/>
 	<span class="jlyang_d_i_c_name">UniGraspTransformer: Simplified Policy Distillation for Scalable Dexterous Robotic Grasping</span><br/>
 	<span class="jlyang_d_i_c_refer">The 41th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2025)</b></span><br/>
 	[<a href="#" onclick="show('50','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('50','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2412.02699.pdf">PDF</a>] [<a target="_blank" href="https://dexhand.github.io/UniGraspTransformer/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2412.02699.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2412.02699">arXiv</a>]<br />
@@ -539,7 +726,7 @@ We consider the problem of novel view synthesis from unposed images in a single 
 	<td width="132px"><a name="trellis" id="trellis"><img src="cvpr25_trellis.jpg" width="140"/></a>
 	</td>
 	<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-	<a href="https://jeffreyxiang.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Jianfeng Xiang</a><sup>+</sup>, Zelong Lv<sup>+</sup>, Sicheng Xu, <a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a>, <a href="https://wangrc.site" target="_blank" style="text-decoration:underline;color:#000;">Ruicheng Wang</a><sup>+</sup>, <a href="http://home.ustc.edu.cn/~zhangbowen/" target="_blank" style="text-decoration:underline;color:#000;">Bowen Zhang</a>, <a href="http://dongchen.pro/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a></span>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang<sup>$</sup></span><br/>
+	<a href="https://jeffreyxiang.github.io/" target="_blank" class="jlyang_d_i_authorurl">Jianfeng Xiang</a><sup>+</sup>, Zelong Lv<sup>+</sup>, Sicheng Xu, <a href="https://yudeng.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yu Deng</a>, <a href="https://wangrc.site" target="_blank" class="jlyang_d_i_authorurl">Ruicheng Wang</a><sup>+</sup>, <a href="http://home.ustc.edu.cn/~zhangbowen/" target="_blank" class="jlyang_d_i_authorurl">Bowen Zhang</a>, <a href="http://dongchen.pro/" target="_blank" class="jlyang_d_i_authorurl">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a></span>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang<sup>$</sup></span><br/>
 	<span class="jlyang_d_i_c_name">Structured 3D Latents for Scalable and Versatile 3D Generation</span><br/>
 	<span class="jlyang_d_i_c_refer">The 41th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2025)</b></span> (<b><span style="color:#e60000">Highlight</span></b>)<br/>
 	[<a href="#" onclick="show('49','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('49','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2412.01506.pdf">PDF</a>] [<a target="_blank" href="https://trellis3d.github.io/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2412.01506.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2412.01506">arXiv</a>]<br />
@@ -568,7 +755,7 @@ We consider the problem of novel view synthesis from unposed images in a single 
 <td width="132px"><a name="moge" id="moge"><img src="cvpr25_moge.jpg" width="140"/></a>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-<a href="https://wangrc.site" target="_blank" style="text-decoration:underline;color:#000;">Ruicheng Wang</a><sup>+</sup>, Sicheng Xu, Cassie Dai<sup>+</sup>, <a href="https://jeffreyxiang.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Jianfeng Xiang</a><sup>+</sup>, <a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a></span>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang<sup>$</sup></span><br/>
+<a href="https://wangrc.site" target="_blank" class="jlyang_d_i_authorurl">Ruicheng Wang</a><sup>+</sup>, Sicheng Xu, Cassie Dai<sup>+</sup>, <a href="https://jeffreyxiang.github.io/" target="_blank" class="jlyang_d_i_authorurl">Jianfeng Xiang</a><sup>+</sup>, <a href="https://yudeng.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yu Deng</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a></span>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang<sup>$</sup></span><br/>
 <span class="jlyang_d_i_c_name">MoGe: Unlocking Accurate Monocular Geometry Estimation for Open-Domain Images with Optimal Training Supervision</span><br/>
 <span class="jlyang_d_i_c_refer">The 41th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2025)</b></span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
 [<a href="#" onclick="show('48','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('48','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2410.19115.pdf">PDF</a>] [<a target="_blank" href="https://wangrc.site/MoGePage/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2410.19115.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2410.19115">arXiv</a>]<br />
@@ -595,7 +782,7 @@ We present MoGe, a powerful model for recovering 3D geometry from monocular open
 <tr>
 	<td width="132px"><a name="CogACT" id="CogACT"><img src="arxiv24_CogACT.jpg" width="140"/></a>
 	</td>
-	<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">Qixiu Li<sup>*</sup>, <a href="https://www.microsoft.com/en-us/research/people/yalia/" target="_blank" style="text-decoration:underline;color:#000;">Yaobo Liang</a><sup>*$</sup>, Zeyu Wang<sup>*</sup>, Lin Luo, Xi Chen, Mozheng Liao, Fangyun Wei, Yu Deng, Sicheng Xu, Yizhong Zhang, Xiaofan Wang, Bei Liu, Jianlong Fu, Jianmin Bao, Dong Chen, Yuanchun Shi, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang<sup>$</sup></span>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" style="text-decoration:underline;color:#000;">Baining Guo</a><br/>
+	<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">Qixiu Li<sup>*</sup>, <a href="https://www.microsoft.com/en-us/research/people/yalia/" target="_blank" class="jlyang_d_i_authorurl">Yaobo Liang</a><sup>*$</sup>, Zeyu Wang<sup>*</sup>, Lin Luo, Xi Chen, Mozheng Liao, Fangyun Wei, Yu Deng, Sicheng Xu, Yizhong Zhang, Xiaofan Wang, Bei Liu, Jianlong Fu, Jianmin Bao, Dong Chen, Yuanchun Shi, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang<sup>$</sup></span>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" class="jlyang_d_i_authorurl">Baining Guo</a><br/>
 	<span class="jlyang_d_i_c_name">CogACT: A Foundational Vision-Language-Action Model for Synergizing Cognition and Action in Robotic Manipulation</span><br/>
 	<span class="jlyang_d_i_c_refer">arXiv preprint, 2024</span><br/>
 	[<a href="#" onclick="show('51','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('51','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2411.19650.pdf">PDF</a>] [<a target="_blank" href="https://cogact.github.io/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2411.19650.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2411.19650">arXiv</a>]<br />
@@ -623,7 +810,7 @@ We present MoGe, a powerful model for recovering 3D geometry from monocular open
 <td width="132px"><a name="vasa1" id="gaussiancube"><img src="neurips24_vasa1.jpg" width="140"/></a>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-Sicheng Xu<sup>*</sup>, <a href="https://www.microsoft.com/en-us/research/people/guoch/" target="_blank" style="text-decoration:underline;color:#000;">Guojun Chen</a><sup>*</sup>, <a href="https://yuxiaoguo.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu-Xiao Guo</a><sup>*</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang<sup>*$</sup></span>, Chong Li, Zhenyu Zang, <a href="https://yizhongzhang1989.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yizhong Zhang</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" style="text-decoration:underline;color:#000;">Baining Guo</a><br/>
+Sicheng Xu<sup>*</sup>, <a href="https://www.microsoft.com/en-us/research/people/guoch/" target="_blank" class="jlyang_d_i_authorurl">Guojun Chen</a><sup>*</sup>, <a href="https://yuxiaoguo.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yu-Xiao Guo</a><sup>*</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang<sup>*$</sup></span>, Chong Li, Zhenyu Zang, <a href="https://yizhongzhang1989.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yizhong Zhang</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" class="jlyang_d_i_authorurl">Baining Guo</a><br/>
 <span class="jlyang_d_i_c_name">VASA-1: Lifelike Audio-Driven Talking Faces Generated in Real Time</span><br/>
 <span class="jlyang_d_i_c_refer">The 38th Annual Conference on Neural Information Processing Systems <b>(NeurIPS2024)</b></span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
 [<a href="#" onclick="show('46','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('46','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2404.10667.pdf">PDF</a>] [<a target="_blank" href="https://www.microsoft.com/en-us/research/project/vasa-1/">Webpage</a>] [<a target="_blank" href="https://www.microsoft.com/en-us/research/project/vasa-1/">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2404.10667">arXiv</a>]<br />
@@ -651,7 +838,7 @@ We introduce VASA, a framework for generating lifelike talking faces of virtual 
 <td width="132px"><a name="gaussiancube" id="gaussiancube"><img src="neurips24_gaussiancube.jpg" width="140"/></a>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-<a href="http://home.ustc.edu.cn/~zhangbowen/" target="_blank" style="text-decoration:underline;color:#000;">Bowen Zhang</a><sup>+</sup>, Yiji Chen<sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.chunyuwang.org" target="_blank" style="text-decoration:underline;color:#000;">Chunyu Wang</a>, Feng Zhao, Yansong Tang, <a href="http://www.dongchen.pro/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" style="text-decoration:underline;color:#000;">Baining Guo</a><br/>
+<a href="http://home.ustc.edu.cn/~zhangbowen/" target="_blank" class="jlyang_d_i_authorurl">Bowen Zhang</a><sup>+</sup>, Yiji Chen<sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.chunyuwang.org" target="_blank" class="jlyang_d_i_authorurl">Chunyu Wang</a>, Feng Zhao, Yansong Tang, <a href="http://www.dongchen.pro/" target="_blank" class="jlyang_d_i_authorurl">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" class="jlyang_d_i_authorurl">Baining Guo</a><br/>
 <span class="jlyang_d_i_c_name">GaussianCube: A Structured and Explicit Radiance Representation for 3D Generative Modeling</span><br/>
 <span class="jlyang_d_i_c_refer">The 38th Conference on Neural Information Processing Systems <b>(NeurIPS2024)</b></span><br/>
 [<a href="#" onclick="show('45','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('45','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2403.19655.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/GaussianCube/GaussianCube">Code</a>]--> [<a target="_blank" href="https://gaussiancube.github.io/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2403.19655.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2403.19655">arXiv</a>]<br />
@@ -679,7 +866,7 @@ We introduce VASA, a framework for generating lifelike talking faces of virtual 
 <td width="132px"><a name="diffcriticedit" id="diffcriticedit"><img src="eccv24_diffcriticedit.jpg" width="140"/></a>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-<a href="https://wangrc.site" target="_blank" style="text-decoration:underline;color:#000;">Ruicheng Wang</a><sup>+</sup>, <a href="https://jeffreyxiang.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Jianfeng Xiang</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<a href="https://wangrc.site" target="_blank" class="jlyang_d_i_authorurl">Ruicheng Wang</a><sup>+</sup>, <a href="https://jeffreyxiang.github.io/" target="_blank" class="jlyang_d_i_authorurl">Jianfeng Xiang</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a><br/>
 <span class="jlyang_d_i_c_name">Diffusion Models are Geometry Critics: Single Image 3D Editing Using Pre-Trained Diffusion Priors</span><br/>
 <span class="jlyang_d_i_c_refer">The 18th European Conference on Computer Vision <b>(ECCV2024)</b></span><br/>
 [<a href="#" onclick="show('44','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('44','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2403.11503.pdf">PDF</a>] <!--[<a target="_blank" href="https://wangrc.site/DiffCriticEdit/">Code</a>]--> [<a target="_blank" href="https://wangrc.site/DiffCriticEdit/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2403.11503.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2403.11503">arXiv</a>]<br />
@@ -708,7 +895,7 @@ We propose a novel image editing technique that enables 3D manipulations on sing
 <td width="132px"><a name="rodinhd" id="rodinhd"><img src="eccv24_rodinhd.jpg" width="140"/></a>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-<a href="http://home.ustc.edu.cn/~zhangbowen/" target="_blank" style="text-decoration:underline;color:#000;">Bowen Zhang</a>*, Yiji Chen*, <a href="https://www.chunyuwang.org/" target="_blank" style="text-decoration:underline;color:#000;">Chunyu Wang</a>, <a href="https://hellozting.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Ting Zhang</a>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://andytang15.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yansong Tang</a>, <a href="http://www.dongchen.pro/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" style="text-decoration:underline;color:#000;">Baining Guo</a><br/>
+<a href="http://home.ustc.edu.cn/~zhangbowen/" target="_blank" class="jlyang_d_i_authorurl">Bowen Zhang</a>*, Yiji Chen*, <a href="https://www.chunyuwang.org/" target="_blank" class="jlyang_d_i_authorurl">Chunyu Wang</a>, <a href="https://hellozting.github.io/" target="_blank" class="jlyang_d_i_authorurl">Ting Zhang</a>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://andytang15.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yansong Tang</a>, <a href="http://www.dongchen.pro/" target="_blank" class="jlyang_d_i_authorurl">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" class="jlyang_d_i_authorurl">Baining Guo</a><br/>
 <span class="jlyang_d_i_c_name">RodinHD: High-Fidelity 3D Avatar Generation with Diffusion Models</span><br/>
 <span class="jlyang_d_i_c_refer">The 18th European Conference on Computer Vision <b>(ECCV2024)</b></span><br/>
 [<a href="#" onclick="show('43','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('43','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2407.06938.pdf">PDF</a>] <!--[<a target="_blank" href="https://wangrc.site/DiffCriticEdit/">Code</a>]--> [<a target="_blank" href="https://rodinhd.github.io/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2407.06938.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2407.06938">arXiv</a>]<br />
@@ -737,7 +924,7 @@ We present RodinHD, which can generate high-fidelity 3D avatars from a portrait 
 <td width="132px"><a name="signavatar" id="signavatar"><img src="eccv24_signavatar.jpg" width="140"/></a>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-<a href="https://2000zrl.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Ronglai Zuo</a>, <a href="https://www.microsoft.com/en-us/research/people/fawe/" target="_blank" style="text-decoration:underline;color:#000;">Fangyun Wei</a>, Zenggui Chen, Brian Mak, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<a href="https://2000zrl.github.io/" target="_blank" class="jlyang_d_i_authorurl">Ronglai Zuo</a>, <a href="https://www.microsoft.com/en-us/research/people/fawe/" target="_blank" class="jlyang_d_i_authorurl">Fangyun Wei</a>, Zenggui Chen, Brian Mak, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a><br/>
 <span class="jlyang_d_i_c_name">A Simple Baseline for Spoken Language to Sign Language Translation with 3D Avatars</span><br/>
 <span class="jlyang_d_i_c_refer">The 18th European Conference on Computer Vision <b>(ECCV2024)</b></span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
 [<a href="#" onclick="show('42','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('42','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2401.04730.pdf">PDF</a>] <!--[<a target="_blank" href="https://wangrc.site/DiffCriticEdit/">Code</a>]--> [<a target="_blank" href="https://github.com/FangyunWei/SLRT/tree/main/Spoken2Sign">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2401.04730.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2401.04730">arXiv</a>]
@@ -765,7 +952,7 @@ Sign languages are visual languages using manual articulations and non-manual el
 <td width="132px"><a name="coponerf" id="coponerf"><img src="cvpr24_coponerf.jpg" width="140"/></a>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-<a href="https://sunghwanhong.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Sunghwan Hong</a>, Jaewoo Jung, Heeseong Shin, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://cvlab.korea.ac.kr/members/faculty" target="_blank" style="text-decoration:underline;color:#000;">Seungryong Kim</a>, <a href="https://www.microsoft.com/en-us/research/people/cluo" target="_blank" style="text-decoration:underline;color:#000;">Chong Luo</a><br/>
+<a href="https://sunghwanhong.github.io/" target="_blank" class="jlyang_d_i_authorurl">Sunghwan Hong</a>, Jaewoo Jung, Heeseong Shin, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://cvlab.korea.ac.kr/members/faculty" target="_blank" class="jlyang_d_i_authorurl">Seungryong Kim</a>, <a href="https://www.microsoft.com/en-us/research/people/cluo" target="_blank" class="jlyang_d_i_authorurl">Chong Luo</a><br/>
 <span class="jlyang_d_i_c_name">Unifying Correspondence, Pose and NeRF for Pose-Free Novel View Synthesis from Stereo Pairs</span><br/>
 <span class="jlyang_d_i_c_refer">The 40th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR 2024)</b></span> (<b><span style="color:#e60000">Highlight</span></b>)<br/>
 [<a href="#" onclick="show('41','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('41','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2312.07246.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/KU-CVLAB/CoPoNeRF">Code</a>]--> [<a target="_blank" href="https://ku-cvlab.github.io/CoPoNeRF/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2312.07246.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2312.07246">arXiv</a>]<br />
@@ -792,7 +979,7 @@ This work delves into the task of pose-free novel view synthesis from stereo pai
 <td width="132px"><a name="aniportraitgan" id="aniportraitgan"><img src="sa23_aniportraitgan.jpg" width="140"/></a>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-<a href="https://yuewuhkust.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yue Wu</a><sup>+</sup>*, Sicheng Xu*, <a href="https://jeffreyxiang.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Jianfeng Xiang</a>, Fangyun Wei, <a href="https://cqf.io" target="_blank" style="text-decoration:underline;color:#000;">Qifeng Chen</a>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang<sup>$</sup></span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<a href="https://yuewuhkust.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yue Wu</a><sup>+</sup>*, Sicheng Xu*, <a href="https://jeffreyxiang.github.io/" target="_blank" class="jlyang_d_i_authorurl">Jianfeng Xiang</a>, Fangyun Wei, <a href="https://cqf.io" target="_blank" class="jlyang_d_i_authorurl">Qifeng Chen</a>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang<sup>$</sup></span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a><br/>
 <span class="jlyang_d_i_c_name">AniPortraitGAN: Animatable 3D Portrait Generation from 2D Image Collections</span><br/>
 <span class="jlyang_d_i_c_refer">ACM <b>SIGGRAPH Asia</b> 2023</span><br/>
 [<a href="#" onclick="show('40','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('40','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2309.02186.pdf">PDF</a>] <!--[<a target="_blank" href="https://yuewuhkust.github.io/AniPortraitGAN/">Code</a>]--> [<a target="_blank" href="https://yuewuhkust.github.io/AniPortraitGAN/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2309.02186.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2309.02186">arXiv</a>]<br />
@@ -821,7 +1008,7 @@ Previous animatable 3D-aware GANs for human generation have primarily focused on
 <td width="132px"><a name="gramhd" id="gramhd"><img src="iccv23_3dawarediffusion.jpg" width="140"/></a>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-<a href="https://jeffreyxiang.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Jianfeng Xiang</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://hbb1.github.io/" target="_blank" style="text-decoration:underline;color:#000;">BinBin Huang</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<a href="https://jeffreyxiang.github.io/" target="_blank" class="jlyang_d_i_authorurl">Jianfeng Xiang</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://hbb1.github.io/" target="_blank" class="jlyang_d_i_authorurl">BinBin Huang</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a><br/>
 <span class="jlyang_d_i_c_name">3D-aware Image Generation using 2D Diffusion Models</span><br/>
 <span class="jlyang_d_i_c_refer">The 19th International Conference on Computer Vision <b>(ICCV 2023)</b></span><br/>
 [<a href="#" onclick="show('39','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('39','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2303.17905.pdf">PDF</a>] <!--[<a target="_blank" href="#" onclick="alert('Available soon');return false;">Code</a>]--> [<a target="_blank" href="https://jeffreyxiang.github.io/ivid/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2303.17905.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2303.17905">arXiv</a>]<br />
@@ -850,7 +1037,7 @@ In this paper, we introduce a novel 3D-aware image generation method that levera
 <td width="132px"><a name="gramhd" id="gramhd"><img src="iccv23_gramhd.jpg" width="140"/></a>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-<a href="https://jeffreyxiang.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Jianfeng Xiang</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<a href="https://jeffreyxiang.github.io/" target="_blank" class="jlyang_d_i_authorurl">Jianfeng Xiang</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://yudeng.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yu Deng</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a><br/>
 <span class="jlyang_d_i_c_name">GRAM-HD: 3D-Consistent Image Generation at High Resolution with Generative Radiance Manifolds</span><br/>
 <span class="jlyang_d_i_c_refer">The 19th International Conference on Computer Vision <b>(ICCV 2023)</b></span><br/>
 [<a href="#" onclick="show('38','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('38','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2206.07255.pdf">PDF</a>] <!--[<a target="_blank" href="#" onclick="alert('Available soon');return false;">Code</a>]--> [<a target="_blank" href="https://jeffreyxiang.github.io/GRAM-HD/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2206.07255.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2206.07255">arXiv</a>]<br />
@@ -879,7 +1066,7 @@ Recent works have shown that 3D-aware GANs trained on unstructured single image 
 <td width="132px"><a name="nerfganinvertor" id="nerfganinvertor"><img src="cvpr23_nerfganinvertor.jpg" width="140"/></a>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-Yu Yin, Kamran Ghasedi, <a href="https://www.microsoft.com/en-us/research/people/musclewu/" target="_blank" style="text-decoration:underline;color:#000;">HsiangTao Wu</a>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a>, Yun Fu<br/>
+Yu Yin, Kamran Ghasedi, <a href="https://www.microsoft.com/en-us/research/people/musclewu/" target="_blank" class="jlyang_d_i_authorurl">HsiangTao Wu</a>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a>, Yun Fu<br/>
 <span class="jlyang_d_i_c_name">NeRFInvertor: High Fidelity NeRF-GAN Inversion for Single-Shot Real Image Animation</span><br/>
 <span class="jlyang_d_i_c_refer">The 39th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2023)</b></span><br/>
 [<a href="#" onclick="show('37','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('37','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2211.17235.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/YuYin1/NeRFInvertor">Code</a>]--> [<a target="_blank" href="https://yuyin1.github.io/NeRFInvertor_Homepage/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2211.17235.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2211.17235">arXiv</a>]<br />
@@ -907,7 +1094,7 @@ NeRF-based Generative models have shown impressive capacity in generating high-q
 <td width="132px"><a name="anifacegan" id="anifacegan"><img src="neurips22_anifacegan.jpg" width="140"/></a>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-<a href="https://yuewuhkust.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yue Wu</a><sup>+</sup>, <a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span><sup>$</sup>, Fangyun Wei, <a href="https://cqf.io" target="_blank" style="text-decoration:underline;color:#000;">Qifeng Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<a href="https://yuewuhkust.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yue Wu</a><sup>+</sup>, <a href="https://yudeng.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yu Deng</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span><sup>$</sup>, Fangyun Wei, <a href="https://cqf.io" target="_blank" class="jlyang_d_i_authorurl">Qifeng Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a><br/>
 <span class="jlyang_d_i_c_name">AniFaceGAN: Animatable 3D-Aware Face Image Generation for Video Avatars</span><br/>
 <span class="jlyang_d_i_c_refer">The 36th Conference on Neural Information Processing Systems <b>(NeurIPS 2022)</b></span> (<b><span style="color:#e60000">Spotlight</span></b>)<br/>
 [<a href="#" onclick="show('36','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('36','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2210.06465.pdf">PDF</a>] <!--[<a target="_blank" href="https://yuewuhkust.github.io/AniFaceGAN/">Code</a>]--> [<a target="_blank" href="https://yuewuhkust.github.io/AniFaceGAN/">Webpage</a>] [<a target="_blank" href="https://yuewuhkust.github.io/AniFaceGAN/">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2210.06465">arXiv</a>]<br />
@@ -935,7 +1122,7 @@ Recent works have shown that 3D-aware GANs trained on unstructured single image 
 <td width="132px"><img src="pg2022.png" width="140"/>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-Ziyu Wang<sup>+</sup>, <a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://www.yu-jingyi.com/cv/" target="_blank" style="text-decoration:underline;color:#000;">Jingyi Yu</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+Ziyu Wang<sup>+</sup>, <a href="https://yudeng.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yu Deng</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://www.yu-jingyi.com/cv/" target="_blank" class="jlyang_d_i_authorurl">Jingyi Yu</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a><br/>
 <span class="jlyang_d_i_c_name">Generative Deformable Radiance Fields for Disentangled Image Synthesis of Topology-Varying Objects</span><br/>
 <span class="jlyang_d_i_c_refer">The 30th Pacific Graphics Conference <b>(PG 2022)</b> (& Computer Graphics Forum, <b>CGF</b>)</span><br/>
 [<a href="#" onclick="show('35','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('35','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2209.04183.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/ziyuwang98/GDRF/">Code</a>]--> [<a target="_blank" href="https://ziyuwang98.github.io/GDRF/">Webpage</a>] [<a target="_blank" href="https://ziyuwang98.github.io/GDRF/">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2209.04183">arXiv</a>]<br />
@@ -965,7 +1152,7 @@ model for synthesizing radiance fields of topology-varying objects with disentan
 <td width="132px"><a name="mpsnerf" id="mpsnerf"><img src="tpami22_mpsnerf.jpg" width="140"/></a>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-Xiangjun Gao<sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span><sup>$</sup>, Jongyoo Kim, <a href="https://pengsida.net/" target="_blank" style="text-decoration:underline;color:#000;">Sida Peng</a>, <a href="https://www.microsoft.com/en-us/research/people/zliu/" target="_blank" style="text-decoration:underline;color:#000;">Zicheng Liu</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+Xiangjun Gao<sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span><sup>$</sup>, Jongyoo Kim, <a href="https://pengsida.net/" target="_blank" class="jlyang_d_i_authorurl">Sida Peng</a>, <a href="https://www.microsoft.com/en-us/research/people/zliu/" target="_blank" class="jlyang_d_i_authorurl">Zicheng Liu</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a><br/>
 <span class="jlyang_d_i_c_name">MPS-NeRF: Generalizable 3D Human Rendering from Multiview Images</span><br/>
 <span class="jlyang_d_i_c_refer">IEEE Transactions on Pattern Analysis and Machine Intelligence <b>(TPAMI)</b>, 2022</span><br/>
 [<a href="#" onclick="show('34','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('34','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2203.16875.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/gaoxiangjun/MPS-NeRF">Code</a>]--> [<a target="_blank" href="https://gaoxiangjun.github.io/mps_nerf/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2203.16875.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2203.16875">arXiv</a>]<br />
@@ -994,7 +1181,7 @@ There has been rapid progress recently on 3D human rendering, including novel vi
 <td width="132px"><img src="eccv22_pgmpi.png" width="140"/>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-<a href="https://ken-ouyang.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Hao Ouyang</a>, <a href="https://bo-zhang.me/" target="_blank" style="text-decoration:underline;color:#000;">Bo Zhang</a>, <a href="https://panzhang0212.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Pan Zhang</a>, <a href="https://www.haya.pro" target="_blank" style="text-decoration:underline;color:#000;">Hao Yang</a>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://www.dongchen.pro" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="https://cqf.io" target="_blank" style="text-decoration:underline;color:#000;">Qifeng Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/fangwen/" target="_blank" style="text-decoration:underline;color:#000;">Fang Wen</a><br/>
+<a href="https://ken-ouyang.github.io/" target="_blank" class="jlyang_d_i_authorurl">Hao Ouyang</a>, <a href="https://bo-zhang.me/" target="_blank" class="jlyang_d_i_authorurl">Bo Zhang</a>, <a href="https://panzhang0212.github.io/" target="_blank" class="jlyang_d_i_authorurl">Pan Zhang</a>, <a href="https://www.haya.pro" target="_blank" class="jlyang_d_i_authorurl">Hao Yang</a>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://www.dongchen.pro" target="_blank" class="jlyang_d_i_authorurl">Dong Chen</a>, <a href="https://cqf.io" target="_blank" class="jlyang_d_i_authorurl">Qifeng Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/fangwen/" target="_blank" class="jlyang_d_i_authorurl">Fang Wen</a><br/>
 <span class="jlyang_d_i_c_name">Real-Time Neural Character Rendering with Pose-Guided Multiplane Images</span><br/>
 <span class="jlyang_d_i_c_refer">The 17th European Conference on Computer Vision<b> (ECCV2022)</b></span><br/>
 [<a href="#" onclick="show('33','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('33','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2204.11820.pdf">PDF</a>] <!--[<a target="_blank" href="https://ken-ouyang.github.io/cmpi/index.html">Code</a>]--> [<a target="_blank" href="https://ken-ouyang.github.io/cmpi/index.html">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2204.11820.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2204.11820">arXiv</a>]<br />
@@ -1051,7 +1238,7 @@ This paper deals with the challenging task of synthesizing novel views for in-th
 <td width="132px"><a name="deformcaricature" id="deformcaricature"><img src="siggraph22_3dcaricature.jpg" width="140"/></a>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-<a href="https://ycjung.info/" target="_blank" style="text-decoration:underline;color:#000;">Yucheol Jung</a>, Wonjong Jang, Soongjin Kim, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a>, <a href="http://phome.postech.ac.kr/~leesy/" target="_blank" style="text-decoration:underline;color:#000;">Seungyong Lee</a><br/>
+<a href="https://ycjung.info/" target="_blank" class="jlyang_d_i_authorurl">Yucheol Jung</a>, Wonjong Jang, Soongjin Kim, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a>, <a href="http://phome.postech.ac.kr/~leesy/" target="_blank" class="jlyang_d_i_authorurl">Seungyong Lee</a><br/>
 <span class="jlyang_d_i_c_name">Deep Deformable 3D Caricatures with Learned Shape Control</span><br/>
 <span class="jlyang_d_i_c_refer">ACM <b>SIGGRAPH 2022</b></span><br/>
 [<a href="#" onclick="show('31','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('31','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2207.14593.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/ycjungSubhuman/DeepDeformable3DCaricatures">Code</a>]--> [<a target="_blank" href="https://ycjungsubhuman.github.io/DeepDeformable3DCaricatures/">Webpage</a>] [<a target="_blank" href="https://ycjungsubhuman.github.io/DeepDeformable3DCaricatures/">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2207.14593">arXiv</a>]<br />
@@ -1079,7 +1266,7 @@ A 3D caricature is an exaggerated 3D depiction of a human face. The goal of this
 <td width="132px"><a name="virtualcube" id="virtualcube"><img src="vr22_virtualcube.png" width="140"/></a>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-<a href="https://yizhongzhang1989.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yizhong Zhang</a>*, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang*</span>, Zhen Liu, Ruicheng Wang, Guojun Chen, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" style="text-decoration:underline;color:#000;">Baining Guo</a><br/>
+<a href="https://yizhongzhang1989.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yizhong Zhang</a>*, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang*</span>, Zhen Liu, Ruicheng Wang, Guojun Chen, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" class="jlyang_d_i_authorurl">Baining Guo</a><br/>
 <span class="jlyang_d_i_c_name">VirtualCube: An Immersive 3D Video Communication System</span><br/>
 <span class="jlyang_d_i_c_refer">IEEE Conference on Virtual Reality and 3D User Interfaces <b>(VR2022)</b> (& <b>IEEE TVCG</b>)</span> (<span style="color:#e60000"><b><a href="VirtualCube_IEEE_VR22_Best_Paper_Award_Certification.jpg" target="_blank" style="color:#e60000;text-decoration:underline;">Best Paper Award</a>.</b> Check our project webpage!</span>)<br/>
 [<a href="#" onclick="show('30','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('30','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2112.06730.pdf">PDF</a>] [<a target="_blank" href="https://www.microsoft.com/en-us/research/project/virtualcube/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/abs/2112.06730">arXiv</a>]<br />
@@ -1109,7 +1296,7 @@ The VirtualCube system is a 3D video conference system that attempts to overcome
 <td width="132px"><a name="gram" id="gram"><img src="cvpr22_gram.png" width="140"/></a>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-<a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, Jianfeng Xiang, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<a href="https://yudeng.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yu Deng</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, Jianfeng Xiang, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a><br/>
 <span class="jlyang_d_i_c_name">GRAM: Generative Radiance Manifolds for 3D-Aware Image Generation</span><br/>
 <span class="jlyang_d_i_c_refer">The 38th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2022)</b></span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
 [<a href="#" onclick="show('29','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('29','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2112.08867.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/microsoft/GRAM">Code</a>]--> [<a target="_blank" href="https://yudeng.github.io/GRAM/">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2112.08867.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2112.08867">arXiv</a>]<br />
@@ -1138,7 +1325,7 @@ The VirtualCube system is a 3D video conference system that attempts to overcome
 <td width="132px"><img src="tpami21_facerestoration.png" width="140"/>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-Xiaobin Hu, <a href="https://ying-fu.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Wenqi Ren</a>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://xiaochun-cas.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Xiaochun Cao</a>, <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a>, Bjoern Menze, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a>, <a href="https://eecs.pku.edu.cn/info/1505/6625.htm" target="_blank" style="text-decoration:underline;color:#000;">Hongbin Zha</a><br/>
+Xiaobin Hu, <a href="https://ying-fu.github.io/" target="_blank" class="jlyang_d_i_authorurl">Wenqi Ren</a>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://xiaochun-cas.github.io/" target="_blank" class="jlyang_d_i_authorurl">Xiaochun Cao</a>, <a href="http://www.davidwipf.com/" target="_blank" class="jlyang_d_i_authorurl">David Wipf</a>, Bjoern Menze, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a>, <a href="https://eecs.pku.edu.cn/info/1505/6625.htm" target="_blank" class="jlyang_d_i_authorurl">Hongbin Zha</a><br/>
 <span class="jlyang_d_i_c_name">Face Restoration via Plug-and-Play 3D Facial Priors</span><br/>
 <span class="jlyang_d_i_c_refer">IEEE Transactions on Pattern Analysis and Machine Intelligence <b>(TPAMI)</b>, 2021</span><br/>
 [<a href="#" onclick="show('28','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('28','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2108.02158.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/Vandermode/ELD">Code</a>]--> [<a target="_blank" href="https://arxiv.org/pdf/2108.02158.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2108.02158">arXiv</a>]<br />
@@ -1166,7 +1353,7 @@ State-of-the-art face restoration methods employ deep convolutional neural netwo
 <td width="132px"><img src="tpami21_lowlightdenosing.png" width="140"/>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-<a href="https://kxwei.net/" target="_blank" style="text-decoration:underline;color:#000;">Kaixuan Wei</a>, <a href="https://ying-fu.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Ying Fu</a>, Yinqiang Zheng, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span><br/>
+<a href="https://kxwei.net/" target="_blank" class="jlyang_d_i_authorurl">Kaixuan Wei</a>, <a href="https://ying-fu.github.io/" target="_blank" class="jlyang_d_i_authorurl">Ying Fu</a>, Yinqiang Zheng, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span><br/>
 <span class="jlyang_d_i_c_name">Physics-based Noise Modeling for Extreme Low-light Photography</span><br/>
 <span class="jlyang_d_i_c_refer">IEEE Transactions on Pattern Analysis and Machine Intelligence <b>(TPAMI)</b>, 2021</span><br/>
 [<a href="#" onclick="show('27','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('27','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2108.02158.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/Vandermode/ELD">Code</a>]--> [<a target="_blank" href="https://github.com/Vandermode/ELD">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2108.02158.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2108.02158">arXiv</a>]<br />
@@ -1195,7 +1382,7 @@ problematic. Extensive experiments on multiple low-light denoising datasets – 
 <td width="132px"><a name="facetexcomp" id="facetexcomp"><img src="iccv21_facetexcomp.png" width="140"/></a>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-Jongyoo Kim, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;"> Xin Tong</a><br/>
+Jongyoo Kim, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl"> Xin Tong</a><br/>
 <span class="jlyang_d_i_c_name">Learning High-Fidelity Face Texture Completion without Complete Face Texture</span><br/>
 <span class="jlyang_d_i_c_refer">The 18th International Conference on Computer Vision <b>(ICCV2021)</b></span><br/>
 [<a href="#" onclick="show('26','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('26','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://openaccess.thecvf.com/content/ICCV2021/papers/Kim_Learning_High-Fidelity_Face_Texture_Completion_Without_Complete_Face_Texture_ICCV_2021_paper.pdf">PDF</a>] <!--[<a target="_blank" href="#" onclick="alert('Available soon');return false;">Code</a>]--> [<a target="_blank" href="https://openaccess.thecvf.com/content/ICCV2021/supplemental/Kim_Learning_High-Fidelity_Face_ICCV_2021_supplemental.pdf">Suppl. Material</a>] [<a target="_blank" href="#" onclick="return false;">arXiv</a>]<br />
@@ -1223,7 +1410,7 @@ For face texture completion, previous methods typically use some complete textur
 <td width="132px"><a name="1dflow" id="1dflow"><img src="iccv21_1dflow.png" width="140"/></a>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-Haofei Xu<sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://jianfei-cai.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Jianfei Cai</a>, <a href="http://staff.ustc.edu.cn/~juyong/" target="_blank" style="text-decoration:underline;color:#000;">Juyong Zhang</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+Haofei Xu<sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://jianfei-cai.github.io/" target="_blank" class="jlyang_d_i_authorurl">Jianfei Cai</a>, <a href="http://staff.ustc.edu.cn/~juyong/" target="_blank" class="jlyang_d_i_authorurl">Juyong Zhang</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a><br/>
 <span class="jlyang_d_i_c_name">High-Resolution Optical Flow from 1D Attention and Correlation</span><br/>
 <span class="jlyang_d_i_c_refer">The 18th International Conference on Computer Vision <b>(ICCV2021)</b></span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
 [<a href="#" onclick="show('25','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('25','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2104.13918.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/haofeixu/flow1d">Code</a>]--> [<a target="_blank" href="https://github.com/haofeixu/flow1d">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2104.13918.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2104.13918">arXiv</a>]<br />
@@ -1252,7 +1439,7 @@ Optical flow is inherently a 2D search problem, and thusthe computational comple
 <td width="132px"><a name="IALS" id="IALS"><img src="ijcai21_IALS.png" width="140"/></a>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-Yuxuan Han, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://ying-fu.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Ying Fu</a><br/>
+Yuxuan Han, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://ying-fu.github.io/" target="_blank" class="jlyang_d_i_authorurl">Ying Fu</a><br/>
 <span class="jlyang_d_i_c_name">Disentangled Face Attribute Editing via Instance-Aware Latent Space Search</span><br/>
 <span class="jlyang_d_i_c_refer">The 30th International Joint Conference on Artificial Intelligence <b>(IJCAI2021)</b></span><br/>
 [<a href="#" onclick="show('24','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('24','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2105.12660.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/yxuhan/IALS">Code</a>]--> [<a target="_blank" href="https://github.com/yxuhan/IALS">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2105.12660.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2105.12660">arXiv</a>]<br />
@@ -1280,7 +1467,7 @@ Recent works have shown that a rich set of semantic directions exist in the late
 <td width="132px"><a name="stylecarigan" id="stylecarigan"><img src="tog21_thumbnail.jpg" width="140"/></a>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-Wongjong Jang, Gwangjin Ju, <a href="https://ycjung.info/" target="_blank" style="text-decoration:underline;color:#000;">Yucheol Jung</a>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a>, <a href="http://phome.postech.ac.kr/~leesy/" target="_blank" style="text-decoration:underline;color:#000;">Seungyong Lee</a><br/>
+Wongjong Jang, Gwangjin Ju, <a href="https://ycjung.info/" target="_blank" class="jlyang_d_i_authorurl">Yucheol Jung</a>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a>, <a href="http://phome.postech.ac.kr/~leesy/" target="_blank" class="jlyang_d_i_authorurl">Seungyong Lee</a><br/>
 <span class="jlyang_d_i_c_name">StyleCariGAN: Caricature Generation via StyleGAN Feature Map Modulation</span><br/>
 <span class="jlyang_d_i_c_refer">ACM Transactions on Graphics <b>(TOG)</b>, 2021 (Proc. <b>SIGGRAPH2021</b>) </span><br/>
 [<a href="#" onclick="show('23','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('23','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2107.04331.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/PeterZhouSZ/StyleCariGAN">Code</a>]--> [<a target="_blank" href="https://github.com/PeterZhouSZ/StyleCariGAN">Webpage</a>] [<a target="_blank" href="http://arxiv.org/abs/2107.04331">Suppl. Material</a>] [<a target="_blank" href="http://arxiv.org/abs/2107.04331">arXiv</a>]<br />
@@ -1308,7 +1495,7 @@ We present a caricature generation framework based on shape and style manipulati
 <td width="132px"><a name="difnet" id="difnet"><img src="cvpr21_difnet.png" width="130"/></a>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-<a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<a href="https://yudeng.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yu Deng</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a><br/>
 <span class="jlyang_d_i_c_name">Deformed Implicit Field: Modeling 3D Shapes with Learned Dense Correspondence</span><br/>
 <span class="jlyang_d_i_c_refer">The 37th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2021)</b></span><br/>
 [<a href="#" onclick="show('22','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('22','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2011.13650.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/microsoft/DIF-Net">Code</a>]--> [<a target="_blank" href="https://github.com/microsoft/DIF-Net">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2011.13650.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2011.13650">arXiv</a>]<br />
@@ -1337,7 +1524,7 @@ We propose a novel Deformed Implicit Field (DIF) representation for modeling 3D 
 <td width="132px"><a name="disenfacegan" id="disenfacegan"><img src="cvpr20_disenfacegan.png" width="140"/></a>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-<a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/doch/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/fangwen/" target="_blank" style="text-decoration:underline;color:#000;">Fang Wen</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<a href="https://yudeng.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yu Deng</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/doch/" target="_blank" class="jlyang_d_i_authorurl">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/fangwen/" target="_blank" class="jlyang_d_i_authorurl">Fang Wen</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a><br/>
 <span class="jlyang_d_i_c_name">Disentangled and Controllable Face Image Generation via 3D Imitative-Contrastive Learning</span><br/>
 <span class="jlyang_d_i_c_refer">The 36th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2020)</b>, Seattle, USA</span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
 [<a href="#" onclick="show('21','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('21','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2004.11660.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/microsoft/DiscoFaceGAN">Code</a>]--> [<a target="_blank" href="https://github.com/microsoft/DiscoFaceGAN">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2004.11660.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2004.11660">arXiv</a>]<br />
@@ -1366,7 +1553,7 @@ We propose DiscoFaceGAN, an approach for face image generation of virtual people
 <td width="132px"><img src="cvpr20_deep3dportrait.png" width="125"/>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;"><a name="deep3dportrait" id="deep3dportrait"></a>
-Sicheng Xu<sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/doch/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/fangwen/" target="_blank" style="text-decoration:underline;color:#000;">Fang Wen</a>, <a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a>, <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+Sicheng Xu<sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/doch/" target="_blank" class="jlyang_d_i_authorurl">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/fangwen/" target="_blank" class="jlyang_d_i_authorurl">Fang Wen</a>, <a href="https://yudeng.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yu Deng</a>, <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/" target="_blank" class="jlyang_d_i_authorurl">Yunde Jia</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a><br/>
 <span class="jlyang_d_i_c_name">Deep 3D Portrait from a Single Image</span><br/>
 <span class="jlyang_d_i_c_refer">The 36th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2020)</b>, Seattle, USA</span><br/>
 [<a href="#" onclick="show('20','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('20','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2004.11598.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/sicxu/Deep3dPortrait">Code</a>]--> [<a target="_blank" href="https://github.com/sicxu/Deep3dPortrait">Webpage</a>] [<a target="_blank" href="https://arxiv.org/pdf/2004.11598.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2004.11598">arXiv</a>]<br />
@@ -1395,7 +1582,7 @@ In this paper, we present a learning-based approach for recovering the 3D geomet
 <td width="132px"><a name="lowlightdenosing" id="lowlightdenosing"><img src="cvpr20_lowlightdenosing.png" width="140"/></a>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-<a href="https://kxwei.net/" target="_blank" style="text-decoration:underline;color:#000;">Kaixuan Wei</a>, <a href="https://ying-fu.github.io/" target="_blank" style="text-decoration:underline;color:#000;"> Ying Fu</a>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://iitlab.bit.edu.cn/gvlab/info/teaminfo/HuangHua/home_eng.html" target="_blank" style="text-decoration:underline;color:#000;">Hua Huang</a><br/>
+<a href="https://kxwei.net/" target="_blank" class="jlyang_d_i_authorurl">Kaixuan Wei</a>, <a href="https://ying-fu.github.io/" target="_blank" class="jlyang_d_i_authorurl"> Ying Fu</a>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://iitlab.bit.edu.cn/gvlab/info/teaminfo/HuangHua/home_eng.html" target="_blank" class="jlyang_d_i_authorurl">Hua Huang</a><br/>
 <span class="jlyang_d_i_c_name">A Physics-based Noise Formation Model for Extreme Low-light Raw Denoising</span><br/>
 <span class="jlyang_d_i_c_refer">The 36th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2020)</b>, Seattle, USA</span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
 [<a href="#" onclick="show('19','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('19','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2003.12751.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/Vandermode/ELD">Code</a>]--> [<a target="_blank" href="https://github.com/Vandermode/ELD">Webpage</a>] [<a href="#" onclick="alert('Available soon');return false;">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/2003.12751">arXiv</a>]<br />
@@ -1423,7 +1610,7 @@ Lacking rich and realistic data, learned single image denoising algorithms gener
 <td width="132px"><a name="videofacedeblur" id="videofacedeblur"><img src="iccv19_videofacedeblur.png" width="140"/></a>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-<a href="https://sites.google.com/site/renwenqi888/" target="_blank" style="text-decoration:underline;color:#000;">Wenqi Ren</a>*, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang*</span>, Senyou Deng, <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a>, <a href="https://xiaochun-cas.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Xiaochun Cao</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<a href="https://sites.google.com/site/renwenqi888/" target="_blank" class="jlyang_d_i_authorurl">Wenqi Ren</a>*, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang*</span>, Senyou Deng, <a href="http://www.davidwipf.com/" target="_blank" class="jlyang_d_i_authorurl">David Wipf</a>, <a href="https://xiaochun-cas.github.io/" target="_blank" class="jlyang_d_i_authorurl">Xiaochun Cao</a>, <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a><br/>
 <span class="jlyang_d_i_c_name">Face Video Deblurring using 3D Facial Priors</span><br/>
 <span class="jlyang_d_i_c_refer">The 17th International Conference on Computer Vision <b>(ICCV2019)</b>, Seoul, Korea</span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
 [<a href="#" onclick="show('18','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('18','bibtex');return false;">BibTex</a>] [<a target="_blank" href="http://openaccess.thecvf.com/content_ICCV_2019/papers/Ren_Face_Video_Deblurring_Using_3D_Facial_Priors_ICCV_2019_paper.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/rwenqi/3Dfacedeblurring">Code</a>]--> [<a target="_blank" href="https://github.com/rwenqi/3Dfacedeblurring">Webpage</a>] [<a target="_blank" href="iccv19_videofacedeblur_supmat.pdf">Suppl. Material</a>] [<a href="#">arXiv</a>]<br />
@@ -1452,7 +1639,7 @@ Existing face deblurring methods only consider single frames and do not account 
 <td width="132px"><a name="ERRNet" id="ERRNet"><img src="cvpr19_reflectionremoval.png" width="140"/></a>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-<a href="https://kxwei.net/" target="_blank" style="text-decoration:underline;color:#000;">Kaixuan Wei</a>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://ying-fu.github.io/" target="_blank" style="text-decoration:underline;color:#000;"> Ying Fu</a>,  <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a>, <a href="http://iitlab.bit.edu.cn/gvlab/info/teaminfo/HuangHua/home_eng.html" target="_blank" style="text-decoration:underline;color:#000;">Hua Huang</a><br/>
+<a href="https://kxwei.net/" target="_blank" class="jlyang_d_i_authorurl">Kaixuan Wei</a>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://ying-fu.github.io/" target="_blank" class="jlyang_d_i_authorurl"> Ying Fu</a>,  <a href="http://www.davidwipf.com/" target="_blank" class="jlyang_d_i_authorurl">David Wipf</a>, <a href="http://iitlab.bit.edu.cn/gvlab/info/teaminfo/HuangHua/home_eng.html" target="_blank" class="jlyang_d_i_authorurl">Hua Huang</a><br/>
 <span class="jlyang_d_i_c_name">Single Image Reflection Removal Exploiting Misaligned Training Data and Network Enhancements</span><br/>
 <span class="jlyang_d_i_c_refer">The 35th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2019)</b>, Long Beach, USA</span><br/>
 [<a href="#" onclick="show('17','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('17','bibtex');return false;">BibTex</a>] [<a target="_blank" href="cvpr19_reflectionremoval.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/Vandermode/ERRNet">Code</a>]--> [<a target="_blank" href="https://github.com/Vandermode/ERRNet">Webpage</a>] [<a target="_blank" href="cvpr19_reflectionremoval_supmat.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/1904.00637">arXiv</a>]<br />
@@ -1480,7 +1667,7 @@ Removing undesirable reflections from a single image captured through a glass wi
 <td width="132px"><a name="face3drecon" id="face3drecon"><img src="cvprw19_3dface.png" width="140"/></a>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-<a href="https://yudeng.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Yu Deng</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, Sicheng Xu, <a href="https://www.microsoft.com/en-us/research/people/doch/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a>, and <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<a href="https://yudeng.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yu Deng</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, Sicheng Xu, <a href="https://www.microsoft.com/en-us/research/people/doch/" target="_blank" class="jlyang_d_i_authorurl">Dong Chen</a>, <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/" target="_blank" class="jlyang_d_i_authorurl">Yunde Jia</a>, and <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a><br/>
 <span class="jlyang_d_i_c_name">Accurate 3D Face Reconstruction with Weakly-Supervised Learning: From Single Image to Image Set</span><br/>
 <span class="jlyang_d_i_c_refer">IEEE Computer Vision and Pattern Recognition Workshop on AMFG<b> (CVPRW2019)</b>, Long Beach, USA</span> (<span style="color:#e60000"><b><a href="Deep3DFace_CVPRW19-AMFG_Best_Paper_Award_Certification.jpg" target="_blank" style="color:#e60000;text-decoration:underline;">Best Paper Award</a></b>. Check out our code!</span>)<br/>
 [<a href="#" onclick="show('16','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('16','bibtex');return false;">BibTex</a>] [<a target="_blank" href="cvprw19_3dface.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/sicxu/Deep3DFaceRecon_pytorch">Code</a>]--> [<a target="_blank" href="https://github.com/sicxu/Deep3DFaceRecon_pytorch">Webpage</a>] [<a target="_blank" href="cvprw19_3dface_supmat.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/1903.08527">arXiv</a>]<br />
@@ -1510,7 +1697,7 @@ low-level and perception-level information for supervision, and 2) performs mult
 <td width="132px"><a name="object3drecon" id="object3drecon"><img src="aaai19_singleview3d.png" width="140"/></a>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-<a href="https://hanqingwangai.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Hanqing Wang</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://iitlab.bit.edu.cn/mcislab/~liangwei/" target="_blank" style="text-decoration:underline;color:#000;">Wei Liang</a> and <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<a href="https://hanqingwangai.github.io/" target="_blank" class="jlyang_d_i_authorurl">Hanqing Wang</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://iitlab.bit.edu.cn/mcislab/~liangwei/" target="_blank" class="jlyang_d_i_authorurl">Wei Liang</a> and <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a><br/>
 <span class="jlyang_d_i_c_name">Deep Single-View 3D Object Reconstruction with Visual Hull Embedding</span><br/>
 <span class="jlyang_d_i_c_refer">The 33rd AAAI Conference on Artificial Intelligence <b>(AAAI2019)</b>, Honolulu, USA</span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
 [<a href="#" onclick="show('15','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('15','bibtex');return false;">BibTex</a>] [<a target="_blank" href="aaai19_singleview3d.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/qweas120/PSVH-3d-reconstruction">Code</a>]--> [<a target="_blank" href="https://github.com/qweas120/PSVH-3d-reconstruction">Webpage</a>] [<a target="_blank" href="aaai19_singleview3d_supmat.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/1809.03451">arXiv</a>]<br />
@@ -1539,7 +1726,7 @@ low-level and perception-level information for supervision, and 2) performs mult
 <td width="132px"><a name="imagesmoothing" id="imagesmoothing"><img src="tog18_thumbnail.png" width="140"/></a>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-<a href="https://fqnchina.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Qingnan Fan</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>,  <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a>, <a href="http://www.cs.sdu.edu.cn/~baoquan" target="_blank" style="text-decoration:underline;color:#000;">Baoquan Chen</a> and <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" style="text-decoration:underline;color:#000;">Xin Tong</a><br/>
+<a href="https://fqnchina.github.io/" target="_blank" class="jlyang_d_i_authorurl">Qingnan Fan</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>,  <a href="http://www.davidwipf.com/" target="_blank" class="jlyang_d_i_authorurl">David Wipf</a>, <a href="http://www.cs.sdu.edu.cn/~baoquan" target="_blank" class="jlyang_d_i_authorurl">Baoquan Chen</a> and <a href="https://www.microsoft.com/en-us/research/people/xtong/" target="_blank" class="jlyang_d_i_authorurl">Xin Tong</a><br/>
 <span class="jlyang_d_i_c_name">Image Smoothing via Unsupervised Learning</span><br/>
 <span class="jlyang_d_i_c_refer">ACM Transactions on Graphics <b>(TOG)</b>, 2018 (Proc. <b>SIGGRAPH Asia 2018</b>)</span> <br/>
 [<a href="#" onclick="show('14','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('14','bibtex');return false;">BibTex</a>] [<a target="_blank" href="tog18_imagesmoothing.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/fqnchina/ImageSmoothing">Code</a>]--> [<a target="_blank" href="https://github.com/fqnchina/ImageSmoothing">Webpage</a>] [<a target="_blank" href="https://drive.google.com/open?id=1un1KGSiVl3mi_d0Xq6tgZN2Ffrp85MPh">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/1811.02804">arXiv</a>]<br /> 
@@ -1569,7 +1756,7 @@ Image smoothing represents a fundamental component of many disparate computer vi
 <td width="132px"><a name="dnnquantization", id="dnnquantization"><img src="eccv18_thumbnail.png" width="140"/></a>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-Dongqing Zhang*, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang*</span>, Dongqiangzi Ye* and <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a><br/>
+Dongqing Zhang*, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang*</span>, Dongqiangzi Ye* and <a href="http://www.ganghua.org/" target="_blank" class="jlyang_d_i_authorurl">Gang Hua</a><br/>
 <span class="jlyang_d_i_c_name">LQ-Nets: Learned Quantization for Highly Accurate and Compact Deep Neural Networks</span><br/>
 <span class="jlyang_d_i_c_refer">The 15th European Conference on Computer Vision <b>(ECCV2018)</b>, Munich, Germany</span><br/>
 [<a href="#" onclick="show('13','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('13','bibtex');return false;">BibTex</a>] [<a target="_blank" href="eccv18_dnnquantization.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/Microsoft/LQ-Nets">Code</a>]--> [<a target="_blank" href="https://github.com/Microsoft/LQ-Nets">Webpage</a>] [<a target="_blank" href="eccv18_dnnquantization_suppmat.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/1807.10029">arXiv</a>]<br />
@@ -1598,7 +1785,7 @@ Although weight and activation quantization is an effective approach for Deep Ne
 <td width="132px"><a name="deepintrinsicimage" id="deepintrinsicimage"><img src="cvpr18_thumbnail.png" width="140"/></a>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-<a href="https://fqnchina.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Qingnan Fan</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>,  <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a>, <a href="http://www.cs.sdu.edu.cn/~baoquan" target="_blank" style="text-decoration:underline;color:#000;">Baoquan Chen</a> and <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a><br/>
+<a href="https://fqnchina.github.io/" target="_blank" class="jlyang_d_i_authorurl">Qingnan Fan</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>,  <a href="http://www.ganghua.org/" target="_blank" class="jlyang_d_i_authorurl">Gang Hua</a>, <a href="http://www.cs.sdu.edu.cn/~baoquan" target="_blank" class="jlyang_d_i_authorurl">Baoquan Chen</a> and <a href="http://www.davidwipf.com/" target="_blank" class="jlyang_d_i_authorurl">David Wipf</a><br/>
 <span class="jlyang_d_i_c_name">Revisiting Deep Intrinsic Image Decompositions</span><br/>
 <span class="jlyang_d_i_c_refer">The 34th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2018)</b>, Salt Lake City, USA</span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
 [<a href="#" onclick="show('12','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('12','bibtex');return false;">BibTex</a>] [<a target="_blank" href="cvpr18_deepintrinsicimage.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/fqnchina/IntrinsicImage">Code</a>]--> [<a target="_blank" href="https://github.com/fqnchina/IntrinsicImage">Webpage</a>] [<a target="_blank" href="cvpr18_deepintrinsicimage_suppmat.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/1701.02965">arXiv</a>]<br />
@@ -1627,7 +1814,7 @@ While invaluable for many computer vision applications, decomposing a natural im
 <td width="132px"><a name="dcnnreflectionsmoothing" id="dcnnreflectionsmoothing"><img src="iccv17_thumbnail.png" width="140"/></a>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-<a href="https://fqnchina.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Qingnan Fan</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>,  <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a>, <a href="http://www.cs.sdu.edu.cn/~baoquan" target="_blank" style="text-decoration:underline;color:#000;">Baoquan Chen</a> and <a href="http://www.davidwipf.com/" target="_blank" style="text-decoration:underline;color:#000;">David Wipf</a><br/>
+<a href="https://fqnchina.github.io/" target="_blank" class="jlyang_d_i_authorurl">Qingnan Fan</a><sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>,  <a href="http://www.ganghua.org/" target="_blank" class="jlyang_d_i_authorurl">Gang Hua</a>, <a href="http://www.cs.sdu.edu.cn/~baoquan" target="_blank" class="jlyang_d_i_authorurl">Baoquan Chen</a> and <a href="http://www.davidwipf.com/" target="_blank" class="jlyang_d_i_authorurl">David Wipf</a><br/>
 <span class="jlyang_d_i_c_name">A Generic Deep Architecture for Single Image Reflection Removal and Image Smoothing</span><br/>
 <span class="jlyang_d_i_c_refer">The 16th International Conference on Computer Vision <b>(ICCV2017)</b>, Venice, Italy</span><br/>
 [<a href="#" onclick="show('11','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('11','bibtex');return false;">BibTex</a>] [<a target="_blank" href="iccv17_dcnnreflectionsmoothing.pdf">PDF</a>] <!--[<a target="_blank" href="https://github.com/fqnchina/CEILNet">Code</a>]--> [<a target="_blank" href="https://github.com/fqnchina/CEILNet">Webpage</a>] [<a target="_blank" href="iccv17_dcnnreflectionsmoothing_supmat.pdf">Suppl. Material</a>] [<a target="_blank" href="https://arxiv.org/abs/1708.03474">arXiv</a>]<br />
@@ -1655,7 +1842,7 @@ This paper proposes a deep neural network structure that exploits edge informati
 <td width="132px"><img src="cvprw17_thumbnail.png" width="140"/>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-Chen Zhou<sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/chunzhao/" target="_blank" style="text-decoration:underline;color:#000;">Chunshui Zhao</a> and <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a><br/>
+Chen Zhou<sup>+</sup>, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/chunzhao/" target="_blank" class="jlyang_d_i_authorurl">Chunshui Zhao</a> and <a href="http://www.ganghua.org/" target="_blank" class="jlyang_d_i_authorurl">Gang Hua</a><br/>
 <span class="jlyang_d_i_c_name">Fast, Accurate Thin-Structure Obstacle Detection for Autonomous Mobile Robots</span><br/>
 <span class="jlyang_d_i_c_refer">IEEE Computer Vision and Pattern Recognition Workshop on Embedded Vision <b>(CVPRW2017)</b>, Honolulu, USA</span><br/>
 [<a href="#" onclick="show('10','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('10','bibtex');return false;">BibTex</a>] [<a target="_blank" href="cvprw17_thinobstacledetection.pdf">PDF</a>] [<a target="_blank" href="https://arxiv.org/abs/1708.04006">arXiv</a>]<br />
@@ -1683,7 +1870,7 @@ Safety is paramount for mobile robotic platforms such as self-driving cars and u
 <td width="132px"><a name="videoface" id="videoface"><img src="cvpr17_thumbnail.png" width="140"/></a>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-<span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://renpr.org/" target="_blank" style="text-decoration:underline;color:#000;">Peiran Ren</a>, Dongqing Zhang, <a href="https://www.microsoft.com/en-us/research/people/doch/" target="_blank" style="text-decoration:underline;color:#000;">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/fangwen/" target="_blank" style="text-decoration:underline;color:#000;">Fang Wen</a>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a> and <a href="http://www.ganghua.org/" target="_blank" style="text-decoration:underline;color:#000;">Gang Hua</a><br/>
+<span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://renpr.org/" target="_blank" class="jlyang_d_i_authorurl">Peiran Ren</a>, Dongqing Zhang, <a href="https://www.microsoft.com/en-us/research/people/doch/" target="_blank" class="jlyang_d_i_authorurl">Dong Chen</a>, <a href="https://www.microsoft.com/en-us/research/people/fangwen/" target="_blank" class="jlyang_d_i_authorurl">Fang Wen</a>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" class="jlyang_d_i_authorurl">Hongdong Li</a> and <a href="http://www.ganghua.org/" target="_blank" class="jlyang_d_i_authorurl">Gang Hua</a><br/>
 <span class="jlyang_d_i_c_name">Neural Aggregation Network for Video Face Recognition</span><br/>
 <span class="jlyang_d_i_c_refer">The 33th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2017)</b>, Honolulu, USA</span></span><br/>
 [<a href="#" onclick="show('9','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('9','bibtex');return false;">BibTex</a>] [<a target="_blank" href="cvpr17_videoface.pdf">PDF</a>] [<a target="_blank" href="http://arxiv.org/abs/1603.05474">arXiv</a>]<br />
@@ -1710,7 +1897,7 @@ We present a Neural Aggregation Network (NAN) for video face recognition. The ne
 <td width="132px"><a name="robustopticalflow" id="robustopticalflow"><img src="cvpr16_thumbnail.jpg" width="140"/></a>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-<span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a>, <a href="http://users.cecs.anu.edu.au/~yuchao/" target="_blank" style="text-decoration:underline;color:#000;">Yuchao Dai</a> and <a href="http://tanrobby.github.io/" target="_blank" style="text-decoration:underline;color:#000;">Robby T. Tan</a><br/>
+<span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" class="jlyang_d_i_authorurl">Hongdong Li</a>, <a href="http://users.cecs.anu.edu.au/~yuchao/" target="_blank" class="jlyang_d_i_authorurl">Yuchao Dai</a> and <a href="http://tanrobby.github.io/" target="_blank" class="jlyang_d_i_authorurl">Robby T. Tan</a><br/>
 <span class="jlyang_d_i_c_name">Robust Optical Flow Estimation of Double-Layer Images under Transparency or Reflection</span><br/>
 <span class="jlyang_d_i_c_refer">The 32th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2016)</b>, Las Vegas, USA</span></span><br/>
 [<a href="#" onclick="show('8','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('8','bibtex');return false;">BibTex</a>] [<a target="_blank" href="cvpr16_robustopticalflow.pdf">PDF</a>] <!--[<a target="_blank" href="cvpr16_robustopticalflow_code.zip">Code</a>]--> [<a target="_blank" href="cvpr16_robustopticalflow_supmat.pdf">Suppl. Material</a>]<br />
@@ -1737,7 +1924,7 @@ This paper deals with a challenging, frequently encountered, yet not properly in
 <td width="132px"><a name="goicpjournal" id="goicpjournal"><img src="tpami16_thumbnail.png" width="140"/></a>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-<span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a>, Dylan Campbell and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
+<span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" class="jlyang_d_i_authorurl">Hongdong Li</a>, Dylan Campbell and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" class="jlyang_d_i_authorurl">Yunde Jia</a><br/>
 <span class="jlyang_d_i_c_name">Go-ICP: A Globally Optimal Solution to 3D ICP Point-Set Registration</span><br/>
 <span class="jlyang_d_i_c_refer">IEEE Transactions on Pattern Analysis and Machine Intelligence <b>(TPAMI)</b>, 2016</span><br/>
 [<a href="#" onclick="show('7','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('7','bibtex');return false;">BibTex</a>] [<a target="_blank" href="tpami16_go-icp_preprint.pdf">PDF</a>] <!--[<a target="_blank" href="./go-icp#code">Code</a>] [<a target="_blank" href="./go-icp">Webpage</a>]--> [<a target="_blank" href="tpami16_go-icp_supmat.pdf">Suppl. Material</a>]<br /><!---->
@@ -1766,7 +1953,7 @@ The Iterative Closest Point (ICP) algorithm is one of the most widely used metho
 <td width="132px"><img src="cvpr15_thumbnail.png" width="140"/>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-<span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span> and <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a> <br/>
+<span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span> and <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" class="jlyang_d_i_authorurl">Hongdong Li</a> <br/>
 <span class="jlyang_d_i_c_name">Dense, Accurate Optical Flow Estimation with Piecewise Parametric Model</span><br/>
 <span class="jlyang_d_i_c_refer">The 31th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2015)</b>, Boston, USA</span><br/>
 [<a href="#" onclick="show('6','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('6','bibtex');return false;">BibTex</a>] [<a target="_blank" href="cvpr15_opticalflow.pdf">PDF</a>] <!--[<a href="#" onclick="alert('Available soon');return false;">Code</a>]--> [<a target="_blank" href="cvpr15_opticalflow_extabstract.pdf">Extended Abstract</a>] [<a target="_blank" href="cvpr15_opticalflow_supmat.pdf">Suppl. Material</a>]<br />
@@ -1794,7 +1981,7 @@ This paper proposes a simple method for estimating dense and accurate optical fl
 <td width="132px"><img src="eccv14_thumbnail.jpg" width="140"/>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:4px;">
-<span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
+<span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" class="jlyang_d_i_authorurl">Hongdong Li</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" class="jlyang_d_i_authorurl">Yunde Jia</a><br/>
 <span class="jlyang_d_i_c_name">Optimal Essential Matrix Estimation via Inlier-Set Maximization</span><br/>
 <span class="jlyang_d_i_c_refer">The 13th European Conference on Computer Vision <b>(ECCV2014)</b>, Zürich, Switzerland</span><br/>
 <!--<span style="color:#800000;"><i>Received a Student Conference Grant</i></span><br/>-->
@@ -1823,7 +2010,7 @@ In this paper, we extend the globally optimal "rotation space search" method [11
 <td><img src="iccv13_thumbnail.jpg" width="140"/>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-<span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
+<span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" class="jlyang_d_i_authorurl">Hongdong Li</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" class="jlyang_d_i_authorurl">Yunde Jia</a><br/>
 <span class="jlyang_d_i_c_name">Go-ICP: Solving 3D Registration Efficiently and Globally Optimally</span><br/>
 <span class="jlyang_d_i_c_refer">The 14th International Conference on Computer Vision <b>(ICCV2013)</b>, Sydney, Australia</span><br/>
 [<a href="#" onclick="show('4','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('4','bibtex');return false;">BibTex</a>] [<a target="_blank" href="iccv13_go-icp.pdf">PDF</a>] <!--[<a target="_blank" href="./go-icp#code">Code</a>] [<a target="_blank" href="./go-icp">Webpage</a>]<br />-->
@@ -1851,7 +2038,7 @@ Registration is a fundamental task in computer vision. The Iterative Closest Poi
 <td><img src="ismar13_thumbnail.jpg" width="140"/>
 </td>
 <td style="background:#FFFFFF;padding-left:10px;padding-right:2px;">
-<span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~yuchao/" target="_blank" style="text-decoration:underline;color:#000;">Yuchao Dai</a>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" style="text-decoration:underline;color:#000;">Hongdong Li</a>, <a href="http://cs.anu.edu.au/~Henry.Gardner/" target="_blank" style="text-decoration:underline;color:#000;">Henry Gardner</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
+<span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://users.cecs.anu.edu.au/~yuchao/" target="_blank" class="jlyang_d_i_authorurl">Yuchao Dai</a>, <a href="http://users.cecs.anu.edu.au/~hongdong/" target="_blank" class="jlyang_d_i_authorurl">Hongdong Li</a>, <a href="http://cs.anu.edu.au/~Henry.Gardner/" target="_blank" class="jlyang_d_i_authorurl">Henry Gardner</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" class="jlyang_d_i_authorurl">Yunde Jia</a><br/>
 <span class="jlyang_d_i_c_name">Single-shot Extrinsic Calibration of a Generically Configured RGB-D Camera Rig from Scene Constraints</span><br/>
 <span class="jlyang_d_i_c_refer">The 12th International Symposium on Mixed and Augmented Reality <b>(ISMAR2013)</b>, Adelaide, Australia</span> (<b><span style="color:#e60000">Oral</span></b>)<br/>
 <!--<span style="color:#800000;"><i>Regular Paper with Oral Presentation</i></span><br/>-->
@@ -1880,7 +2067,7 @@ With the increasingly popular use of commodity RGB-D cameras for computer vision
 <td><img src="icpr12_thumbnail.jpg" width="140"/>
 </td>
 <td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
-<span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://iitlab.bit.edu.cn/mcislab/~liangwei/" target="_blank" style="text-decoration:underline;color:#000;">Wei Liang</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" style="text-decoration:underline;color:#000;">Yunde Jia</a><br/>
+<span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="http://iitlab.bit.edu.cn/mcislab/~liangwei/" target="_blank" class="jlyang_d_i_authorurl">Wei Liang</a> and <a href="http://iitlab.bit.edu.cn/mcislab/~jiayunde/index_en.htm" target="_blank" class="jlyang_d_i_authorurl">Yunde Jia</a><br/>
 <span class="jlyang_d_i_c_name">Face Pose Estimation with Combined 2D and 3D HOG Features</span><br/>
 <span class="jlyang_d_i_c_refer">The 21st International Conference on Pattern Recognition <b>(ICPR2012)</b>, Tsukuba, Japan</span><br/>
 [<a href="#" onclick="show('2','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('2','bibtex');return false;">BibTex</a>] [<a target="_blank" href="icpr12_facepose.pdf">PDF</a>]
