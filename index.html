@@ -98,6 +98,8 @@ function shownamedesc()
 }
 
 var publicationTagMapById = {
+	"1001": ["embodied-ai"],
+	"63": ["embodied-ai"],
 	"62": ["embodied-ai"],
 	"61": ["human-modeling"],
 	"60": ["3d-vision", "embodied-ai"],
@@ -416,12 +418,39 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">All</a>, <a
 <table id="jlyang_papertable" style="width:100%;margin-top:8px;" border="0" cellpadding="0" cellspacing="0">
 
 <tr>
+	<td width="132px"><a name="musevla" id="musevla"><img src="arxiv26_musevla.jpg" width="140"/></a>
+	</td>
+	<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">Xingyuming Liu, Ruichun Ma, Heyu Guo, Qixiu Li, Qingwen Yang, Lin Luo, Shiqi Jiang, Chenren Xu, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, Baining Guo<br/>
+	<span class="jlyang_d_i_c_name">MuseVLA: An Adaptive Multimodal Sensing Vision-Language-Action Model for Robotic Manipulation</span><br/>
+	<span class="jlyang_d_i_c_refer">arXiv preprint, 2026</span><br/>
+	[<a href="#" onclick="show('63','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('63','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2606.17598">PDF</a>] [<a target="_blank" href="https://arxiv.org/abs/2606.17598">Webpage</a>] <!--[<a target="_blank" href="https://arxiv.org/pdf/2606.17598">Suppl. Material</a>]--> [<a target="_blank" href="https://arxiv.org/abs/2606.17598">arXiv</a>]<br/>
+	</td>
+	</tr>
+	<tr style="width:100%;height:100%">
+	<td></td>
+	<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+	<div id="63_abstract">
+		Humans naturally leverage diverse sensing modalities to interact with the physical world, while most Vision-Language-Action (VLA) models for robotics rely solely on RGB observations. This limits their ability to perceive physical properties that are difficult or impossible to infer from RGB cameras, such as temperature, sound, or radar response. We present MuseVLA, an adaptive multimodal sensing VLA model that integrates novel sensors as on-demand tools for robotic manipulation. Given a task instruction and visual context, MuseVLA first generates a sensor token and target description that select the sensing modality to invoke and what to attend to, analogous to a tool call with arguments. It then converts the selected sensor measurement into a grounded sensor image, a unified intermediate representation that encodes heterogeneous readings for multimodal fusion and action generation. This design decouples sensor-specific processing from the VLA backbone, enabling efficient integration of diverse modalities. To reduce the need for expensive multisensory robot datasets, we further introduce a data synthesis pipeline that augments existing RGB video datasets with grounded sensor images, enabling generalization to unseen sensor-guided tasks. We evaluate MuseVLA on a real-world robot across challenging dexterous hand manipulation tasks that require multimodal sensing inputs, including temperature-guided pick-and-place, audio-driven object search, and radar-assisted hidden object retrieval. MuseVLA achieves 80.6% success rate on average, outperforming RGB-only and multisensory VLA baselines significantly, and exhibits strong zero-shot capabilities on unseen tasks.
+	</div>
+	<div id="63_bibtex">
+	@article{liu2026musevla,<br/>
+	&nbsp;&nbsp;author = {Liu, Xingyuming and Ma, Ruichun and Guo, Heyu and Li, Qixiu and Yang, Qingwen and Luo, Lin and Jiang, Shiqi and Xu, Chenren and Yang, Jiaolong and Guo, Baining},<br/>
+	&nbsp;&nbsp;title = {MuseVLA: An Adaptive Multimodal Sensing Vision-Language-Action Model for Robotic Manipulation},<br/>
+	&nbsp;&nbsp;inproceedings = {arXiv preprint arXiv:2606.17598},<br/>
+	&nbsp;&nbsp;year = {2026}<br/>
+	}
+	</div>
+	</td>
+</tr>
+
+
+<tr>
 	<td width="132px"><a name="Human2VLA" id="Human2VLA"><img src="ijcai26_humanvideotovla.jpg" width="140"/></a>
 	</td>
 	<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">Z. Feng<sup>+</sup>, Q. Li<sup>+</sup>, H. Liang<sup>+</sup>, R. Yang<sup>+</sup>, Y. Shen<sup>+</sup>, Z. Du<sup>+</sup>, Z. Zhang<sup>+</sup>, Y. Deng<sup>$</sup>, L. Zhao, H. Zhao, Z. Lu, O. Mees, M. Pollefeys, <span class="jlyang_d_i_c_emphasize">J. Yang</span><sup>$</sup>, B. Guo<br/>
 	<span class="jlyang_d_i_c_name">From Human Videos to Robot Manipulation: A Survey on Scalable Vision-Language-Action Learning with Human-Centric Data</span><br/>
 	<span class="jlyang_d_i_c_refer">International Joint Conferences on Artificial Intelligence <b>(IJCAI2026)</b></span><br/>
-	[<a href="#" onclick="show('62','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('62','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/abs/2606.00054">PDF</a>] [<a target="_blank" href="https://aaronfengzy.github.io/HumanCentricToVLA-Survey/">Webpage</a>] <!--[<a target="_blank" href="https://arxiv.org/abs/2606.00054">Suppl. Material</a>]--> [<a target="_blank" href="https://arxiv.org/abs/2606.00054">arXiv</a>]<br/>
+	[<a href="#" onclick="show('62','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('62','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/abs/2606.00054">PDF</a>] [<a target="_blank" href="https://aaronfengzy.github.io/HumanCentricToVLA-Survey/">Webpage</a>] <!--[<a target="_blank" href="https://arxiv.org/pdf/2606.00054">Suppl. Material</a>]--> [<a target="_blank" href="https://arxiv.org/abs/2606.00054">arXiv</a>]<br/>
 	(<sup>+</sup>: Intern at MSRA <sup>$</sup>: Corresponding author)
 	</td>
 	</tr>
@@ -449,7 +478,7 @@ By keywords: <a href="#" onclick="show('10','bibtex');return false;">All</a>, <a
 	<td style="background:#FFFFFF;padding-left:10px;padding-right:4px;"><a href="https://sicxu.github.io/" target="_blank" class="jlyang_d_i_authorurl">Sicheng Xu</a>, <a href="https://yudeng.github.io/" target="_blank" class="jlyang_d_i_authorurl">Yu Deng</a>, <a href="https://skhu101.github.io/" target="_blank" class="jlyang_d_i_authorurl">Shoukang Hu</a>, Yichuan Wang, Yizhong Zhang, Zhan Chen, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, <a href="https://www.microsoft.com/en-us/research/people/bainguo/" target="_blank" class="jlyang_d_i_authorurl">Baining Guo</a><br/>
 	<span class="jlyang_d_i_c_name">Real-Time Generation of Streamable Talking Portrait Video with Reference-Guided Deep Compression VAEs</span><br/>
 	<span class="jlyang_d_i_c_refer">The 42th IEEE Conference on Computer Vision and Pattern Recognition <b>(CVPR2026)</b></span> (<span style="color:#e60000"><b>Highlight</b></span>)<br/>
-	[<a href="#" onclick="show('61','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('61','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2606.01620">PDF</a>] [<a target="_blank" href="https://arxiv.org/abs/2606.01620">Webpage</a>] <!--[<a target="_blank" href="https://arxiv.org/abs/2606.01620">Suppl. Material</a>]--> [<a target="_blank" href="https://arxiv.org/abs/2606.01620">arXiv</a>]<br/>
+	[<a href="#" onclick="show('61','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('61','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://arxiv.org/pdf/2606.01620">PDF</a>] [<a target="_blank" href="https://arxiv.org/abs/2606.01620">Webpage</a>] <!--[<a target="_blank" href="https://arxiv.org/pdf/2606.01620">Suppl. Material</a>]--> [<a target="_blank" href="https://arxiv.org/abs/2606.01620">arXiv</a>]<br/>
 	</td>
 	</tr>
 	<tr style="width:100%;height:100%">
@@ -818,6 +847,33 @@ We present MoGe, a powerful model for recovering 3D geometry from monocular open
 &nbsp;&nbsp;author = {Wang, Ruicheng and Xu, Sicheng and Dai, Cassie and Xiang, Jianfeng and Deng, Yu and Tong, Xin and Yang, Jiaolong},<br/>
 &nbsp;&nbsp;title = {MoGe: Unlocking Accurate Monocular Geometry Estimation for Open-Domain Images with Optimal Training Supervision},<br/>
 &nbsp;&nbsp;booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)},<br/>
+&nbsp;&nbsp;year = {2025}<br/>
+}
+</div>
+</td>
+</tr>
+
+<tr>
+<td width="132px"><a name="icra25_opticaltransceiver" id="icra25_opticaltransceiver"><img src="icra25_opticaltransceiver.jpg" width="140"/></a>
+</td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+Iason Sarantopoulos, Chenyu Liu, Bohong Weng, Sicheng Xu, Yizhong Zhang, <span class="jlyang_d_i_c_emphasize">Jiaolong Yang</span>, Xin Tong, Fabian Otto, David Sweeney, Andromachi Chatzieleftheriou, Antony Rowstron<br/>
+<span class="jlyang_d_i_c_name">Robust Optical Transceiver Manipulation in Cluttered Cable Environments Using 3D Scene Understanding and Planning</span><br/>
+<span class="jlyang_d_i_c_refer"> IEEE International Conference on Robotics and Automation <b>(ICRA2025)</b></span><br/>
+[<a href="#" onclick="show('1001','abstract');return false;">Abstract</a>] [<a href="#" onclick="show('1001','bibtex');return false;">BibTex</a>] [<a target="_blank" href="https://rowstron.github.io/papers/cableICRA25.pdf">PDF</a>] [<a target="_blank" href="https://www.microsoft.com/en-us/research/publication/transceiver-manipulation-in-clutter/">Webpage</a>] [<a target="_blank" href="#">arXiv</a>]<br />
+</td>
+</tr>
+<tr style="width:100%;height:100%">
+<td></td>
+<td style="background:#F6F6F6;padding-left:10px;padding-right:4px;">
+<div id="1001_abstract">
+Robotic manipulation in cluttered environments presents significant challenges, particularly when the clutter includes thin, deformable objects like cables, which complicate perception and decision-making processes. In the context of datacenters, the automation of networking tasks often involves the manipulation of optical transceivers within densely packed cable configurations. Such environments are characterized by an abundance of delicate, overlapping, and intersecting cables, leading to frequent occlusions. This paper introduces an innovative system designed for the manipulation of optical transceivers in environments cluttered by cables. Our integrated approach combines advanced 3D scene understanding with a heuristic-based pushing policy to effectively manipulate optical transceivers amidst clutter. The system’s perception component utilizes image segmentation and 3D reconstruction to accurately model the transceivers and surrounding cables. Meanwhile, the planning aspect employs a search algorithm with task-specific heuristics, to navigate the gripper, displace obstructing cables, and safely achieve a precise pre-grasp position in front of the target transceiver. We have conducted extensive evaluations of our methodology in both simulated and real-world settings, demonstrating its high success rates, robustness, and proficiency in addressing the unique challenges posed by cable-occluded environments within datacenters.
+</div>
+<div id="1001_bibtex">
+@inproceedings{sarantopoulos2025robust,<br/>
+&nbsp;&nbsp;author = {Sarantopoulos, Iason and Liu, Chenyu and Weng, Bohong and Xu, Sicheng and Zhang, Yizhong and Yang, Jiaolong and Tong, Xin and Otto, Fabian and Sweeney, David and Chatzieleftheriou, Andromachi and Rowstron, Antony},<br/>
+&nbsp;&nbsp;title = {Robust Optical Transceiver Manipulation in Cluttered Cable Environments Using 3D Scene Understanding and Planning},<br/>
+&nbsp;&nbsp;booktitle = {Proceedings of the IEEE International Conference on Robotics and Automation (ICRA)},<br/>
 &nbsp;&nbsp;year = {2025}<br/>
 }
 </div>
